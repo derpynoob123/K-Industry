@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+#region Variables
+
+#endregion
+
+
 public class GameManagerScript : MonoBehaviour
 {
     // Start is called before the first frame update
