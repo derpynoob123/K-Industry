@@ -5,13 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-#region Variables
-
-#endregion
-
-
 public class GameManagerScript : MonoBehaviour
 {
+    #region Variables
+    public float userName;
+
+    public float money;
+    public float moneyText;
+
+    public float time;
+    public int day;
+    public int week;
+    #endregion
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +29,6 @@ public class GameManagerScript : MonoBehaviour
     void Update()
     {
         
+
     }
 }
