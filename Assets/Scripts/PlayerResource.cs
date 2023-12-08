@@ -1,8 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerResource : MonoBehaviour
+public class PlayerResource
 {
-    public static int Money { get; set; }
+    private static int money = 0;
+    public static int Money 
+    {
+        get => Money;
+        set
+        {
+            if (value < 0)
+            {
+                money = 0;
+            }
+            else
+            {
+                money = value;
+            }
+        }
+    }
 }
