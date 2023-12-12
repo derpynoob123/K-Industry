@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -9,7 +10,7 @@ public class Map : MonoBehaviour
     [SerializeField]
     private Grid grid;
 
-    private readonly List<GameObject> tiles = new List<GameObject>();
+    private readonly List<GameObject> tiles = new();
 
     private void Start()
     {
@@ -24,6 +25,15 @@ public class Map : MonoBehaviour
                 var tile = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
                 tiles.Add(tile);
             }
+        }
+    }
+
+    public void ChangeAllTileColour()
+    {
+        for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
+        {
+            var tileRenderer = tiles[tileIndex].GetComponent<SpriteRenderer>();
+            tileRenderer.color = Color.green;
         }
     }
 }
