@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [SerializeField]
-    private Sprite tilePrefab;
+    private GameObject tilePrefab;
     [SerializeField]
     private Grid grid;
 
