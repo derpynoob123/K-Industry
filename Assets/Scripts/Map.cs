@@ -9,6 +9,8 @@ public class Map : MonoBehaviour
     [SerializeField]
     private Grid grid;
 
+    private readonly List<GameObject> tiles = new List<GameObject>();
+
     private void Start()
     {
         int rowLength = 8;
@@ -17,8 +19,10 @@ public class Map : MonoBehaviour
         {
             for (int column = 0; column < columnLength; column++)
             {
-                var worldPosition = grid.GetCellCenterWorld(new Vector3Int(row, column));
-                Instantiate(tilePrefab, worldPosition, Quaternion.identity);
+                var position = new Vector3Int(row, column);
+                var worldPosition = grid.GetCellCenterWorld(position);
+                var tile = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
+                tiles.Add(tile);
             }
         }
     }
