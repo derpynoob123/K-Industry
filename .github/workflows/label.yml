@@ -6,7 +6,9 @@
 # https://github.com/actions/labeler
 
 name: Labeler
-on: [pull_request_target]
+on: 
+  schedule:
+   - cron: "0 1 * * 1"
 
 jobs:
   label:
@@ -19,4 +21,8 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
+        pr-number:
+          1
+          2
+          3
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
