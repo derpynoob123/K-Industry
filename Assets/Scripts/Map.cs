@@ -1,31 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Map
 {
-    public Dictionary<Vector2, Tile> Tiles { get; set; }
+    public Dictionary<Vector3Int, Tile> Tiles { get; set; }
 
     public Map()
     {
         Tiles = new();
     }
 
-    public void ReadTiles(GameObject container)
+    public void InitialiseTiles(Transform[] tiles)
     {
-        Transform[] tileTransforms = container.GetComponentsInChildren<Transform>();
-        for (int tileIndex = 0; tileIndex < tileTransforms.Length; tileIndex++)
+        for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
         {
-            Vector3 worldPosition = tileTransforms[tileIndex].transform.position;
-            float posX = worldPosition.x;
-            float posY = worldPosition.y;
-            Vector2 position = new Vector2(posX, posY);
+            Vector3 worldPosition = tiles[tileIndex].transform.position;
+            int posX = (int) worldPosition.x;
+            int  posY = (int) worldPosition.y;
+            Vector3Int position = new Vector3Int(posX, posY);
             Tile tile = new(position);
             Tiles.Add(position, tile);
         }
     }
 
-    public Tile GetTile(Vector2 tilePosition)
+    public Tile GetTile(Vector3Int tilePosition)
     {
         return Tiles[tilePosition];
     }

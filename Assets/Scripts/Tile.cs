@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Tile
 {
-    public Vector2 Position { get; }
+    public Vector3Int Position { get; }
 
-    public Tile(Vector2 position)
+    public Tile(Vector3Int position)
     {
         Position = position;
     }

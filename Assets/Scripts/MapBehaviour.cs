@@ -7,7 +7,7 @@ public class MapBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
     [SerializeField]
-    private GameObject tilesContainer;
+    private Transform[] tiles;
     [SerializeField]
     private Grid grid;
 
@@ -15,6 +15,7 @@ public class MapBehaviour : MonoBehaviour
 
     private void Start()
     {
+        map.InitialiseTiles(tiles);
 
     }
 }
