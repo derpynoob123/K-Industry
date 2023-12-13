@@ -6,9 +6,14 @@ public class Map
 {
     public Dictionary<Vector2Int, Tile> Tiles { get; set; }
 
-    private readonly List<GameObject> tiles = new();
-    private const int rowLength = 8;
-    private const int columnLength = 8;
+    private readonly int rowLength = 0;
+    private readonly int columnLength = 0;
+
+    public Map(int rowLength, int columnLength)
+    {
+        this.rowLength = rowLength;
+        this.columnLength = columnLength;
+    }
 
     public void InitialiseGrid()
     {
@@ -26,23 +31,5 @@ public class Map
     public Tile GetTile(Vector2Int tilePosition)
     {
         return Tiles[tilePosition];
-    }
-
-    public void ChangeAllTileColourToGreen()
-    {
-        for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
-        {
-            var tileRenderer = tiles[tileIndex].GetComponentInChildren<SpriteRenderer>();
-            tileRenderer.color = Color.green;
-        }
-    }
-
-    public void ChangeAllTileColourToWhite()
-    {
-        for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
-        {
-            var tileRenderer = tiles[tileIndex].GetComponentInChildren<SpriteRenderer>();
-            tileRenderer.color = Color.white;
-        }
     }
 }

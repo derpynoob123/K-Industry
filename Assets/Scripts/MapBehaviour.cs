@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class MapBehaviour : MonoBehaviour
 {
-    
+    [SerializeField]
+    private GameObject tilePrefab;
+    [SerializeField]
+    private Grid grid;
+
+    private Map map;
+
+    private void Start()
+    {
+        map.InitialiseGrid();
+    }
 }
