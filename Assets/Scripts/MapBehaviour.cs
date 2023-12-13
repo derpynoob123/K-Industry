@@ -5,15 +5,15 @@ using UnityEngine;
 public class MapBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private readonly GameObject tilePrefab;
+    private GameObject tilePrefab;
     [SerializeField]
-    private readonly Transform[] tiles;
+    private Transform[] tiles;
     [SerializeField]
-    private readonly Grid grid;
+    private Grid grid;
 
     private readonly Map map = new();
 
-    private void Start()
+    private void Awake()
     {
         List<Vector3Int> tilePositions = new();
         for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
