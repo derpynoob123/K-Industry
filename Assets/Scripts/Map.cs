@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Map
 {
-    public Dictionary<Vector3Int, Tile> Tiles { get; set; }
+    public Dictionary<Vector3Int, Tile> Tiles { get; }
 
     public Map()
     {

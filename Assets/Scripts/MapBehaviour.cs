@@ -5,13 +5,13 @@ using UnityEngine;
 public class MapBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject tilePrefab;
+    private readonly GameObject tilePrefab;
     [SerializeField]
-    private Transform[] tiles;
+    private readonly Transform[] tiles;
     [SerializeField]
-    private Grid grid;
+    private readonly Grid grid;
 
-    private Map map = new();
+    private readonly Map map = new();
 
     private void Start()
     {
@@ -23,5 +23,10 @@ public class MapBehaviour : MonoBehaviour
             tilePositions.Add(gridPosition);
         }
         map.InitialiseTiles(tilePositions.ToArray());
+    }
+
+    public Dictionary<Vector3Int, Tile> GetTiles()
+    {
+        return map.Tiles;
     }
 }

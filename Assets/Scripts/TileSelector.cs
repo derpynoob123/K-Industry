@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager
+public class TileSelector
 {
-    
+    public Tile SelectedTile { get; set; }
 }
