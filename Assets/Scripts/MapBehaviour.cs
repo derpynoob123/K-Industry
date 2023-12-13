@@ -15,7 +15,13 @@ public class MapBehaviour : MonoBehaviour
 
     private void Start()
     {
-        map.InitialiseTiles(tiles);
-
+        List<Vector3Int> tilePositions = new();
+        for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
+        {
+            Vector3 worldPosition = tiles[tileIndex].position;
+            Vector3Int gridPosition = grid.WorldToCell(worldPosition);
+            tilePositions.Add(gridPosition);
+        }
+        map.InitialiseTiles(tilePositions.ToArray());
     }
 }

@@ -12,14 +12,11 @@ public class Map
         Tiles = new();
     }
 
-    public void InitialiseTiles(Transform[] tiles)
+    public void InitialiseTiles(Vector3Int[] tilePositions)
     {
-        for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
+        for (int tileIndex = 0; tileIndex < tilePositions.Length; tileIndex++)
         {
-            Vector3 worldPosition = tiles[tileIndex].transform.position;
-            int posX = (int) worldPosition.x;
-            int  posY = (int) worldPosition.y;
-            Vector3Int position = new Vector3Int(posX, posY);
+            Vector3Int position = tilePositions[tileIndex];
             Tile tile = new(position);
             Tiles.Add(position, tile);
         }
