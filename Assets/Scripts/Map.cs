@@ -41,7 +41,7 @@ public class Map : MonoBehaviour
     {
         for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
         {
-            var tileRenderer = tiles[tileIndex].GetComponent<SpriteRenderer>();
+            var tileRenderer = tiles[tileIndex].GetComponentInChildren<SpriteRenderer>();
             tileRenderer.color = Color.green;
         }
     }
@@ -50,7 +50,7 @@ public class Map : MonoBehaviour
     {
         for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
         {
-            var tileRenderer = tiles[tileIndex].GetComponent<SpriteRenderer>();
+            var tileRenderer = tiles[tileIndex].GetComponentInChildren<SpriteRenderer>();
             tileRenderer.color = Color.white;
         }
     }
