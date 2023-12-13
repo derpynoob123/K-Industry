@@ -11,12 +11,7 @@ public class MapBehaviour : MonoBehaviour
     [SerializeField]
     private Grid grid;
 
-    private Map map;
-
-    private void Awake()
-    {
-        map = new();
-    }
+    private Map map = new();
 
     private void Start()
     {
