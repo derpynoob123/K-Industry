@@ -11,6 +11,11 @@ public class MapBehaviour : MonoBehaviour
 
     private Map map;
 
+    private void Awake()
+    {
+        map = new(8, 8);
+    }
+
     private void Start()
     {
         map.InitialiseGrid();

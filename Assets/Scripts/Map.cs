@@ -13,6 +13,7 @@ public class Map
     {
         this.rowLength = rowLength;
         this.columnLength = columnLength;
+        Tiles = new();
     }
 
     public void InitialiseGrid()
