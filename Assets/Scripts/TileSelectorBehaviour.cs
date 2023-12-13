@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TileSelectorBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private MapBehaviour map;
-
     private TileSelector tileSelector = new();
+
+    public void SelectTile(Tile tile)
+    {
+        tileSelector.SelectedTile = tile;
+    }
 }
