@@ -2,34 +2,6 @@
     "name": "KIndustry",
     "maps": [
         {
-            "name": "Player",
-            "id": "debb9b46-dc71-47c5-9db1-725f4ffd9da1",
-            "actions": [
-                {
-                    "name": "Click",
-                    "type": "Button",
-                    "id": "fca9987f-f911-483b-85ff-993f87c28969",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "6c611076-f988-450e-bd7c-332bb10eabe5",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "UI",
             "id": "6b2b8678-98f0-402f-954a-b7743b8902f2",
             "actions": [
