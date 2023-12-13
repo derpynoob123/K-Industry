@@ -28,12 +28,21 @@ public class Map : MonoBehaviour
         }
     }
 
-    public void ChangeAllTileColour()
+    public void ChangeAllTileColourToGreen()
     {
         for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
         {
             var tileRenderer = tiles[tileIndex].GetComponent<SpriteRenderer>();
             tileRenderer.color = Color.green;
+        }
+    }
+
+    public void ChangeAllTileColourToWhite()
+    {
+        for (int tileIndex = 0; tileIndex < tiles.Count; tileIndex++)
+        {
+            var tileRenderer = tiles[tileIndex].GetComponent<SpriteRenderer>();
+            tileRenderer.color = Color.white;
         }
     }
 }
