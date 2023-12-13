@@ -6,6 +6,4 @@ public class BuildManager
 {
     [SerializeField]
     private BuildingTile selectedTile;
-
-    private readonly List<BuildingTile> buildingTiles;
 }
