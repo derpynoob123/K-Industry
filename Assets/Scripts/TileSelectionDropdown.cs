@@ -9,6 +9,8 @@ public class TileSelectionDropdown : MonoBehaviour
     private TMP_Dropdown dropdown;
     [SerializeField]
     private MapBehaviour map;
+    [SerializeField]
+    private string noSelectionMessage;
 
     private void Awake()
     {
@@ -18,8 +20,9 @@ public class TileSelectionDropdown : MonoBehaviour
 
     private void InitialiseOptions()
     {
+        dropdown.options.Add(new TMP_Dropdown.OptionData(noSelectionMessage));
         foreach (var tile in map.GetTiles())
-        {;
+        {
             string optionText = tile.Value.Position.ToString();
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);

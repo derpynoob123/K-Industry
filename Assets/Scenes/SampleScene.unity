@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 19018498}
   map: {fileID: 1609417373}
+  noSelectionMessage: None Selected
 --- !u!1 &74184019
 GameObject:
   m_ObjectHideFlags: 0
