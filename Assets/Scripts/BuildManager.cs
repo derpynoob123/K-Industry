@@ -5,5 +5,7 @@ using UnityEngine;
 public class BuildManager
 {
     [SerializeField]
-    private GameObject selectedTile;
+    private BuildingTile selectedTile;
+
+    private readonly List<BuildingTile> buildingTiles;
 }
