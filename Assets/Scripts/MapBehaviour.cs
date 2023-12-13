@@ -7,17 +7,19 @@ public class MapBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
     [SerializeField]
+    private GameObject tilesContainer;
+    [SerializeField]
     private Grid grid;
 
     private Map map;
 
     private void Awake()
     {
-        map = new(8, 8);
+        map = new();
     }
 
     private void Start()
     {
-        map.InitialiseGrid();
+
     }
 }
