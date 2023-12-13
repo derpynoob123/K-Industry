@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class BuildManager
 {
-    [SerializeField]
-    private BuildingTile selectedTile;
+    public BuildingTile SelectedTile { get; set; }
 }

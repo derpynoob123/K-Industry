@@ -32,6 +32,7 @@ public class Map : MonoBehaviour
                 tiles.Add(tile);
                 var gridPosition = new Vector2Int(row, column);
                 var buildingTile = new BuildingTile(gridPosition);
+                BuildingTiles.Add(buildingTile);
             }
         }
     }
