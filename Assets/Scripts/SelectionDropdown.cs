@@ -21,20 +21,26 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     {
         dropdown.ClearOptions();
         InitialiseOptions();
+        AddNoSelectionOption();
+    }
+
+    private void AddNoSelectionOption()
+    {
+        var option = new TMP_Dropdown.OptionData(noSelectionMessage);
+        dropdown.options.Add(option);
     }
 
     virtual protected void InitialiseOptions()
     {
-        var option = new TMP_Dropdown.OptionData(noSelectionMessage);
-        dropdown.options.Add(option);
         for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
-            string optionText = $"Option {optionIndex + 1}";
-            option = new TMP_Dropdown.OptionData(optionText);
-            dropdown.options.Add(option);
-            optionMenu.Add(optionIndex, options[optionIndex]);
+            int optionValue = optionIndex + 1;
+            optionMenu.Add(optionValue, options[optionIndex]);
         }
     }
+
+    abstract protected void UpdateDropdown();
+
     public void SelectOption()
     {
         if (dropdown.value == noSelectionOption)

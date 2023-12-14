@@ -289,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 19018498}
+  noSelectionMessage: None Selected
+  dropdown: {fileID: 19018498}
   map: {fileID: 1609417373}
   tileSelector: {fileID: 1705279175}
   noSelectionMessage: None Selected
@@ -486,7 +488,7 @@ GameObject:
   - component: {fileID: 140114066}
   - component: {fileID: 140114065}
   m_Layer: 5
-  m_Name: Facility Selector
+  m_Name: Facility Selection Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

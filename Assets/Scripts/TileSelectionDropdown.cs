@@ -4,56 +4,28 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TileSelectionDropdown : MonoBehaviour
+public class TileSelectionDropdown : SelectionDropdown<Tile>
 {
-    [SerializeField]
-    private TMP_Dropdown dropdown;
     [SerializeField]
     private MapBehaviour map;
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
-    [SerializeField]
-    private string noSelectionMessage;
 
-    private event Action<Tile> TileSelected;
-    private Dictionary<int, Tile> tileMenu = new();
-
-    private const int noSelectionOption = 0;
-
-    private void Awake()
+    override protected void Awake()
     {
-        TileSelected += tileSelector.SelectTile;
-        dropdown.options.Clear();
-        InitialiseOptions();
+        OptionSelected += tileSelector.SelectTile;
+        base.Awake();
     }
 
-    private void InitialiseOptions()
+    protected override void UpdateDropdown()
     {
         var option = new TMP_Dropdown.OptionData(noSelectionMessage);
         dropdown.options.Add(option);
-        int menuIndex = 1;
         foreach (var tile in map.GetTiles())
         {
             string optionText = tile.Value.Position.ToString();
             option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
-            tileMenu.Add(menuIndex, tile.Value);
-            menuIndex++;
         }
-    }
-
-    public void SelectOption()
-    {
-        if (dropdown.value == noSelectionOption)
-        {
-            return;
-        }
-        SelectTile();
-    }
-
-    private void SelectTile()
-    {
-        Tile selectedTile = tileMenu[dropdown.value];
-        TileSelected.Invoke(selectedTile);
     }
 }
