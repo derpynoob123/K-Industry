@@ -1,29 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map
 {
-    [SerializeField]
-    private GameObject tilePrefab;
-    [SerializeField]
-    private Grid grid;
+    public Dictionary<Vector3Int, Tile> Tiles { get; }
 
-    private readonly List<GameObject> tiles = new List<GameObject>();
-
-    private void Start()
+    public Map()
     {
-        int rowLength = 8;
-        int columnLength = 8;
-        for (int row = 0; row < rowLength; row++)
+        Tiles = new();
+    }
+
+    public void InitialiseTiles(Vector3Int[] tilePositions)
+    {
+        for (int tileIndex = 0; tileIndex < tilePositions.Length; tileIndex++)
         {
-            for (int column = 0; column < columnLength; column++)
-            {
-                var position = new Vector3Int(row, column);
-                var worldPosition = grid.GetCellCenterWorld(position);
-                var tile = Instantiate(tilePrefab, worldPosition, Quaternion.identity);
-                tiles.Add(tile);
-            }
+            Vector3Int position = tilePositions[tileIndex];
+            Tile tile = new(position);
+            Tiles.Add(position, tile);
         }
+    }
+
+    public Tile GetTile(Vector3Int tilePosition)
+    {
+        return Tiles[tilePosition];
     }
 }

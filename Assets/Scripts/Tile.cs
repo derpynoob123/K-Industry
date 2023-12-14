@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Tile
+{
+    public Vector3Int Position { get; }
+    public IFacility CurrentFacility { get; set; }
+
+    public Tile(Vector3Int position)
+    {
+        Position = position;
+    }
+}
