@@ -5,6 +5,4 @@ using UnityEngine;
 public class TileSelector
 {
     public Tile SelectedTile { get; set; }
-
-
 }

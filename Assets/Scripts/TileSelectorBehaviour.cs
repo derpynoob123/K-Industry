@@ -9,6 +9,5 @@ public class TileSelectorBehaviour : MonoBehaviour
     public void SelectTile(Tile tile)
     {
         tileSelector.SelectedTile = tile;
-        print(tile.Position);
     }
 }
