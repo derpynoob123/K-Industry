@@ -20,15 +20,13 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     virtual protected void Awake()
     {
         dropdown.ClearOptions();
+        SetOptions();
         InitialiseOptions();
         AddNoSelectionOption();
+        UpdateDropdown();
     }
 
-    private void AddNoSelectionOption()
-    {
-        var option = new TMP_Dropdown.OptionData(noSelectionMessage);
-        dropdown.options.Add(option);
-    }
+    abstract protected void SetOptions();
 
     virtual protected void InitialiseOptions()
     {
@@ -37,6 +35,12 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
             int optionValue = optionIndex + 1;
             optionMenu.Add(optionValue, options[optionIndex]);
         }
+    }
+
+    private void AddNoSelectionOption()
+    {
+        var option = new TMP_Dropdown.OptionData(noSelectionMessage);
+        dropdown.options.Add(option);
     }
 
     abstract protected void UpdateDropdown();
