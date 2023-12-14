@@ -19,12 +19,15 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
 
     virtual protected void Awake()
     {
+        AddOptionSelectedObservers();
         dropdown.ClearOptions();
         SetOptions();
         InitialiseOptions();
         AddNoSelectionOption();
         UpdateDropdown();
     }
+
+    abstract protected void AddOptionSelectedObservers();
 
     abstract protected void SetOptions();
 

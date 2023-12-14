@@ -12,18 +12,14 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
 
-    override protected void Awake()
+    protected override void AddOptionSelectedObservers()
     {
         OptionSelected += tileSelector.SelectTile;
-
-        options = map.GetTiles().Values.ToList();
-        base.Awake();
-        UpdateDropdown();
     }
 
     protected override void SetOptions()
     {
-        throw new NotImplementedException();
+        options = map.GetTiles().Values.ToList();
     }
 
     protected override void UpdateDropdown()
