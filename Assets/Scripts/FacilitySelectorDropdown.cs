@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilitySelectorDropdown : SelectorDropdown<IFacility>
+public class FacilitySelectorDropdown : SelectionDropdown<IFacility>
 {
     override protected void Awake()
     {

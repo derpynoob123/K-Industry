@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileSelectorBehaviour : MonoBehaviour
 {
-    private TileSelector tileSelector = new();
+    private readonly TileSelector tileSelector = new();
 
     public void SelectTile(Tile tile)
     {

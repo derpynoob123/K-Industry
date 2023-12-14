@@ -485,7 +485,6 @@ GameObject:
   - component: {fileID: 140114067}
   - component: {fileID: 140114066}
   - component: {fileID: 140114065}
-  - component: {fileID: 140114068}
   m_Layer: 5
   m_Name: Facility Selector
   m_TagString: Untagged
@@ -614,20 +613,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140114063}
   m_CullTransparentMesh: 1
---- !u!114 &140114068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140114063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed51e820153e11347ab749d58e990047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 140114065}
-  noSelectionMessage: No Message
 --- !u!1 &149063058
 GameObject:
   m_ObjectHideFlags: 0
