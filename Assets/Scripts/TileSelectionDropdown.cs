@@ -22,7 +22,7 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
         options = map.GetTiles().Values.ToList();
     }
 
-    protected override void UpdateDropdown()
+    protected override void AddDropdownOptions()
     {
         foreach (var tile in map.GetTiles())
         {

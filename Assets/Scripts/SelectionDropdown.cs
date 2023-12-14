@@ -24,7 +24,7 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
         SetOptions();
         InitialiseOptions();
         AddNoSelectionOption();
-        UpdateDropdown();
+        AddDropdownOptions();
     }
 
     abstract protected void AddOptionSelectedObservers();
@@ -46,7 +46,7 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
         dropdown.options.Add(option);
     }
 
-    abstract protected void UpdateDropdown();
+    abstract protected void AddDropdownOptions();
 
     public void SelectOption()
     {
