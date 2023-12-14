@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class SelectorDropdown : MonoBehaviour
+public abstract class SelectorDropdown : MonoBehaviour
 {
-
+    [SerializeField]
+    protected TMP_Dropdown dropdown;
+    [SerializeField]
+    protected string noSelectionMessage;
 }
