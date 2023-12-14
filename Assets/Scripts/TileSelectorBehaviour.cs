@@ -6,8 +6,8 @@ public class TileSelectorBehaviour : MonoBehaviour
 {
     private TileSelector tileSelector = new();
 
-    public void SetSelectedTile(Tile tile)
+    public void SelectTile(Tile tile)
     {
-        print("run");
+        tileSelector.SelectedTile = tile;
     }
 }
