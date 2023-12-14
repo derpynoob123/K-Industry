@@ -18,6 +18,8 @@ public class TileSelectionDropdown : MonoBehaviour
     private event Action<Tile> TileSelected;
     private Dictionary<int, Tile> tileMenu = new();
 
+    private const int noSelectionOption = 0;
+
     private void Awake()
     {
         TileSelected += tileSelector.SetSelectedTile;
@@ -40,7 +42,16 @@ public class TileSelectionDropdown : MonoBehaviour
         }
     }
 
-    public void OptionSelected()
+    public void SelectOption()
+    {
+        if (dropdown.value == noSelectionOption)
+        {
+            return;
+        }
+        SelectTile();
+    }
+
+    private void SelectTile()
     {
         Tile selectedTile = tileMenu[dropdown.value];
         TileSelected.Invoke(selectedTile);
