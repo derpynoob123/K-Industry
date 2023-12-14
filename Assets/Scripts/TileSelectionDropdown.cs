@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,12 @@ public class TileSelectionDropdown : MonoBehaviour
     [SerializeField]
     private MapBehaviour map;
     [SerializeField]
+    private TileSelectorBehaviour tileSelector;
+    [SerializeField]
     private string noSelectionMessage;
+
+    private event Action<Tile> TileSelected;
+    private Dictionary<int, Tile> tileMenu = new();
 
     private void Awake()
     {
@@ -20,12 +26,22 @@ public class TileSelectionDropdown : MonoBehaviour
 
     private void InitialiseOptions()
     {
-        dropdown.options.Add(new TMP_Dropdown.OptionData(noSelectionMessage));
+        var option = new TMP_Dropdown.OptionData(noSelectionMessage);
+        dropdown.options.Add(option);
+        int menuIndex = 0;
         foreach (var tile in map.GetTiles())
         {
             string optionText = tile.Value.Position.ToString();
-            var option = new TMP_Dropdown.OptionData(optionText);
+            option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
+            tileMenu.Add(menuIndex, tile.Value);
+            menuIndex++;
         }
+    }
+
+    public void OptionSelected()
+    {
+        Tile selectedTile = tileMenu[dropdown.value];
+        TileSelected.Invoke(selectedTile);
     }
 }

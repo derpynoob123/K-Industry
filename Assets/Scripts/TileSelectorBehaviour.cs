@@ -5,9 +5,4 @@ using UnityEngine;
 public class TileSelectorBehaviour : MonoBehaviour
 {
     private TileSelector tileSelector = new();
-
-    public void SelectTile(Tile tile)
-    {
-        tileSelector.SelectedTile = tile;
-    }
 }
