@@ -31,7 +31,7 @@ public class TileSelectionDropdown : MonoBehaviour
     {
         var option = new TMP_Dropdown.OptionData(noSelectionMessage);
         dropdown.options.Add(option);
-        int menuIndex = 0;
+        int menuIndex = 1;
         foreach (var tile in map.GetTiles())
         {
             string optionText = tile.Value.Position.ToString();

@@ -1,16 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FacilitySelectorDropdown : SelectorDropdown<IFacility>
 {
-
-
-    protected override void Awake()
+    override protected void Awake()
     {
-        dropdown.ClearOptions();
-    }
+        options.Add(new StorageHouse());
+        options.Add(new PackingHouse());
 
-    protected override void InitialiseOptions(IFacility[] options)
-    {
-        throw new System.NotImplementedException();
     }
 }
