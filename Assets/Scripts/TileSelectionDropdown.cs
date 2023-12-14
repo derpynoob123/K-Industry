@@ -20,6 +20,7 @@ public class TileSelectionDropdown : MonoBehaviour
 
     private void Awake()
     {
+        TileSelected += tileSelector.SetSelectedTile;
         dropdown.options.Clear();
         InitialiseOptions();
     }
