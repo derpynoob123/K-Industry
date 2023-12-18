@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile
 {
     public Vector3Int GridSpacePosition { get; }
-    public Transform WorldSpacePosition { get; set; } 
+    public Transform TileTransform { get; set; } 
     public IFacility CurrentFacility { get; set; }
 
     public Tile(Vector3Int position)

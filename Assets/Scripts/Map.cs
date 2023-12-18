@@ -12,14 +12,11 @@ public class Map
         Tiles = new();
     }
 
-    public void InitialiseTiles(Vector3Int[] tilePositions)
+    public void InitialiseTile(Vector3Int tileGridPosition, Transform tileTransform)
     {
-        for (int tileIndex = 0; tileIndex < tilePositions.Length; tileIndex++)
-        {
-            Vector3Int position = tilePositions[tileIndex];
-            Tile tile = new(position);
-            Tiles.Add(position, tile);
-        }
+        Tile tile = new(tileGridPosition);
+        tile.TileTransform = tileTransform;
+        Tiles.Add(tileGridPosition, tile);
     }
 
     public Tile GetTile(Vector3Int tilePosition)
