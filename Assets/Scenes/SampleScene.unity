@@ -290,10 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 19018498}
   noSelectionMessage: None Selected
-  dropdown: {fileID: 19018498}
   map: {fileID: 1609417373}
   tileSelector: {fileID: 1705279175}
-  noSelectionMessage: None Selected
 --- !u!1 &74184019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1421,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 428157680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &466274501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466274502}
+  m_Layer: 0
+  m_Name: Facility Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466274502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466274501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483453605
 GameObject:
   m_ObjectHideFlags: 0
