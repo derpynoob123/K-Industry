@@ -26,7 +26,7 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
     {
         foreach (var tile in map.GetTiles())
         {
-            string optionText = tile.Value.Position.ToString();
+            string optionText = tile.Value.GridSpacePosition.ToString();
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
         }
