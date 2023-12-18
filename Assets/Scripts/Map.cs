@@ -14,8 +14,10 @@ public class Map
 
     public void InitialiseTile(Vector3Int tileGridPosition, Transform tileTransform)
     {
-        Tile tile = new(tileGridPosition);
-        tile.TileTransform = tileTransform;
+        Tile tile = new(tileGridPosition)
+        {
+            TileTransform = tileTransform
+        };
         Tiles.Add(tileGridPosition, tile);
     }
 

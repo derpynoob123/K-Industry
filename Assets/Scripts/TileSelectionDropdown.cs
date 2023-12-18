@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TileSelectionDropdown : SelectionDropdown<Tile>
 {
@@ -24,9 +25,9 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
 
     protected override void AddDropdownOptions()
     {
-        foreach (var tile in map.GetTiles())
+        for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
-            string optionText = tile.Value.GridSpacePosition.ToString();
+            string optionText = options[optionIndex].GridSpacePosition.ToString();
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
         }
