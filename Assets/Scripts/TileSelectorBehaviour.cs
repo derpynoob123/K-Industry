@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileSelectorBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject highlightIcon;
+    private GameObject SelectedTileIcon;
 
     private readonly TileSelector tileSelector = new();
 
