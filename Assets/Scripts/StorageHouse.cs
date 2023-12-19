@@ -5,4 +5,5 @@ using UnityEngine;
 public class StorageHouse : IFacility
 {
     public string Name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int Price { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 }
