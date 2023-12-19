@@ -9,7 +9,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void AddOptionSelectedObservers()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void AddDropdownOptions()

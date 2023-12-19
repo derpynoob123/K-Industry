@@ -48,7 +48,7 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
 
     abstract protected void AddDropdownOptions();
 
-    public void SelectOption()
+    public void InvokeSelectionEvent()
     {
         if (dropdown.value == noSelectionOption)
         {
