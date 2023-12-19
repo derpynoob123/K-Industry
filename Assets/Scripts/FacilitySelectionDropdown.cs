@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 {
+    [SerializeField]
+    private FacilityManager facilityManager;
+
     protected override void AddDropdownOptions()
     {
         throw new System.NotImplementedException();

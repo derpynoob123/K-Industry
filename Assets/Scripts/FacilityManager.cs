@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FacilityManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private List<IFacility> facilities = new();
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        facilities.Add(new PackingHouse());
+        facilities.Add(new StorageHouse());
     }
 }
