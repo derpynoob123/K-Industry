@@ -12,12 +12,12 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     }
 
-    protected override void AddDropdownOptions()
+    protected override void SetOptions()
     {
         options = facilityManager.Facilities;
     }
 
-    protected override void SetOptions()
+    protected override void AddDropdownOptions()
     {
         for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
