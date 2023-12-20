@@ -15,10 +15,10 @@ public class MapBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        InitialiseTiles();
+        InitialiseMapTiles();
     }
 
-    private void InitialiseTiles()
+    private void InitialiseMapTiles()
     {
         for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
         {

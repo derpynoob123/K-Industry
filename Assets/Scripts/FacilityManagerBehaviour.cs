@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilityManager : MonoBehaviour
+public class FacilityManagerBehaviour : MonoBehaviour
 {
     public List<IFacility> Facilities { get; set; }
 

@@ -7,7 +7,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     [SerializeField]
     private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
-    private FacilityManager facilityManager;
+    private FacilityManagerBehaviour facilityManager;
 
     protected override void AddOptionSelectedObservers()
     {
