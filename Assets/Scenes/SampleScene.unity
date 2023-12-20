@@ -492,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &140114064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 140114065}
   noSelectionMessage: None Selected
-  facilityBuilder: {fileID: 0}
+  facilityBuilder: {fileID: 1705279176}
   facilityManager: {fileID: 466274503}
 --- !u!1 &149063058
 GameObject:
@@ -5211,7 +5211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb1f69f999dcc8499b11a6fb161e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSelector: {fileID: 0}
+  tileSelector: {fileID: 1705279175}
 --- !u!1 &1824348187
 GameObject:
   m_ObjectHideFlags: 0

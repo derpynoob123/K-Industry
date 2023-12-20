@@ -12,6 +12,7 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     protected string noSelectionMessage;
 
     protected event Action<T> OptionSelected;
+    protected event Action Deselected;
     protected Dictionary<int, T> optionMenu = new();
     protected List<T> options;
 
@@ -28,6 +29,8 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     }
 
     abstract protected void AddOptionSelectedObservers();
+
+    abstract protected void AddDeselectedObservers();
 
     abstract protected void SetOptions();
 
@@ -52,9 +55,12 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     {
         if (dropdown.value == noSelectionOption)
         {
-            return;
+            Deselected.Invoke();
         }
-        T selectedOption = optionMenu[dropdown.value];
-        OptionSelected.Invoke(selectedOption);
+        else
+        {
+            T selectedOption = optionMenu[dropdown.value];
+            OptionSelected.Invoke(selectedOption);
+        }
     }
 }

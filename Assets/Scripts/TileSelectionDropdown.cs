@@ -31,4 +31,9 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
             dropdown.options.Add(option);
         }
     }
+
+    protected override void AddDeselectedObservers()
+    {
+        throw new NotImplementedException();
+    }
 }
