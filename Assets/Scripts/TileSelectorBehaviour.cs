@@ -19,4 +19,9 @@ public class TileSelectorBehaviour : MonoBehaviour
     {
         selectedTileIcon.position = tile.TileTransform.position;
     }
+
+    public Tile GetSelectedTile()
+    {
+        return tileSelector.SelectedTile;
+    }
 }

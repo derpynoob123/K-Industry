@@ -5,7 +5,7 @@ using TMPro;
 public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 {
     [SerializeField]
-    private FacilitySelectorBehaviour facilitySelector;
+    private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
     private FacilityManager facilityManager;
 
