@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilitySelector
+public class FacilityBuilder
 {
-    public IFacility SelectedFacility { get; set; }
+
 }
