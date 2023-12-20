@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class FacilitySelectorBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private readonly FacilitySelector facilitySelector = new();
 
-    // Update is called once per frame
-    void Update()
+    public void SelectFacility(IFacility facility)
     {
-        
+        facilitySelector.SelectedFacility = facility;
     }
 }

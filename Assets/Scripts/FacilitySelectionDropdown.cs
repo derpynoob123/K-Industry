@@ -5,6 +5,8 @@ using TMPro;
 public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 {
     [SerializeField]
+    private FacilitySelectorBehaviour facilitySelector;
+    [SerializeField]
     private FacilityManager facilityManager;
 
     protected override void AddOptionSelectedObservers()
