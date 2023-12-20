@@ -6,14 +6,8 @@ public class FacilityManagerBehaviour : MonoBehaviour
 {
     private readonly FacilityManager facilityManager = new();
 
-    private void Awake()
+    public List<IFacility> GetFacilities()
     {
-        InitialiseFacilities();
-    }
-
-    private void InitialiseFacilities()
-    {
-        facilityManager.Facilities.Add(new PackingHouse());
-        facilityManager.Facilities.Add(new StorageHouse());
+        return facilityManager.Facilities;
     }
 }

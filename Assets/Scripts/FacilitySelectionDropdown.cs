@@ -16,7 +16,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void SetOptions()
     {
-        options = facilityManager.Facilities;
+        options = facilityManager.GetFacilities();
     }
 
     protected override void AddDropdownOptions()
