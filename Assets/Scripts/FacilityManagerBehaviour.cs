@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class FacilityManagerBehaviour : MonoBehaviour
 {
-    public List<IFacility> Facilities { get; set; }
+    private readonly FacilityManager facilityManager = new();
 
     private void Awake()
     {
-        Facilities = new()
-        {
-            new PackingHouse(),
-            new StorageHouse()
-        };
+        InitialiseFacilities();
+    }
+
+    private void InitialiseFacilities()
+    {
+        facilityManager.Facilities.Add(new PackingHouse());
+        facilityManager.Facilities.Add(new StorageHouse());
     }
 }
