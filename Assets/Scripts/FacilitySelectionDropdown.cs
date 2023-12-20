@@ -11,7 +11,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void AddOptionSelectedObservers()
     {
-
+        
     }
 
     protected override void SetOptions()
@@ -27,5 +27,10 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
         }
+    }
+
+    protected override void AddDeselectedObservers()
+    {
+
     }
 }

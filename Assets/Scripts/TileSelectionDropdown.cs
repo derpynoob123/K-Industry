@@ -34,6 +34,6 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
 
     protected override void AddDeselectedObservers()
     {
-        throw new NotImplementedException();
+        Deselected += tileSelector.Deselect;
     }
 }
