@@ -6,6 +6,8 @@ public class TileSelectorBehaviour : MonoBehaviour
 {
     [SerializeField]
     private Transform selectedTileIcon;
+    [SerializeField]
+    private GameObject facilitySelectionDropdown;
 
     private readonly TileSelector tileSelector = new();
 

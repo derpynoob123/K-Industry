@@ -13,6 +13,6 @@ public class FacilityBuilderBehaviour : MonoBehaviour
 
     public void SelectFacility(IFacility facility)
     {
-
+        confirmBuildButton.SetActive(true);
     }
 }
