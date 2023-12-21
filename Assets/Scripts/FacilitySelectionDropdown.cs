@@ -16,6 +16,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
         tileSelector.AddObserverToSelectedEvent(ShowDropdown);
         tileSelector.AddObserverToDeselectedEvent(HideDropdown);
         base.Awake();
+        HideDropdown();
     }
 
     protected override void AddOptionSelectedObservers()
