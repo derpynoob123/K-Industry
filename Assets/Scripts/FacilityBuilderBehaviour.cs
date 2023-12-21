@@ -15,4 +15,9 @@ public class FacilityBuilderBehaviour : MonoBehaviour
     {
         confirmBuildButton.SetActive(true);
     }
+
+    public void EndBuildSelection()
+    {
+        confirmBuildButton.SetActive(false);
+    }
 }
