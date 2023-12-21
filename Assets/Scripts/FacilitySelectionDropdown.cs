@@ -31,6 +31,6 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void AddDeselectedObservers()
     {
-
+        Deselected += facilityBuilder.EndBuildSelection;
     }
 }
