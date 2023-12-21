@@ -20,12 +20,14 @@ public class TileSelectorBehaviour : MonoBehaviour
     {
         tileSelector.SelectedTile = tile;
         HighlightTile(tile);
+        facilitySelectionDropdown.SetActive(true);
     }
 
     public void Deselect()
     {
         tileSelector.SelectedTile = null;
         RemoveHighlight();
+        facilitySelectionDropdown.SetActive(false);
     }
 
     private void HighlightTile(Tile tile)
