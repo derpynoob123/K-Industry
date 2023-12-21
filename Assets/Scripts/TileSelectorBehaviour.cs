@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,17 @@ using UnityEngine;
 public class TileSelectorBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private Transform selectedTileIcon;
-    [SerializeField]
     private FacilitySelectionDropdown facilitySelectionDropdown;
+    [SerializeField]
+    private TileSelectionHighlight tileSelectionHighlight;
 
     private readonly TileSelector tileSelector = new();
 
     private void Awake()
     {
-        tileSelector.Selected += HighlightSelectedTile;
+        tileSelector.Selected += tileSelectionHighlight.HighlightSelectedTile;
         tileSelector.Selected += facilitySelectionDropdown.ShowDropdown;
-        tileSelector.Deselected += RemoveHighlight;
+        tileSelector.Deselected += tileSelectionHighlight.RemoveHighlight;
         tileSelector.Deselected += facilitySelectionDropdown.HideDropdown;
     }
 
@@ -29,19 +30,18 @@ public class TileSelectorBehaviour : MonoBehaviour
         tileSelector.Deselect();
     }
 
-    private void HighlightSelectedTile()
-    {
-        selectedTileIcon.gameObject.SetActive(true);
-        selectedTileIcon.position = tileSelector.SelectedTile.TileTransform.position;
-    }
-
-    private void RemoveHighlight()
-    {
-        selectedTileIcon.gameObject.SetActive(false);
-    }
-
     public Tile GetSelectedTile()
     {
         return tileSelector.SelectedTile;
+    }
+
+    public void AddObserverToSelectedEvent(Action observer)
+    {
+        tileSelector.Selected += observer;
+    }
+
+    public void AddObserverToDeselectedEvent(Action observer)
+    {
+        tileSelector.Deselected += observer;
     }
 }

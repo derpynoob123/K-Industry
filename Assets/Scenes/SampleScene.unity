@@ -4157,11 +4157,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 1382848362}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1415949867 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 738796173827630303, guid: 7690e4c7085fd1e4e85feb9bfb3808ca, type: 3}
-  m_PrefabInstance: {fileID: 1465355245}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452363136
 GameObject:
   m_ObjectHideFlags: 0
@@ -5469,8 +5464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c944da47417cdf24e955ef055bd157aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTileIcon: {fileID: 1415949867}
   facilitySelectionDropdown: {fileID: 140114068}
+  tileSelectionHighlight: {fileID: 1705279177}
 --- !u!114 &1705279176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5498,6 +5493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSelector: {fileID: 1705279175}
+  selectedTileIcon: {fileID: 0}
 --- !u!1 &1824348187
 GameObject:
   m_ObjectHideFlags: 0
