@@ -6,8 +6,13 @@ public class FacilityBuilderBehaviour : MonoBehaviour
 {
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
+    [SerializeField]
+    private GameObject confirmBuildButton;
 
     private readonly FacilityBuilder facilityBuilder = new();
 
+    public void SelectFacility(IFacility facility)
+    {
 
+    }
 }

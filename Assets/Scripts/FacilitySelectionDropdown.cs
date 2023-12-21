@@ -11,7 +11,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void AddOptionSelectedObservers()
     {
-        
+        OptionSelected += facilityBuilder.SelectFacility; 
     }
 
     protected override void SetOptions()

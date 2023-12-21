@@ -5470,6 +5470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSelector: {fileID: 1705279175}
+  confirmBuildButton: {fileID: 1510149221}
 --- !u!1 &1824348187
 GameObject:
   m_ObjectHideFlags: 0
