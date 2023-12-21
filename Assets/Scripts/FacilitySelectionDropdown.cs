@@ -8,6 +8,15 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
     private FacilityManagerBehaviour facilityManager;
+    [SerializeField]
+    private TileSelectorBehaviour tileSelector;
+
+    override protected void Awake()
+    {
+        tileSelector.AddObserverToSelectedEvent(ShowDropdown);
+        tileSelector.AddObserverToDeselectedEvent(HideDropdown);
+        base.Awake();
+    }
 
     protected override void AddOptionSelectedObservers()
     {

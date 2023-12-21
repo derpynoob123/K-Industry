@@ -9,6 +9,12 @@ public class TileSelectionHighlight : MonoBehaviour
     [SerializeField]
     private Transform selectedTileIcon;
 
+    private void Awake()
+    {
+        tileSelector.AddObserverToSelectedEvent(HighlightSelectedTile);
+        tileSelector.AddObserverToDeselectedEvent(RemoveHighlight);
+    }
+
     public void HighlightSelectedTile()
     {
         selectedTileIcon.gameObject.SetActive(true);
