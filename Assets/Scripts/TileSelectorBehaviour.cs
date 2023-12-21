@@ -5,20 +5,7 @@ using UnityEngine;
 
 public class TileSelectorBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private FacilitySelectionDropdown facilitySelectionDropdown;
-    [SerializeField]
-    private TileSelectionHighlight tileSelectionHighlight;
-
     private readonly TileSelector tileSelector = new();
-
-    private void Awake()
-    {
-        tileSelector.Selected += tileSelectionHighlight.HighlightSelectedTile;
-        tileSelector.Selected += facilitySelectionDropdown.ShowDropdown;
-        tileSelector.Deselected += tileSelectionHighlight.RemoveHighlight;
-        tileSelector.Deselected += facilitySelectionDropdown.HideDropdown;
-    }
 
     public void SelectTile(Tile tile)
     {
