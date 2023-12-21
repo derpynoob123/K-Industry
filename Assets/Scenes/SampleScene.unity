@@ -5457,6 +5457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTileIcon: {fileID: 1415949867}
+  facilitySelectionDropdown: {fileID: 140114068}
 --- !u!114 &1705279176
 MonoBehaviour:
   m_ObjectHideFlags: 0

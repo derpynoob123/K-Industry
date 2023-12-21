@@ -7,7 +7,7 @@ public class TileSelectorBehaviour : MonoBehaviour
     [SerializeField]
     private Transform selectedTileIcon;
     [SerializeField]
-    private GameObject facilitySelectionDropdown;
+    private FacilitySelectionDropdown facilitySelectionDropdown;
 
     private readonly TileSelector tileSelector = new();
 
@@ -20,14 +20,15 @@ public class TileSelectorBehaviour : MonoBehaviour
     {
         tileSelector.SelectedTile = tile;
         HighlightTile(tile);
-        facilitySelectionDropdown.SetActive(true);
+        facilitySelectionDropdown.gameObject.SetActive(true);
     }
 
     public void Deselect()
     {
         tileSelector.SelectedTile = null;
         RemoveHighlight();
-        facilitySelectionDropdown.SetActive(false);
+        facilitySelectionDropdown.gameObject.SetActive(false);
+        facilitySelectionDropdown.ResetSelectionToDefault();
     }
 
     private void HighlightTile(Tile tile)

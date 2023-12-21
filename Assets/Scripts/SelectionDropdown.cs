@@ -68,5 +68,6 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     public void ResetSelectionToDefault()
     {
         dropdown.value = noSelectionOption;
+        Deselected.Invoke();
     }
 }
