@@ -24,11 +24,16 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
 
     protected override void AddDropdownOptions()
     {
-        foreach (var tile in map.GetTiles())
+        for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
-            string optionText = tile.Value.Position.ToString();
+            string optionText = options[optionIndex].GridSpacePosition.ToString();
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
         }
+    }
+
+    protected override void AddDeselectedObservers()
+    {
+        Deselected += tileSelector.Deselect;
     }
 }

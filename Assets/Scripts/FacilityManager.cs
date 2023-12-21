@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilityManager : MonoBehaviour
+public class FacilityManager
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<IFacility> Facilities { get; set; }
+
+    public FacilityManager()
     {
-        
+        InitialiseFacilities();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitialiseFacilities()
     {
-        
+        Facilities = new()
+        {
+            new PackingHouse(),
+            new StorageHouse()
+        };
     }
 }

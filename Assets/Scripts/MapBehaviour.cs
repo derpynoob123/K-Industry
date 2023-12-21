@@ -15,14 +15,17 @@ public class MapBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        List<Vector3Int> tilePositions = new();
+        InitialiseMapTiles();
+    }
+
+    private void InitialiseMapTiles()
+    {
         for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
         {
             Vector3 worldPosition = tiles[tileIndex].position;
             Vector3Int gridPosition = grid.WorldToCell(worldPosition);
-            tilePositions.Add(gridPosition);
+            map.InitialiseTile(gridPosition, tiles[tileIndex]);
         }
-        map.InitialiseTiles(tilePositions.ToArray());
     }
 
     public Dictionary<Vector3Int, Tile> GetTiles()

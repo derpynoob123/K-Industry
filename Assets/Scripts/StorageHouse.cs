@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class StorageHouse : IFacility
 {
-    public string Name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public FacilityType Type { get; set; }
+    public int Price { get; set; }
+
+    public StorageHouse()
+    {
+        Type = FacilityType.STORAGEHOUSE;
+    }
 }

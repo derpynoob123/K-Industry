@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Tile
 {
-    public Vector3Int Position { get; }
+    public Vector3Int GridSpacePosition { get; }
+    public Transform TileTransform { get; set; } 
     public IFacility CurrentFacility { get; set; }
 
     public Tile(Vector3Int position)
     {
-        Position = position;
+        GridSpacePosition = position;
     }
 }
