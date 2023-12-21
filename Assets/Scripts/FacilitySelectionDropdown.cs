@@ -33,4 +33,15 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     {
         Deselected += facilityBuilder.EndBuildSelection;
     }
+
+    public void ShowDropdown()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HideDropdown()
+    {
+        ResetSelectionToDefault();
+        gameObject.SetActive(false);
+    }
 }

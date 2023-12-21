@@ -13,28 +13,26 @@ public class TileSelectorBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        RemoveHighlight();
+        tileSelector.Selected += HighlightSelectedTile;
+        tileSelector.Selected += facilitySelectionDropdown.ShowDropdown;
+        tileSelector.Deselected += RemoveHighlight;
+        tileSelector.Deselected += facilitySelectionDropdown.HideDropdown;
     }
 
     public void SelectTile(Tile tile)
     {
-        tileSelector.SelectedTile = tile;
-        HighlightTile(tile);
-        facilitySelectionDropdown.gameObject.SetActive(true);
+        tileSelector.SelectTile(tile);
     }
 
     public void Deselect()
     {
-        tileSelector.SelectedTile = null;
-        RemoveHighlight();
-        facilitySelectionDropdown.gameObject.SetActive(false);
-        facilitySelectionDropdown.ResetSelectionToDefault();
+        tileSelector.Deselect();
     }
 
-    private void HighlightTile(Tile tile)
+    private void HighlightSelectedTile()
     {
         selectedTileIcon.gameObject.SetActive(true);
-        selectedTileIcon.position = tile.TileTransform.position;
+        selectedTileIcon.position = tileSelector.SelectedTile.TileTransform.position;
     }
 
     private void RemoveHighlight()
