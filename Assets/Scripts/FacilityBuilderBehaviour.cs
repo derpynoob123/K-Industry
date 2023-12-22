@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,9 @@ public class FacilityBuilderBehaviour : MonoBehaviour
 {
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
-    [SerializeField]
-    private GameObject confirmBuildButton;
+
+    public event Action FacilitySelected;
+    public event Action SelectionEnded;
 
     private readonly FacilityBuilder facilityBuilder = new();
     private IFacility selectedFacility;
@@ -15,13 +17,13 @@ public class FacilityBuilderBehaviour : MonoBehaviour
     public void SelectFacility(IFacility facility)
     {
         selectedFacility = facility;
-        confirmBuildButton.SetActive(true);
+        FacilitySelected.Invoke();
     }
 
     public void EndBuildSelection()
     {
         selectedFacility = null;
-        confirmBuildButton.SetActive(false);
+        SelectionEnded.Invoke();
     }
 
     public void BuildFacility()

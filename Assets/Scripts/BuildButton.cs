@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BuildButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private FacilityBuilderBehaviour facilityBuilder;
+
+    private void Awake()
     {
-        
+        facilityBuilder.FacilitySelected += ShowButton;
+        facilityBuilder.SelectionEnded += HideButton;
+        HideButton();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowButton()
     {
-        
+        gameObject.SetActive(true);
+    }
+
+    public void HideButton()
+    {
+        gameObject.SetActive(false);
     }
 }
