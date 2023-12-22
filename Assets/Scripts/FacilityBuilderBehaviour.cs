@@ -28,4 +28,9 @@ public class FacilityBuilderBehaviour : MonoBehaviour
     {
         facilityBuilder.BuildFacility(tileSelector.GetSelectedTile(), selectedFacility);
     }
+
+    public List<IFacility> GetFacilities()
+    {
+        return facilityBuilder.BuildableFacilities;
+    }
 }

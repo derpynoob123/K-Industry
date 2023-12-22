@@ -641,7 +641,7 @@ MonoBehaviour:
   dropdown: {fileID: 140114065}
   noSelectionMessage: None Selected
   facilityBuilder: {fileID: 1705279176}
-  facilityManager: {fileID: 466274503}
+  facilitySpawner: {fileID: 466274503}
   tileSelector: {fileID: 1705279175}
 --- !u!1 &148422223
 GameObject:
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 466274502}
   - component: {fileID: 466274503}
   m_Layer: 0
-  m_Name: Facility Manager
+  m_Name: Facility Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

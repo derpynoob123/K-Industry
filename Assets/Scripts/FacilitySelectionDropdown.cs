@@ -7,8 +7,6 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     [SerializeField]
     private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
-    private FacilitySpawnerBehaviour facilityManager;
-    [SerializeField]
     private TileSelectorBehaviour tileSelector;
 
     override protected void Awake()
@@ -26,7 +24,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
 
     protected override void SetOptions()
     {
-        options = facilityManager.GetFacilities();
+        options = facilityBuilder.GetFacilities();
     }
 
     protected override void AddDropdownOptions()
