@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilityManager
+public class FacilitySpawner
 {
     public List<IFacility> Facilities { get; set; }
 
-    public FacilityManager()
+    public FacilitySpawner()
     {
         InitialiseFacilities();
     }

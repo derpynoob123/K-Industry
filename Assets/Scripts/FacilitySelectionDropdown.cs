@@ -7,7 +7,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     [SerializeField]
     private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
-    private FacilityManagerBehaviour facilityManager;
+    private FacilitySpawnerBehaviour facilityManager;
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
 
