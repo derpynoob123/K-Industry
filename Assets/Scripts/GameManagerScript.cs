@@ -16,6 +16,15 @@ public class GameManagerScript : MonoBehaviour
     public float time;
     public int day;
     public int week;
+
+    //TextUI
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI weekText;
+
+    public GameObject startButton;
+
+    public string sceneName = "MainGameplayScene";
     #endregion
 
 
@@ -30,5 +39,11 @@ public class GameManagerScript : MonoBehaviour
     {
         
 
+    }
+
+    //Start screen to main play screen
+    public void StartGame()
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
