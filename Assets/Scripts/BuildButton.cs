@@ -9,8 +9,8 @@ public class BuildButton : MonoBehaviour
 
     private void Awake()
     {
-        facilityBuilder.FacilitySelected += ShowButton;
-        facilityBuilder.SelectionEnded += HideButton;
+        facilityBuilder.AddObserverToSelectedEvent(ShowButton);
+        facilityBuilder.AddObserverToDeselectedEvent(HideButton);
         HideButton();
     }
 

@@ -8,38 +8,45 @@ public class FacilityBuilderBehaviour : MonoBehaviour
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
     [SerializeField]
-    private List<BuildableFacility> buildableFacilities;
-
-    public event Action FacilitySelected;
-    public event Action SelectionEnded;
+    private List<GameObject> facilityPrefabs;
 
     private readonly FacilityBuilder facilityBuilder = new();
-    private Facility selectedFacility;
 
     private void Awake()
     {
-        
+        InitialiseFacilities();
     }
 
     private void InitialiseFacilities()
     {
-        
+        for (int facilityIndex = 0; facilityIndex < facilityPrefabs.Count; facilityIndex++)
+        {
+
+        }
     }
 
     public void SelectFacility(Facility facility)
     {
-        selectedFacility = facility;
-        FacilitySelected.Invoke();
+        facilityBuilder.SelectFacility(facility);
     }
 
     public void EndBuildSelection()
     {
-        selectedFacility = null;
-        SelectionEnded.Invoke();
+        facilityBuilder.Deselect();
     }
 
     public List<Facility> GetFacilities()
     {
         return facilityBuilder.BuildableFacilities;
+    }
+
+    public void AddObserverToSelectedEvent(Action observer)
+    {
+        facilityBuilder.Selected += observer;
+    }
+
+    public void AddObserverToDeselectedEvent(Action observer)
+    {
+        facilityBuilder.Deselected += observer;
     }
 }

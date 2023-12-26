@@ -161,5 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c611d1192658a4884f896e9d78ff7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facilityClass: Packing House
+  facilityClass: Packing
   price: 0
