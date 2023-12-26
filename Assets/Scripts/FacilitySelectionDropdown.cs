@@ -31,7 +31,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
     {
         for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
-            string optionText = options[optionIndex].Type.ToString();
+            string optionText = options[optionIndex].Class;
             var option = new TMP_Dropdown.OptionData(optionText);
             dropdown.options.Add(option);
         }

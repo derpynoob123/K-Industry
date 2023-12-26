@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class BuildableFacility
+{
+    [SerializeField]
+    private GameObject facilityPrefab;
+}
+
 public class FacilityBuilderBehaviour : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +24,7 @@ public class FacilityBuilderBehaviour : MonoBehaviour
     public void SelectFacility(IFacility facility)
     {
         selectedFacility = facility;
+        selectedFacility.ToString();
         FacilitySelected.Invoke();
     }
 
