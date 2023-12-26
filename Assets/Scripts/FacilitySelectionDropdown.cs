@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class FacilitySelectionDropdown : SelectionDropdown<IFacility>
+public class FacilitySelectionDropdown : SelectionDropdown<Facility>
 {
     [SerializeField]
     private FacilityBuilderBehaviour facilityBuilder;

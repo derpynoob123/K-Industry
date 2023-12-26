@@ -1,4 +1,4 @@
-public interface IFacility
+public abstract class Facility
 {
     public string Class { get; set; }
     public bool IsActive { get; set; }

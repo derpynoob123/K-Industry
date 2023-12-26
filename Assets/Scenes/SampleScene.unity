@@ -5511,6 +5511,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileSelector: {fileID: 1705279175}
+  buildableFacilities:
+  - facilityPrefab: {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
 --- !u!114 &1705279177
 MonoBehaviour:
   m_ObjectHideFlags: 0

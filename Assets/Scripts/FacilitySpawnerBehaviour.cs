@@ -8,7 +8,6 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
     private int spawnCount;
-    private readonly ObjectPool<GameObject> pool;
 
     private readonly FacilitySpawner facilitySpawner;
 }

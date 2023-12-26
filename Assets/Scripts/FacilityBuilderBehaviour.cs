@@ -3,28 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class BuildableFacility
-{
-    [SerializeField]
-    private GameObject facilityPrefab;
-}
-
 public class FacilityBuilderBehaviour : MonoBehaviour
 {
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
+    [SerializeField]
+    private List<BuildableFacility> buildableFacilities;
 
     public event Action FacilitySelected;
     public event Action SelectionEnded;
 
     private readonly FacilityBuilder facilityBuilder = new();
-    private IFacility selectedFacility;
+    private Facility selectedFacility;
 
-    public void SelectFacility(IFacility facility)
+    private void Awake()
+    {
+        
+    }
+
+    private void InitialiseFacilities()
+    {
+        
+    }
+
+    public void SelectFacility(Facility facility)
     {
         selectedFacility = facility;
-        selectedFacility.ToString();
         FacilitySelected.Invoke();
     }
 
@@ -34,7 +38,7 @@ public class FacilityBuilderBehaviour : MonoBehaviour
         SelectionEnded.Invoke();
     }
 
-    public List<IFacility> GetFacilities()
+    public List<Facility> GetFacilities()
     {
         return facilityBuilder.BuildableFacilities;
     }
