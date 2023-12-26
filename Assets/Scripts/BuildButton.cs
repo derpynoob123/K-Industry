@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildButton : MonoBehaviour
 {
     [SerializeField]
-    private FacilityBuilderBehaviour facilityBuilder;
+    private FacilitySelectorBehaviour facilityBuilder;
 
     private void Awake()
     {

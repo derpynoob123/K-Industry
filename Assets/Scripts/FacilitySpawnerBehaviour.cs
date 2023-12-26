@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -5,9 +6,9 @@ using UnityEngine.Pool;
 public class FacilitySpawnerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private FacilityBuilderBehaviour facilityBuilder;
+    private MapBehaviour map;
     [SerializeField]
-    private int spawnCount;
+    private List<GameObject> spawns;
 
-    private readonly FacilitySpawner facilitySpawner;
+    private readonly Spawner<GameObject> facilitySpawner;
 }

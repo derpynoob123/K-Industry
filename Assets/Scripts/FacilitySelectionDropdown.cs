@@ -5,8 +5,6 @@ using TMPro;
 public class FacilitySelectionDropdown : SelectionDropdown<Facility>
 {
     [SerializeField]
-    private FacilityBuilderBehaviour facilityBuilder;
-    [SerializeField]
     private TileSelectorBehaviour tileSelector;
 
     override protected void Awake()
@@ -19,12 +17,12 @@ public class FacilitySelectionDropdown : SelectionDropdown<Facility>
 
     protected override void AddOptionSelectedObservers()
     {
-        OptionSelected += facilityBuilder.SelectFacility; 
+
     }
 
     protected override void SetOptions()
     {
-        options = facilityBuilder.GetFacilities();
+
     }
 
     protected override void AddDropdownOptions()
@@ -39,7 +37,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<Facility>
 
     protected override void AddDeselectedObservers()
     {
-        Deselected += facilityBuilder.EndBuildSelection;
+
     }
 
     public void ShowDropdown()

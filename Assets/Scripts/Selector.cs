@@ -1,23 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class TileSelector
+public class Selector<T>
 {
-    public Tile SelectedTile { get; private set; }
+    public T SelectedObject { get; private set; }
     public event Action Selected;
     public event Action Deselected;
 
-    public void SelectTile(Tile tile)
+    public void Select(T selected)
     {
-        SelectedTile = tile;
+        SelectedObject = selected;
         Selected.Invoke();
     }
 
     public void Deselect()
     {
-        SelectedTile = null;
+        SelectedObject = default(T);
         Deselected.Invoke();
     }
 }

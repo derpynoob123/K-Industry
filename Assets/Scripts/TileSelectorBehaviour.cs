@@ -8,12 +8,12 @@ public class TileSelectorBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject selectedTile;
 
-    private readonly TileSelector tileSelector = new();
+    private readonly Selector<Tile> tileSelector = new();
 
     public void SelectTile(Tile tile)
     {
-        tileSelector.SelectTile(tile);
-        selectedTile = tileSelector.SelectedTile.TileTransform.gameObject;
+        tileSelector.Select(tile);
+        selectedTile = tileSelector.SelectedObject.TileTransform.gameObject;
     }
 
     public void Deselect()
@@ -24,7 +24,7 @@ public class TileSelectorBehaviour : MonoBehaviour
 
     public Tile GetSelectedTile()
     {
-        return tileSelector.SelectedTile;
+        return tileSelector.SelectedObject;
     }
 
     public void AddObserverToSelectedEvent(Action observer)

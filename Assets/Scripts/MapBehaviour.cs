@@ -32,4 +32,9 @@ public class MapBehaviour : MonoBehaviour
     {
         return map.Tiles;
     }
+
+    public int GetTileCount()
+    {
+        return tiles.Length;
+    }
 }
