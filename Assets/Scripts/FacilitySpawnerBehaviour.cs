@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 public class FacilitySpawnerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject facilityPrefab;
+    private FacilityBuilderBehaviour facilityBuilder;
     [SerializeField]
     private int spawnCount;
     private readonly ObjectPool<GameObject> pool;

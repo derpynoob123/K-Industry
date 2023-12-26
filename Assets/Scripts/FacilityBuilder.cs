@@ -19,9 +19,4 @@ public class FacilityBuilder
             new StorageHouse()
         };
     }
-
-    public void BuildFacility(Tile tile, IFacility facility)
-    {
-
-    }
 }

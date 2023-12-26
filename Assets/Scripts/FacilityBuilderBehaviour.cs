@@ -26,11 +26,6 @@ public class FacilityBuilderBehaviour : MonoBehaviour
         SelectionEnded.Invoke();
     }
 
-    public void BuildFacility()
-    {
-        facilityBuilder.BuildFacility(tileSelector.GetSelectedTile(), selectedFacility);
-    }
-
     public List<IFacility> GetFacilities()
     {
         return facilityBuilder.BuildableFacilities;

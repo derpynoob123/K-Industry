@@ -5,13 +5,16 @@ using UnityEngine.Pool;
 
 public class FacilitySpawner
 {
-    private readonly IFacility facility;
-    private readonly ObjectPool<IFacility> pool;
+    private readonly ObjectPool<PackingHouse> pool;
     private readonly int spawnCount;
 
-    public FacilitySpawner(IFacility facility, int spawnCount)
+    public FacilitySpawner(int spawnCount)
     {
-        this.facility = facility;
         this.spawnCount = spawnCount;
+        pool = new(() => { return new(); }, 
+        facility => { facility.IsActive = true; },
+        facility => { facility.IsActive = false; },
+        facility => { facility = null; },
+        false, spawnCount, spawnCount * 10);
     }
 }
