@@ -1628,8 +1628,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265b6d49a80b40b4b800118a467c3908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawns: []
-  spawnCount: 0
+  tileSelector: {fileID: 1705279175}
+  facilityPrefabs:
+  - {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
+  - {fileID: 8991387543306812643, guid: 768870ea1f970f6418d1ebd62f967809, type: 3}
 --- !u!1 &483453605
 GameObject:
   m_ObjectHideFlags: 0

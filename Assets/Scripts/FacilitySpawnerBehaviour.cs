@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class FacilitySpawnerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private MapBehaviour map;
+    private TileSelectorBehaviour tileSelector;
     [SerializeField]
-    private List<GameObject> spawns;
+    private FacilitySelectorBehaviour facilitySelector;
+    [SerializeField]
+    private List<GameObject> facilityPrefabs;
 
-    private readonly Spawner<GameObject> facilitySpawner;
+
 }
