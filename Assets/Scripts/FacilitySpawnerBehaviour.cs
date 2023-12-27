@@ -9,10 +9,35 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     [SerializeField]
     private FacilitySelectorBehaviour facilitySelector;
     [SerializeField]
+    private FacilityController facilityController;
+    [SerializeField]
     private List<GameObject> facilityPrefabs;
+
+    private Dictionary<FacilityID, GameObject> prefabIDs;
+    private Dictionary<Tile, GameObject> spawnedFacilities = new();
+
+    private void Awake()
+    {
+        prefabIDs = new()
+        {
+            { FacilityID.PACKING, facilityPrefabs[0] },
+            { FacilityID.STORAGE, facilityPrefabs[1] }
+        };
+    }
 
     public void Spawn()
     {
+        Tile tile = tileSelector.GetSelectedTile();
+        if (spawnedFacilities.ContainsKey(tile))
+        {
+            Debug.Log("Cannot build on tile containing an existing facility!");
+            return;
+        }
 
+        FacilityID id = facilitySelector.GetSelectedFacility();
+        GameObject prefab = prefabIDs[id];
+        GameObject newFacility = Instantiate(prefab);
+        spawnedFacilities.Add(tile, newFacility);
+        newFacility.transform.position = tile.TileTransform.position;
     }
 }
