@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class StorageFacility: Facility
 {
-
+    public StorageFacility()
+    {
+        ID = FacilityID.STORAGE;
+    }
 }

@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class PackingFacility : Facility
 {
-
+    public PackingFacility()
+    {
+        ID = FacilityID.PACKING;
+    }
 }

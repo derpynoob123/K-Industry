@@ -11,5 +11,8 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     [SerializeField]
     private List<GameObject> facilityPrefabs;
 
+    public void Spawn()
+    {
 
+    }
 }

@@ -291,7 +291,7 @@ MonoBehaviour:
   dropdown: {fileID: 19018498}
   noSelectionMessage: None Selected
   map: {fileID: 1609417373}
-  tileSelector: {fileID: 1705279175}
+  tileSelector: {fileID: 1609417376}
 --- !u!1 &74184019
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 140114065}
   noSelectionMessage: None Selected
-  tileSelector: {fileID: 1705279175}
+  tileSelector: {fileID: 1609417376}
+  facilityController: {fileID: 466274504}
+  facilitySelector: {fileID: 1705279178}
 --- !u!1 &148422223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466274502}
   - component: {fileID: 466274503}
+  - component: {fileID: 466274504}
   m_Layer: 0
   m_Name: Facility Manager
   m_TagString: Untagged
@@ -1628,10 +1631,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265b6d49a80b40b4b800118a467c3908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSelector: {fileID: 1705279175}
+  tileSelector: {fileID: 0}
+  facilitySelector: {fileID: 1705279178}
   facilityPrefabs:
   - {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
   - {fileID: 8991387543306812643, guid: 768870ea1f970f6418d1ebd62f967809, type: 3}
+--- !u!114 &466274504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466274501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93fb86adb2808438cf8654cd492058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &483453605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,19 +4642,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510149224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FacilityBuilderBehaviour, Assembly-CSharp
-        m_MethodName: BuildFacility
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1510149224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4689,7 +4693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e951ad80ee6df3469a276108326f34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facilityBuilder: {fileID: 0}
+  facilitySpawner: {fileID: 466274503}
+  facilitySelector: {fileID: 1705279178}
 --- !u!1 &1543783169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4940,6 +4945,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1609417374}
   - component: {fileID: 1609417373}
+  - component: {fileID: 1609417376}
+  - component: {fileID: 1609417375}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -4983,6 +4990,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609417375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609417372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8221fba696c7747bf30d241f02f338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSelector: {fileID: 1609417376}
+  selectedTileIcon: {fileID: 1415949867}
+--- !u!114 &1609417376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609417372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c944da47417cdf24e955ef055bd157aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedTile: {fileID: 0}
 --- !u!1 &1613828083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5461,9 +5495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705279174}
-  - component: {fileID: 1705279175}
   - component: {fileID: 1705279178}
-  - component: {fileID: 1705279177}
   m_Layer: 0
   m_Name: Building Manager
   m_TagString: Untagged
@@ -5486,33 +5518,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1705279175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705279173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c944da47417cdf24e955ef055bd157aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTile: {fileID: 0}
---- !u!114 &1705279177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705279173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8221fba696c7747bf30d241f02f338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileSelector: {fileID: 1705279175}
-  selectedTileIcon: {fileID: 1415949867}
 --- !u!114 &1705279178
 MonoBehaviour:
   m_ObjectHideFlags: 0

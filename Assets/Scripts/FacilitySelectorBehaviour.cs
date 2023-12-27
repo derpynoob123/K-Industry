@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class FacilitySelectorBehaviour: MonoBehaviour
 {
-    private readonly Selector<Facility> facilitySelector = new();
+    private readonly Selector<FacilityID> facilitySelector = new();
 
-    public void SelectFacility(Facility facility)
+    public void SelectFacility(FacilityID facility)
     {
         facilitySelector.Select(facility);
     }
@@ -17,7 +17,7 @@ public class FacilitySelectorBehaviour: MonoBehaviour
         facilitySelector.Deselect();
     }
 
-    public Facility GetSelectedFacility()
+    public FacilityID GetSelectedFacility()
     {
         return facilitySelector.SelectedObject;
     }

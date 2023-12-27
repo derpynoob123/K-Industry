@@ -14,7 +14,7 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     protected event Action<T> OptionSelected;
     protected event Action Deselected;
     protected Dictionary<int, T> optionMenu = new();
-    protected List<T> options;
+    protected List<T> options = new();
 
     private const int noSelectionOption = 0;
 
@@ -37,6 +37,12 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
 
     virtual protected void InitialiseOptions()
     {
+        if (options.Count <= 0)
+        {
+            Debug.LogWarning("No options detected. Use set options.");
+            return;
+        }
+
         for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
         {
             int optionValue = optionIndex + 1;
@@ -69,5 +75,16 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     {
         dropdown.value = noSelectionOption;
         Deselected.Invoke();
+    }
+
+    public void ShowDropdown()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void HideDropdown()
+    {
+        ResetSelectionToDefault();
+        gameObject.SetActive(false);
     }
 }

@@ -5,12 +5,14 @@ using UnityEngine;
 public class BuildButton : MonoBehaviour
 {
     [SerializeField]
-    private FacilitySelectorBehaviour facilityBuilder;
+    private FacilitySpawnerBehaviour facilitySpawner;
+    [SerializeField]
+    private FacilitySelectorBehaviour facilitySelector;
 
     private void Awake()
     {
-        facilityBuilder.AddObserverToSelectedEvent(ShowButton);
-        facilityBuilder.AddObserverToDeselectedEvent(HideButton);
+        facilitySelector.AddObserverToSelectedEvent(ShowButton);
+        facilitySelector.AddObserverToDeselectedEvent(HideButton);
         HideButton();
     }
 

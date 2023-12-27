@@ -1,4 +1,4 @@
 public abstract class Facility
 {
-    public string Class { get; set; }
+    public FacilityID ID { get; set; }
 }
