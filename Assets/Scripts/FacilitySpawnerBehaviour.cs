@@ -14,6 +14,7 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     private List<GameObject> facilityPrefabs;
 
     private Dictionary<FacilityID, GameObject> prefabIDs;
+    //list of active facilities
     private Dictionary<Tile, GameObject> spawnedFacilities = new();
 
     private void Awake()
