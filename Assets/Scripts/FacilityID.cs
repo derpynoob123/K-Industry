@@ -1,4 +1,4 @@
 public enum FacilityID
 {
-    PACKING, STORAGE
+    PACKING, STORAGE, MANUFACTURING
 }
