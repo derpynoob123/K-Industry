@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class SplineRoad : MonoBehaviour
+public class SplinePath : MonoBehaviour
 {
     [SerializeField]
     private SplineContainer splineContainer;
+    [SerializeField]
+    private List<Connection> connections;
 }
