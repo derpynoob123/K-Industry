@@ -2390,7 +2390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590172148}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Transport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2501,8 +2501,9 @@ GameObject:
   - component: {fileID: 757767748}
   - component: {fileID: 757767747}
   - component: {fileID: 757767746}
+  - component: {fileID: 757767749}
   m_Layer: 0
-  m_Name: Spline
+  m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2877,6 +2878,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757767743}
   m_Mesh: {fileID: 4300000, guid: 86c11269d45501749a31ad70ce3ecfc8, type: 2}
+--- !u!114 &757767749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757767743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f10c3f466daab54090467280da0fd19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splineContainer: {fileID: 757767744}
 --- !u!1 &829630173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,8 +3377,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131831796}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.64497733, y: -0.76420176, z: -0.00000004214685, w: 0}
-  m_LocalPosition: {x: 2.6657846, y: -0.1051216, z: 0.000000010168927}
+  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
