@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AStarPathFinder
 {
-    private List<NodeRecord> openNodes = new List<NodeRecord>();
-    private List<NodeRecord> closedNodes = new List<NodeRecord>();
-    private List<Node> pathList = new List<Node>();
+    private Dictionary<Node, NodeRecord> openNodes = new();
+    private Dictionary<Node, NodeRecord> closedNodes = new();
+    private List<Connection> path = new();
 
     private NodeRecord currentNode;
 
-    public List<Node> FindPath(PathfindingGraph graph, Node startNode, Node goalNode)
+    public List<Connection> FindPath(Node startNode, Node goalNode)
     {
-        openNodes = new List<NodeRecord>();
-        closedNodes = new List<NodeRecord>();
+        openNodes = new();
+        closedNodes = new();
 
-        List<Node> path = new List<Node>();
-        currentNode = new NodeRecord();
-        NodeRecord startRecord = new NodeRecord();
-        startRecord.Node = startNode;
+        path = new();
+        currentNode = new();
+        NodeRecord startRecord = new()
+        {
+            Node = startNode
+        };
         startRecord.EstimatedTotalCost = Vector3.Distance(startRecord.Node.Position, goalNode.Position);
-        openNodes.Add(startRecord);
+        openNodes.Add(startNode, startRecord);
         while (openNodes.Count > 0)
         {
             currentNode = FindNodeWithLowestEstimatedCost();
@@ -30,117 +33,86 @@ public class AStarPathFinder
                 break;
             }
 
-            for (int nodeIndex = 0; nodeIndex < 0; nodeIndex++)
+            List<Connection> connections = currentNode.Node.Connections;
+            for (int connectionIndex = 0; connectionIndex < connections.Count; connectionIndex++)
             {
-                Node node = null;
-                NodeRecord endRecord;
-                if (IsClosed(node))
+                Connection connection = connections[connectionIndex];
+                if (connection.EndNode == currentNode.Node)
                 {
                     continue;
                 }
-                else if (IsOpen(node))
+
+                Node node = connection.EndNode;
+                NodeRecord endRecord;
+                float costSoFar = currentNode.CostSoFar + connection.Cost;
+                if (closedNodes.ContainsKey(node))
                 {
-                    endRecord = FindOpenNode(node);
+                    endRecord = closedNodes[node];
+                    if (costSoFar >= endRecord.CostSoFar)
+                    {
+                        continue;
+                    }
+
+                    closedNodes.Remove(node);
+                }
+                else if (openNodes.ContainsKey(node))
+                {
+                    endRecord = openNodes[node];
+                    if (costSoFar >= endRecord.CostSoFar)
+                    {
+                        continue;
+                    }
                 }
                 else
                 {
-                    endRecord = new NodeRecord();
-                    endRecord.Node = node;
+                    endRecord = new()
+                    {
+                        Node = node
+                    };
                 }
-
-                float costSoFar = Vector3.Distance(node.Position, currentNode.Node.Position) + currentNode.CostSoFar;
                 endRecord.CostSoFar = costSoFar;
                 float heuristic = Vector3.Distance(node.Position, goalNode.Position);
                 endRecord.Heuristic = heuristic;
                 endRecord.EstimatedTotalCost = costSoFar + heuristic;
-                endRecord.FromNode = currentNode;
+                endRecord.Connection = connection;
 
-                if (!openNodes.Contains(endRecord))
+                if (!openNodes.ContainsValue(endRecord))
                 {
-                    openNodes.Add(endRecord);
+                    openNodes.Add(endRecord.Node ,endRecord);
                 }
             }
 
-            openNodes.Remove(currentNode);
-            closedNodes.Add(currentNode);
+            openNodes.Remove(currentNode.Node);
+            closedNodes.Add(currentNode.Node, currentNode);
 
         }
         if (currentNode.Node != goalNode)
         {
-            return new List<Node>();
+            return new();
         }
-        else
+        while (currentNode.Node != startNode)
         {
-            while (currentNode.Node != startNode)
-            {
-                path.Add(currentNode.Node);
-                currentNode = currentNode.FromNode;
-            }
-            return path;
+            path.Add(currentNode.Connection);
+            currentNode = closedNodes[currentNode.Connection.StartNode];
         }
+        path.Reverse();
+        return path; ;
     }
 
     private NodeRecord FindNodeWithLowestEstimatedCost()
     {
         float lowestEstimatedTotalCost = Mathf.Infinity;
-        NodeRecord lowestEstimatedCostNode = new NodeRecord();
-        for (int nodeIndex = 0; nodeIndex < openNodes.Count; nodeIndex++)
+        NodeRecord lowestEstimatedCostNode = new();
+        NodeRecord[] records = openNodes.Values.ToArray();
+        for (int recordIndex = 0; recordIndex < records.Length; recordIndex++)
         {
-            NodeRecord node = openNodes[nodeIndex];
-            if (node.EstimatedTotalCost < lowestEstimatedTotalCost)
+            NodeRecord record = records[recordIndex];
+            if (record.EstimatedTotalCost < lowestEstimatedTotalCost)
             {
-                lowestEstimatedTotalCost = node.EstimatedTotalCost;
-                lowestEstimatedCostNode = node;
+                lowestEstimatedTotalCost = record.EstimatedTotalCost;
+                lowestEstimatedCostNode = record;
             }
         }
         return lowestEstimatedCostNode;
-    }
-
-    private NodeRecord FindOpenNode(Node node)
-    {
-        for (int nodeIndex = 0; nodeIndex < openNodes.Count; nodeIndex++)
-        {
-            if (openNodes[nodeIndex].Node == node)
-            {
-                return openNodes[nodeIndex];
-            }
-        }
-        return openNodes[0];
-    }
-
-    private NodeRecord FindClosedNode(Node node)
-    {
-        for (int nodeIndex = 0; nodeIndex < closedNodes.Count; nodeIndex++)
-        {
-            if (closedNodes[nodeIndex].Node == node)
-            {
-                return closedNodes[nodeIndex];
-            }
-        }
-        return closedNodes[0];
-    }
-
-    private bool IsOpen(Node node)
-    {
-        for (int nodeIndex = 0; nodeIndex < openNodes.Count; nodeIndex++)
-        {
-            if (openNodes[nodeIndex].Node == node)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool IsClosed(Node node)
-    {
-        for (int nodeIndex = 0; nodeIndex < closedNodes.Count; nodeIndex++)
-        {
-            if (closedNodes[nodeIndex].Node == node)
-            {
-                return true;
-            }
-        }
-        return false;
     }
 }

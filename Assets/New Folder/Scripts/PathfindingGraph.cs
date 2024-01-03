@@ -13,17 +13,17 @@ public class PathfindingGraph
         nodes.Add(id, node);
     }
 
-    public void AddConnection(GameObject start, GameObject end)
+    public void AddConnection(GameObject start, GameObject end, float cost)
     {
         Node startNode = FindNode(start);
         Node endNode = FindNode(end);
-        Connection connection = new(startNode, endNode);
+        Connection connection = new(startNode, endNode, cost);
         startNode.Connections.Add(connection);
         endNode.Connections.Add(connection);
         connections.Add(connection);
     }
 
-    private Node FindNode(GameObject id)
+    public Node FindNode(GameObject id)
     {
         return nodes[id];
     }

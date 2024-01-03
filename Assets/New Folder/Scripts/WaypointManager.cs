@@ -15,6 +15,15 @@ public class WaypointManager : MonoBehaviour
     private void Awake()
     {
         InitialiseGraph();
+        GameObject start = wayPoints[0];
+        Node startNode = graph.FindNode(start);
+        GameObject end = wayPoints[1];
+        Node endNode = graph.FindNode(end);
+        Connection[] path = pathFinder.FindPath(startNode, endNode).ToArray();
+        foreach (var item in path)
+        {
+            print(item.EndNode.Position);
+        }
     }
 
     private void InitialiseGraph()
@@ -27,8 +36,9 @@ public class WaypointManager : MonoBehaviour
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
         {
             Path path = paths[pathIndex];
-            graph.AddConnection(path.NodeA, path.NodeB);
-            graph.AddConnection(path.NodeB, path.NodeA);
+            float pathLength = path.GetPathLength();
+            graph.AddConnection(path.NodeA, path.NodeB, pathLength);
+            graph.AddConnection(path.NodeB, path.NodeA, pathLength);
         }
     }
 }

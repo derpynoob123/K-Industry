@@ -11,6 +11,7 @@ public class Node
 
     public Node(GameObject gameObject)
     {
+        Connections = new();
         Position = gameObject.transform.position;
         ID = gameObject;
     }
