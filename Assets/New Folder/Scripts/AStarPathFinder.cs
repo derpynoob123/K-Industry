@@ -10,7 +10,7 @@ public class AStarPathFinder
 
     private NodeRecord currentNode;
 
-    public List<Node> FindPath(Node startNode, Node goalNode)
+    public List<Node> FindPath(PathfindingGraph graph, Node startNode, Node goalNode)
     {
         openNodes = new List<NodeRecord>();
         closedNodes = new List<NodeRecord>();
@@ -30,14 +30,10 @@ public class AStarPathFinder
                 break;
             }
 
-            for (int nodeIndex = 0; nodeIndex < neighbourNodes.Count; nodeIndex++)
+            for (int nodeIndex = 0; nodeIndex < 0; nodeIndex++)
             {
-                Node node = neighbourNodes[nodeIndex];
+                Node node = null;
                 NodeRecord endRecord;
-                if (graph.IsNodeAWall(node))
-                {
-                    continue;
-                }
                 if (IsClosed(node))
                 {
                     continue;

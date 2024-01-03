@@ -5,5 +5,10 @@ using UnityEngine;
 public class WaypointManager : MonoBehaviour
 {
     [SerializeField]
-    private List<Path> connections;
+    private GameObject[] wayPoints;
+    [SerializeField]
+    private Path[] connections;
+
+    private PathfindingGraph graph = new();
+    private AStarPathFinder pathFinder = new();
 }
