@@ -7,6 +7,4 @@ public class SplinePath : MonoBehaviour
 {
     [SerializeField]
     private SplineContainer splineContainer;
-    [SerializeField]
-    private List<Connection> connections;
 }

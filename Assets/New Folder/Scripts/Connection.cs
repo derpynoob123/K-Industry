@@ -1,8 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Connection
 {
-    public GameObject NodeA;
-    public GameObject NodeB;
+    public Node StartNode { get; }
+    public Node EndNode { get; }
+
+    public Connection(Node start, Node end)
+    {
+        StartNode = start;
+        EndNode = end;
+    }
 }
