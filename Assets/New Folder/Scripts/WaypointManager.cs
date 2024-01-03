@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaypointManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] wayPoints;
+    private GameObject[] waypoints;
     [SerializeField]
     private Path[] paths;
 
@@ -15,22 +15,13 @@ public class WaypointManager : MonoBehaviour
     private void Awake()
     {
         InitialiseGraph();
-        GameObject start = wayPoints[0];
-        Node startNode = graph.FindNode(start);
-        GameObject end = wayPoints[1];
-        Node endNode = graph.FindNode(end);
-        Connection[] path = pathFinder.FindPath(startNode, endNode).ToArray();
-        foreach (var item in path)
-        {
-            print(item.EndNode.Position);
-        }
     }
 
     private void InitialiseGraph()
     {
-        for (int waypointIndex = 0; waypointIndex < wayPoints.Length; waypointIndex++)
+        for (int waypointIndex = 0; waypointIndex < waypoints.Length; waypointIndex++)
         {
-            GameObject waypoint = wayPoints[waypointIndex];
+            GameObject waypoint = waypoints[waypointIndex];
             graph.AddNode(waypoint);
         }
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
