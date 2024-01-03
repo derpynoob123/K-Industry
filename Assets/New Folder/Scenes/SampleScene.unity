@@ -3321,15 +3321,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d342f968f3cfe44ba3cd97bd78e1c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connections:
-  - NodeA: {fileID: 988587108}
-    NodeB: {fileID: 307285950}
-  - NodeA: {fileID: 988587108}
-    NodeB: {fileID: 1202512809}
-  - NodeA: {fileID: 1869442245}
-    NodeB: {fileID: 307285950}
-  - NodeA: {fileID: 1869442245}
-    NodeB: {fileID: 1202512809}
+  wayPoints:
+  - {fileID: 988587108}
+  - {fileID: 1869442245}
+  - {fileID: 307285950}
+  - {fileID: 1202512809}
+  paths: []
 --- !u!1 &829630173
 GameObject:
   m_ObjectHideFlags: 0
