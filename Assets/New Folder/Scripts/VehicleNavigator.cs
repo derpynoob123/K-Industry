@@ -7,7 +7,7 @@ public class VehicleNavigator : MonoBehaviour
     [SerializeField]
     private GameObject currentNodeGameObject;
     [SerializeField]
-    private PathNetworkManager pathNetworkManager;
+    private PathNetwork pathNetworkManager;
 
     private AStarPathFinder pathfinder = new();
     private Node currentNode;
@@ -15,5 +15,11 @@ public class VehicleNavigator : MonoBehaviour
     private void Awake()
     {
         currentNode = pathNetworkManager.GetNode(currentNodeGameObject);
+    }
+
+    public Path[] GetPath(Node destination)
+    {
+        List<Connection> connections = pathfinder.FindPath(currentNode, destination);
+
     }
 }

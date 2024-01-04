@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathNetworkManager : MonoBehaviour
+public class PathNetwork : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] waypoints;
@@ -26,9 +26,7 @@ public class PathNetworkManager : MonoBehaviour
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
         {
             Path path = paths[pathIndex];
-            float pathLength = 1;
-            graph.AddConnection(path.NodeA, path.NodeB, pathLength);
-            graph.AddConnection(path.NodeB, path.NodeA, pathLength);
+            graph.AddConnection(path);
         }
     }
 

@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class PathfindingGraph
 {
-    private Dictionary<GameObject, Node> nodes = new();
-    private List<Connection> connections = new();
+    private readonly Dictionary<GameObject, Node> nodes = new();
 
-    public void AddNode(GameObject id)
+    public void AddNode(GameObject junction)
     {
-        Node node = new(id);
+        Node node = new();
         nodes.Add(id, node);
     }
 
-    public void AddConnection(GameObject start, GameObject end, float cost)
+    public void AddConnection(Path path)
     {
-        Node startNode = FindNode(start);
-        Node endNode = FindNode(end);
+        Node startNode = FindNode(path.StartNode);
+        Node endNode = FindNode(path.EndNode);
+        float cost = path.GetDistance();
         Connection connection = new(startNode, endNode, cost);
         startNode.Connections.Add(connection);
         endNode.Connections.Add(connection);
-        connections.Add(connection);
     }
 
     public Node FindNode(GameObject id)
     {
         return nodes[id];
-    }
+    } 
 }
