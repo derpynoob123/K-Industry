@@ -31,4 +31,9 @@ public class PathNetworkManager : MonoBehaviour
             graph.AddConnection(path.NodeB, path.NodeA, pathLength);
         }
     }
+
+    public Node GetNode(GameObject id)
+    {
+        return graph.FindNode(id);
+    }
 }

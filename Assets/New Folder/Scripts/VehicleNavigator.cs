@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehicleController : MonoBehaviour
+public class VehicleNavigator : MonoBehaviour
 {
     [SerializeField]
-    private GameObject currentNode;
+    private GameObject currentNodeGameObject;
     [SerializeField]
     private PathNetworkManager pathNetworkManager;
 
     private AStarPathFinder pathfinder = new();
+    private Node currentNode;
 
     private void Awake()
     {
-        
-    }
-
-    public void GoToNode(Node destination)
-    {
-
+        currentNode = pathNetworkManager.GetNode(currentNodeGameObject);
     }
 }
