@@ -10,7 +10,6 @@ public class WaypointManager : MonoBehaviour
     private Path[] paths;
 
     private PathfindingGraph graph = new();
-    private AStarPathFinder pathFinder = new();
 
     private void Awake()
     {
