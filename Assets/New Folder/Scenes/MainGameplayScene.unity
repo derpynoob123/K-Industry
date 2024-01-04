@@ -1241,11 +1241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 1.007
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2451,6 +2451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590172148}
+  - component: {fileID: 590172149}
   m_Layer: 0
   m_Name: Transport
   m_TagString: Untagged
@@ -2475,6 +2476,18 @@ Transform:
   - {fileID: 717130424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &590172149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590172147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0addeb6e008814085d9c454dacd361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &688642571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,7 +2572,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 717130424}
-  - component: {fileID: 717130425}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2575,8 +2587,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717130423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1.0000001, z: 0, w: -0.0000000027755094}
-  m_LocalPosition: {x: 1.2, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2584,29 +2596,6 @@ Transform:
   - {fileID: 1131831797}
   m_Father: {fileID: 590172148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &717130425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717130423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 1058365268}
-  m_PlayOnAwake: 1
-  m_LoopMode: 0
-  m_Method: 1
-  m_Duration: 2.0647328
-  m_MaxSpeed: 0.5
-  m_EasingMode: 0
-  m_AlignmentMode: 1
-  m_ObjectForwardAxis: 1
-  m_ObjectUpAxis: 2
-  m_StartOffset: 0
 --- !u!1 &757767743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2648,8 @@ MonoBehaviour:
   - {fileID: 1869442245}
   - {fileID: 307285950}
   - {fileID: 1202512809}
-  paths: []
+  paths:
+  - {fileID: 1058365269}
 --- !u!1 &779761215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,8 +3905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74dc718243f11a341a99586b24d2f4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeA: {fileID: 988587108}
-  NodeB: {fileID: 1869442245}
+  NodeA: {fileID: 1869442245}
+  NodeB: {fileID: 307285950}
   splineContainer: {fileID: 1058365268}
 --- !u!1 &1113744084
 GameObject:
@@ -4000,6 +3990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131831797}
   - component: {fileID: 1131831799}
+  - component: {fileID: 1131831800}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -4015,8 +4006,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131831796}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.6745566, y: -0.7382233, z: 0.00000012644055, w: 0}
+  m_LocalPosition: {x: 0.6713822, y: 0.99831736, z: 8.933121e-11}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4074,6 +4065,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1131831800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131831796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 1058365268}
+  m_PlayOnAwake: 1
+  m_LoopMode: 0
+  m_Method: 1
+  m_Duration: 2.0647328
+  m_MaxSpeed: 0.5
+  m_EasingMode: 0
+  m_AlignmentMode: 1
+  m_ObjectForwardAxis: 1
+  m_ObjectUpAxis: 2
+  m_StartOffset: 0
 --- !u!1 &1135311230
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,11 +4495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: 1.298
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.864
+      value: 0.201
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5016,6 +5030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1292049344}
   - component: {fileID: 1292049345}
+  - component: {fileID: 1292049346}
   m_Layer: 0
   m_Name: Behaviour
   m_TagString: Untagged
@@ -5050,7 +5065,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42848882ca015fe4bb96bc8d5f610146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineAnimate: {fileID: 717130425}
+  splineAnimate: {fileID: 0}
+--- !u!114 &1292049346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292049343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7783a4b1457f6044e95a4bff9a18c6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1338274300
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,6 +5381,11 @@ MonoBehaviour:
   time: 0
   day: 0
   week: 0
+  timeText: {fileID: 0}
+  dayText: {fileID: 0}
+  weekText: {fileID: 0}
+  startButton: {fileID: 0}
+  sceneName: MainGameplayScene
 --- !u!4 &1382111946
 Transform:
   m_ObjectHideFlags: 0
