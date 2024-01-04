@@ -6,12 +6,11 @@ using UnityEngine.Splines;
 public class PathFollower : MonoBehaviour
 {
     [SerializeField]
-    private List<SplineContainer> paths;
-    [SerializeField]
     private SplineAnimate splineAnimate;
 
-    private void Awake()
+    public void FollowPath(SplineContainer path)
     {
-
+        splineAnimate.Container = path;
+        splineAnimate.Play();
     }
 }

@@ -27,7 +27,7 @@ public class WaypointManager : MonoBehaviour
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
         {
             Path path = paths[pathIndex];
-            float pathLength = path.GetPathLength();
+            float pathLength = 1;
             graph.AddConnection(path.NodeA, path.NodeB, pathLength);
             graph.AddConnection(path.NodeB, path.NodeA, pathLength);
         }

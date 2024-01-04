@@ -2560,6 +2560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 717130424}
   - component: {fileID: 717130425}
+  - component: {fileID: 717130426}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2606,6 +2607,18 @@ MonoBehaviour:
   m_ObjectForwardAxis: 1
   m_ObjectUpAxis: 2
   m_StartOffset: 0
+--- !u!114 &717130426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717130423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42848882ca015fe4bb96bc8d5f610146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &757767743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,15 +2671,7 @@ MonoBehaviour:
   - {fileID: 1869442245}
   - {fileID: 307285950}
   - {fileID: 1202512809}
-  paths:
-  - NodeA: {fileID: 988587108}
-    NodeB: {fileID: 307285950}
-  - NodeA: {fileID: 988587108}
-    NodeB: {fileID: 1202512809}
-  - NodeA: {fileID: 307285950}
-    NodeB: {fileID: 1869442245}
-  - NodeA: {fileID: 1202512809}
-    NodeB: {fileID: 1869442245}
+  paths: []
 --- !u!1 &779761215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,11 +3470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.69
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8338942672360373291, guid: ed345132e56441a4789afe272a727541, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3523,6 +3528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058365267}
   - component: {fileID: 1058365268}
+  - component: {fileID: 1058365269}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -3909,6 +3915,21 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!114 &1058365269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058365266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74dc718243f11a341a99586b24d2f4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NodeA: {fileID: 0}
+  NodeB: {fileID: 0}
+  splineContainer: {fileID: 1058365268}
 --- !u!1 &1113744084
 GameObject:
   m_ObjectHideFlags: 0

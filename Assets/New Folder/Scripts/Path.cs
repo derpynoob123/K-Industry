@@ -1,14 +1,11 @@
 using UnityEngine;
+using UnityEngine.Splines;
 
-[System.Serializable]
-public class Path
+public class Path : MonoBehaviour
 {
     public GameObject NodeA;
     public GameObject NodeB;
-    public float Distance;
 
-    public float GetPathLength()
-    {
-        return Distance;
-    }
+    [SerializeField]
+    private SplineContainer splineContainer;
 }
