@@ -12,6 +12,7 @@ public class VehicleMovement : MonoBehaviour
     private float speedInKilometrePerHour;
 
     public event Action<Path, float> PathFollow;
+    public event Action ReachedPathEnd;
 
     public IEnumerator FollowPath(Path[] paths)
     {
@@ -27,6 +28,7 @@ public class VehicleMovement : MonoBehaviour
             print(duration);
             yield return new WaitForSeconds(duration);
             vehicle.position = newPosition;
+            ReachedPathEnd.Invoke();
             print(vehicle.position);
         }
     }

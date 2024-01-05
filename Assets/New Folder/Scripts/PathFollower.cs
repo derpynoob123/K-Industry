@@ -6,6 +6,8 @@ using UnityEngine.Splines;
 public class PathFollower : MonoBehaviour
 {
     [SerializeField]
+    private Transform rendererTransform;
+    [SerializeField]
     private SplineAnimate splineAnimate;
     [SerializeField]
     private VehicleMovement vehicleMovement;
@@ -13,6 +15,7 @@ public class PathFollower : MonoBehaviour
     private void Awake()
     {
         vehicleMovement.PathFollow += FollowPath;
+        vehicleMovement.ReachedPathEnd += ResetRendererPosition;
     }
 
     public void FollowPath(Path path, float duration)
@@ -21,5 +24,10 @@ public class PathFollower : MonoBehaviour
         splineAnimate.Duration = duration;
         splineAnimate.Restart(false);
         splineAnimate.Play();
+    }
+
+    public void ResetRendererPosition()
+    {
+        rendererTransform.localPosition = Vector3.zero;
     }
 }

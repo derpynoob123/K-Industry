@@ -5973,7 +5973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicle: {fileID: 717130424}
-  speedInKilometrePerHour: 10
+  speedInKilometrePerHour: 60
 --- !u!114 &1292049348
 MonoBehaviour:
   m_ObjectHideFlags: 0
