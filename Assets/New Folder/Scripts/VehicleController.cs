@@ -11,11 +11,9 @@ public class VehicleController : MonoBehaviour
     [SerializeField]
     private PathNetwork pathNetwork;
 
-    public GameObject Target;
-
-    private void Start()
+    public void Seek(GameObject destination)
     {
-        Node target = pathNetwork.GetNode(Target);
+        Node target = pathNetwork.GetNode(destination);
         Path[] paths = navigator.GetPath(target).ToArray();
         StartCoroutine(movement.FollowPath(paths));
     }

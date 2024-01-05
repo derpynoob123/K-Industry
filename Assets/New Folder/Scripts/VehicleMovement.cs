@@ -25,11 +25,9 @@ public class VehicleMovement : MonoBehaviour
             float duration = distanceInKilometres / speedInKilometrePerHour;
             Vector3 newPosition = path.EndNode.transform.position;
             PathFollow.Invoke(path, duration);
-            print(duration);
             yield return new WaitForSeconds(duration);
             vehicle.position = newPosition;
             ReachedPathEnd.Invoke();
-            print(vehicle.position);
         }
     }
 }
