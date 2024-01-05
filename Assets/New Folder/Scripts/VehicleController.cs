@@ -13,7 +13,7 @@ public class VehicleController : MonoBehaviour
 
     public GameObject Target;
 
-    private void Awake()
+    private void Start()
     {
         Node target = pathNetwork.GetNode(Target);
         Path[] paths = navigator.GetPath(target).ToArray();

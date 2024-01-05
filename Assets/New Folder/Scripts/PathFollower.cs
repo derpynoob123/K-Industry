@@ -17,13 +17,9 @@ public class PathFollower : MonoBehaviour
 
     public void FollowPath(Path path, float duration)
     {
-        if (splineAnimate.IsPlaying)
-        {
-            splineAnimate.Restart(false);
-        }
-
         splineAnimate.Container = path.SplineContainer;
         splineAnimate.Duration = duration;
+        splineAnimate.Restart(false);
         splineAnimate.Play();
     }
 }
