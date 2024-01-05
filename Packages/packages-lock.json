@@ -107,6 +107,7 @@
       "url": "https://packages.unity.com"
     },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "com.unity.collab-proxy": {
       "version": "2.2.0",
       "depth": 0,
@@ -114,6 +115,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     "com.unity.ext.nunit": {
@@ -165,13 +168,20 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
+<<<<<<< Updated upstream
       "depth": 2,
+=======
+      "depth": 1,
+>>>>>>> Stashed changes
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     "com.unity.settings-manager": {
       "version": "1.0.3",
       "depth": 1,
