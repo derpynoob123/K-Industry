@@ -7,10 +7,23 @@ public class PathFollower : MonoBehaviour
 {
     [SerializeField]
     private SplineAnimate splineAnimate;
+    [SerializeField]
+    private VehicleMovement vehicleMovement;
 
-    public void FollowPath(SplineContainer path)
+    private void Awake()
     {
-        splineAnimate.Container = path;
+        vehicleMovement.PathFollow += FollowPath;
+    }
+
+    public void FollowPath(Path path, float duration)
+    {
+        if (splineAnimate.IsPlaying)
+        {
+            splineAnimate.Restart(false);
+        }
+
+        splineAnimate.Container = path.SplineContainer;
+        splineAnimate.Duration = duration;
         splineAnimate.Play();
     }
 }

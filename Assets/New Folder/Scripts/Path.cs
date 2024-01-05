@@ -3,6 +3,8 @@ using UnityEngine.Splines;
 
 public class Path : MonoBehaviour
 {
+    const int mainSpline = 0;
+
     [SerializeField]
     private GameObject startNode;
     public GameObject StartNode
@@ -23,9 +25,16 @@ public class Path : MonoBehaviour
     }
     [SerializeField]
     private SplineContainer splineContainer;
-
-    public float GetDistance()
+    public SplineContainer SplineContainer
     {
-        return splineContainer.Spline.GetCurveLength(0);
+        get
+        {
+            return splineContainer;
+        }
+    }
+
+    public float GetDistanceInUnits()
+    {
+        return splineContainer.Spline.GetCurveLength(mainSpline);
     }
 }

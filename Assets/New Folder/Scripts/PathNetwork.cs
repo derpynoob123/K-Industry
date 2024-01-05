@@ -30,8 +30,13 @@ public class PathNetwork : MonoBehaviour
         }
     }
 
-    public Node GetNode(GameObject id)
+    public Node GetNode(GameObject junction)
     {
-        return graph.FindNode(id);
+        return graph.FindNode(junction);
+    }
+
+    public Path GetPath(Connection connection)
+    {
+        return graph.FindPath(connection);
     }
 }
