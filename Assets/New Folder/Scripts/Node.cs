@@ -7,12 +7,10 @@ public class Node
 { 
     public List<Connection> Connections { get; set; }
     public Vector3 Position { get; }
-    public GameObject ID { get; }
 
-    public Node(GameObject gameObject)
+    public Node(Vector3 position)
     {
         Connections = new();
-        Position = gameObject.transform.position;
-        ID = gameObject;
+        Position = position;
     }
 }

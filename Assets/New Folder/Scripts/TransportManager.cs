@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TransportManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private List<VehicleController> vehicles;
+    public GameObject Target;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        vehicles[0].Seek(Target);
     }
 }
