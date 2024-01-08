@@ -3,6 +3,8 @@ using UnityEngine.Splines;
 
 public class Path : MonoBehaviour
 {
+    private const int scale = 100000;
+
     [SerializeField]
     private GameObject startNode;
     public GameObject StartNode
@@ -34,5 +36,11 @@ public class Path : MonoBehaviour
     public float GetDistanceInUnits()
     {
         return splineContainer.Spline.GetLength();
+    }
+
+    public float GetDistanceInMetres()
+    {
+        float distance = GetDistanceInUnits() * scale;
+        return distance;
     }
 }

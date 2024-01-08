@@ -19,8 +19,7 @@ public class VehicleMovement : MonoBehaviour
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
         {
             Path path = paths[pathIndex];
-            float distanceInUnits = path.GetDistanceInUnits(); 
-            float distanceInMetres = distanceInUnits * 100000;
+            float distanceInMetres = path.GetDistanceInMetres();
             float distanceInKilometres = distanceInMetres / 1000;
             float duration = distanceInKilometres / speedInKilometrePerHour;
             Vector3 newPosition = path.EndNode.transform.position;
