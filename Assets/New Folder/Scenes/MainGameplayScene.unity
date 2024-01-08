@@ -13402,7 +13402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7783a4b1457f6044e95a4bff9a18c6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentNodeGameObject: {fileID: 0}
+  currentNodeGameObject: {fileID: 1658706100}
   pathNetwork: {fileID: 757767746}
 --- !u!114 &1292049347
 MonoBehaviour:

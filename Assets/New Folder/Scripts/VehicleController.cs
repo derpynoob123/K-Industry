@@ -15,6 +15,6 @@ public class VehicleController : MonoBehaviour
     {
         Node target = pathNetwork.GetNode(destination);
         Path[] paths = navigator.GetPath(target).ToArray();
-        StartCoroutine(movement.FollowPath(paths));
+        movement.SeekPath(paths);
     }
 }

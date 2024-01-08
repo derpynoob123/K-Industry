@@ -12,10 +12,20 @@ public class VehicleMovement : MonoBehaviour
     private float speedInKilometrePerHour;
 
     public event Action<Path, float> PathFollow;
-    public event Action ReachedPathEnd;
+    public event Action<GameObject> ReachedJunction;
 
-    public IEnumerator FollowPath(Path[] paths)
+    public bool IsMoving { get; private set; }
+
+    private Coroutine movementRoutine;
+
+    public void SeekPath(Path[] paths)
     {
+        movementRoutine = StartCoroutine(FollowPath(paths));
+    }
+
+    private IEnumerator FollowPath(Path[] paths)
+    {
+        IsMoving = true;
         for (int pathIndex = 0; pathIndex < paths.Length; pathIndex++)
         {
             Path path = paths[pathIndex];
@@ -26,7 +36,8 @@ public class VehicleMovement : MonoBehaviour
             PathFollow.Invoke(path, duration);
             yield return new WaitForSeconds(duration);
             vehicle.position = newPosition;
-            ReachedPathEnd.Invoke();
+            ReachedJunction.Invoke(path.EndNode);
         }
+        IsMoving = false;
     }
 }

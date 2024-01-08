@@ -5,16 +5,27 @@ using UnityEngine;
 public class VehicleNavigator : MonoBehaviour
 {
     [SerializeField]
-    private GameObject currentNodeGameObject;
+    private GameObject currentJunction;
     [SerializeField]
     private PathNetwork pathNetwork;
+    [SerializeField]
+    private VehicleMovement vehicleMovement;
 
-    private AStarPathFinder pathfinder = new();
+    private readonly AStarPathFinder pathfinder = new();
     private Node currentNode;
 
     private void Awake()
     {
-        currentNode = pathNetwork.GetNode(currentNodeGameObject);
+        vehicleMovement.ReachedJunction += UpdateCurrentPosition;
+
+        UpdateCurrentPosition(currentJunction);
+    }
+
+    public void UpdateCurrentPosition(GameObject current)
+    {
+        Node node = pathNetwork.GetNode(current);
+        currentNode = node;
+        currentJunction = current;
     }
 
     public List<Path> GetPath(Node destination)
