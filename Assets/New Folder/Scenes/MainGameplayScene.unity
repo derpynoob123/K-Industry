@@ -754,7 +754,7 @@ MonoBehaviour:
   dropdown: {fileID: 140114065}
   noSelectionMessage: None Selected
   tileSelector: {fileID: 1609417376}
-  facilitySelector: {fileID: 1705279178}
+  facilitySelector: {fileID: 466274505}
   facilitySpawner: {fileID: 466274503}
 --- !u!1 &148422223
 GameObject:
@@ -2249,6 +2249,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 443127277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &457841157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457841158}
+  m_Layer: 0
+  m_Name: Vehicles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457841158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457841157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1506482680}
+  m_Father: {fileID: 590172148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466274501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,8 +2292,9 @@ GameObject:
   - component: {fileID: 466274502}
   - component: {fileID: 466274503}
   - component: {fileID: 466274504}
+  - component: {fileID: 466274505}
   m_Layer: 0
-  m_Name: Facility Manager
+  m_Name: Facility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2279,7 +2312,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2106500211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &466274503
@@ -2294,8 +2328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265b6d49a80b40b4b800118a467c3908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facilityParent: {fileID: 2106500211}
   tileSelector: {fileID: 1609417376}
-  facilitySelector: {fileID: 1705279178}
+  facilitySelector: {fileID: 466274505}
   facilityPrefabs:
   - ID: 0
     FacilityPrefab: {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
@@ -2313,11 +2348,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf93fb86adb2808438cf8654cd492058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facilitySpawner: {fileID: 466274503}
+  map: {fileID: 1609417373}
+  pathNetwork: {fileID: 757767746}
   facilityPoints:
-  - Tile: {fileID: 2112953551}
+  - Tile: {fileID: 1566377919}
     Junction: {fileID: 1658706100}
-  - Tile: {fileID: 1847090532}
-    Junction: {fileID: 805577907}
+--- !u!114 &466274505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466274501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0207fe388ce20e46a629422b8abe275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &480421299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2976,7 +3024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 757767745}
-  - {fileID: 717130424}
+  - {fileID: 457841158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &590172149
@@ -9071,14 +9119,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717130423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.297, y: 0.195, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.2969999, y: 0.19499993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1292049344}
   - {fileID: 1131831797}
-  m_Father: {fileID: 590172148}
+  m_Father: {fileID: 1506482680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &719882271
 PrefabInstance:
@@ -20305,6 +20353,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 1496413767}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1506482679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506482680}
+  m_Layer: 0
+  m_Name: Player Vehicles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506482680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506482679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 717130424}
+  m_Father: {fileID: 457841158}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510149221
 GameObject:
   m_ObjectHideFlags: 0
@@ -20388,19 +20468,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510149224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 466274503}
-        m_TargetAssemblyTypeName: FacilitySpawnerBehaviour, Assembly-CSharp
-        m_MethodName: Build
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1510149224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20452,7 +20520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facilitySpawner: {fileID: 466274503}
-  facilitySelector: {fileID: 1705279178}
+  facilitySelector: {fileID: 466274505}
 --- !u!1 &1543783169
 GameObject:
   m_ObjectHideFlags: 0
@@ -21204,50 +21272,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 1705120738}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1705279173
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1705279174}
-  - component: {fileID: 1705279178}
-  m_Layer: 0
-  m_Name: Building Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1705279174
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705279173}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1705279178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705279173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0207fe388ce20e46a629422b8abe275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1755916906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22541,11 +22565,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824348187}
   m_CullTransparentMesh: 1
---- !u!1 &1847090532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1633088751767037798, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
-  m_PrefabInstance: {fileID: 1853508619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1853508619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26658,12 +26677,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775692366462744636, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
   m_PrefabInstance: {fileID: 2102368008}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2112953551 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1633088751767037798, guid: 81fbbb3fbe40d7347ba4646e29c8232e, type: 3}
-  m_PrefabInstance: {fileID: 1566377918}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2134490288
+--- !u!1 &2106500210
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26671,60 +26685,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2134490289}
-  - component: {fileID: 2134490290}
+  - component: {fileID: 2106500211}
   m_Layer: 0
-  m_Name: Input Manager
+  m_Name: Player Facilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2134490289
+--- !u!4 &2106500211
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134490288}
+  m_GameObject: {fileID: 2106500210}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 466274502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2134490290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134490288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: c10153bf2f1d4fe478b90f17bb2b828d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1001 &2138333678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26802,6 +26785,4 @@ SceneRoots:
   - {fileID: 1382111946}
   - {fileID: 590172148}
   - {fileID: 1609417374}
-  - {fileID: 1705279174}
-  - {fileID: 2134490289}
   - {fileID: 466274502}

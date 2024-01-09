@@ -24,8 +24,6 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     public event Action<Tile, GameObject> FacilitySpawned;
 
     private Dictionary<FacilityID, GameObject> prefabIDs;
-    //list of active facilities
-    private Dictionary<Tile, GameObject> spawnedFacilities = new();
 
     private void Awake()
     {
@@ -42,23 +40,12 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         }
     }
 
-    public void Build()
+    public void Spawn()
     {
         Tile tile = tileSelector.GetSelectedTile();
-        if (spawnedFacilities.ContainsKey(tile))
-        {
-            Debug.Log("Cannot build on tile containing an existing facility!");
-            return;
-        }
-        Spawn(tile);
-    }
-
-    public void Spawn(Tile tile)
-    {
         FacilityID id = facilitySelector.GetSelectedFacility();
         GameObject prefab = prefabIDs[id];
         GameObject newFacility = Instantiate(prefab);
-        spawnedFacilities.Add(tile, newFacility);
         newFacility.transform.position = tile.TileTransform.position;
         newFacility.transform.SetParent(facilityParent);
         FacilitySpawned.Invoke(tile, newFacility);
