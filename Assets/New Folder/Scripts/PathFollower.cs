@@ -15,7 +15,7 @@ public class PathFollower : MonoBehaviour
     private void Awake()
     {
         vehicleMovement.PathFollow += FollowPath;
-        vehicleMovement.ReachedPathEnd += ResetRendererPosition;
+        vehicleMovement.ReachedJunction += SetRendererPosition;
     }
 
     public void FollowPath(Path path, float duration)
@@ -26,8 +26,8 @@ public class PathFollower : MonoBehaviour
         splineAnimate.Play();
     }
 
-    public void ResetRendererPosition()
+    public void SetRendererPosition(GameObject target)
     {
-        rendererTransform.localPosition = Vector3.zero;
+        rendererTransform.localPosition = target.transform.position;
     }
 }

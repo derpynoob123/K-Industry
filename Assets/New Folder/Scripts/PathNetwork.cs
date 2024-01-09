@@ -35,6 +35,11 @@ public class PathNetwork : MonoBehaviour
         return graph.FindNode(junction);
     }
 
+    public GameObject GetJunction(Node node)
+    {
+        return graph.FindJunction(node);
+    }
+
     public Path GetPath(Connection connection)
     {
         return graph.FindPath(connection);
