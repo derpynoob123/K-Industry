@@ -25,7 +25,7 @@ public class FacilitySpawner : MonoBehaviour
 
     public event Action<Tile, GameObject> FacilitySpawned;
 
-    private Dictionary<FacilityID, GameObject> prefabIDs;
+    private readonly Dictionary<FacilityID, GameObject> prefabIDs = new();
 
     private void Awake()
     {
@@ -36,7 +36,6 @@ public class FacilitySpawner : MonoBehaviour
 
     private void InitialiseSpawns()
     {
-        prefabIDs = new();
         for (int facilitySpawnIndex = 0; facilitySpawnIndex < facilityPrefabs.Length; facilitySpawnIndex++)
         {
             FacilitySpawn spawn = facilityPrefabs[facilitySpawnIndex];
