@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class FacilitySelectionDropdown : SelectionDropdown<FacilityID>
 {
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
     [SerializeField]
-    private FacilityController facilityController;
-    [SerializeField]
     private FacilitySelectorBehaviour facilitySelector;
+    [SerializeField]
+    private FacilitySpawner facilitySpawner;
 
     override protected void Awake()
     {
@@ -31,7 +32,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<FacilityID>
 
     protected override void SetOptions()
     {
-        options = facilityController.Buildables;
+        options = facilitySpawner.GetBuildableFacilities().ToList();
     }
 
     protected override void AddDropdownOptions()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapBehaviour : MonoBehaviour
@@ -22,19 +23,25 @@ public class MapBehaviour : MonoBehaviour
     {
         for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
         {
-            Vector3 worldPosition = tiles[tileIndex].position;
+            Transform tile = tiles[tileIndex];
+            Vector3 worldPosition = tile.position;
             Vector3Int gridPosition = grid.WorldToCell(worldPosition);
-            map.InitialiseTile(gridPosition, tiles[tileIndex]);
+            map.InitialiseTile(gridPosition, tile);
         }
     }
 
-    public Dictionary<Vector3Int, Tile> GetTiles()
+    public Tile[] GetTiles()
     {
-        return map.Tiles;
+        return map.Tiles.Values.ToArray();
     }
 
     public int GetTileCount()
     {
         return tiles.Length;
+    }
+
+    public Tile GetTile(Transform tileTransform)
+    {
+        return map.GetTile(tileTransform);
     }
 }

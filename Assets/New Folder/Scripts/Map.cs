@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Map
 {
-    public Dictionary<Vector3Int, Tile> Tiles { get; }
+    public Dictionary<Transform, Tile> Tiles { get; }
 
     public Map()
     {
@@ -18,11 +18,11 @@ public class Map
         {
             TileTransform = tileTransform
         };
-        Tiles.Add(tileGridPosition, tile);
+        Tiles.Add(tileTransform, tile);
     }
 
-    public Tile GetTile(Vector3Int tilePosition)
+    public Tile GetTile(Transform tileTransform)
     {
-        return Tiles[tilePosition];
+        return Tiles[tileTransform];
     }
 }
