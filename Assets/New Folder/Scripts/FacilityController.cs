@@ -26,6 +26,8 @@ public class FacilityController : MonoBehaviour
 
     private void Awake()
     {
+        facilitySpawner.FacilitySpawned += AddNewFacility; 
+
         InitialiseFacilityNodes();
     }
 
