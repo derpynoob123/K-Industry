@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FacilitySpawnerBehaviour : MonoBehaviour
+public class FacilitySpawner : MonoBehaviour
 {
     [Serializable]
     public class FacilitySpawn
@@ -12,6 +12,8 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         public GameObject FacilityPrefab;
     }
 
+    [SerializeField]
+    private FacilityBuilder facilityBuilder;
     [SerializeField]
     private Transform facilityParent;
     [SerializeField]
@@ -27,6 +29,8 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        facilityBuilder.Built += Spawn;
+
         InitialiseSpawns();
     }
 
@@ -42,10 +46,10 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
 
     public void Spawn()
     {
-        Tile tile = tileSelector.GetSelectedTile();
         FacilityID id = facilitySelector.GetSelectedFacility();
         GameObject prefab = prefabIDs[id];
         GameObject newFacility = Instantiate(prefab);
+        Tile tile = tileSelector.GetSelectedTile();
         newFacility.transform.position = tile.TileTransform.position;
         newFacility.transform.SetParent(facilityParent);
         FacilitySpawned.Invoke(tile, newFacility);

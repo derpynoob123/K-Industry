@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +9,11 @@ public class FacilityGroup : MonoBehaviour
     {
         public Transform Tile;
         public GameObject Junction;
+        public GameObject Facility;
     }
 
     [SerializeField]
-    private FacilitySpawnerBehaviour facilitySpawner;
+    private FacilitySpawner facilitySpawner;
     [SerializeField]
     private MapBehaviour map;
     [SerializeField]
@@ -21,30 +21,27 @@ public class FacilityGroup : MonoBehaviour
     [SerializeField]
     private FacilityPoint[] facilityPoints;
 
-    private Dictionary<Tile, Node> facilityNodes = new();
-    private Dictionary<Node, GameObject> facilities = new();
+    private readonly Dictionary<Transform, FacilityPoint> facilityLookUp = new();
 
     private void Awake()
     {
-        facilitySpawner.FacilitySpawned += AddNewFacility; 
+        facilitySpawner.FacilitySpawned += AddNewFacility;
 
-        InitialiseFacilityNodes();
+        InitialiseFacilityLookUp();
     }
 
-    private void InitialiseFacilityNodes()
+    private void InitialiseFacilityLookUp()
     {
-        for (int facilityPointIndex = 0; facilityPointIndex < facilityPoints.Length; facilityPointIndex++)
+        for (int pointIndex = 0; pointIndex < facilityPoints.Length; pointIndex++)
         {
-            FacilityPoint point = facilityPoints[facilityPointIndex];
-            Tile tile = map.GetTile(point.Tile);
-            Node node = pathNetwork.GetNode(point.Junction);
-            facilityNodes.Add(tile, node);
+            FacilityPoint point = facilityPoints[pointIndex];
+            facilityLookUp.Add(point.Tile, point);
         }
     }
 
     private void AddNewFacility(Tile tile, GameObject facility)
     {
-        Node node = facilityNodes[tile];
-        facilities.Add(node, facility);
+        FacilityPoint point = facilityLookUp[tile.TileTransform];
+        point.Facility = facility;
     }
 }

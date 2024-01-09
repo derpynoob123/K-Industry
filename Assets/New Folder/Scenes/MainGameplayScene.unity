@@ -2293,6 +2293,7 @@ GameObject:
   - component: {fileID: 466274503}
   - component: {fileID: 466274504}
   - component: {fileID: 466274505}
+  - component: {fileID: 466274506}
   m_Layer: 0
   m_Name: Facility
   m_TagString: Untagged
@@ -2325,9 +2326,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 466274501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 265b6d49a80b40b4b800118a467c3908, type: 3}
+  m_Script: {fileID: 11500000, guid: db3414cf4c9b75b48b1874bb9d15925a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facilityBuilder: {fileID: 466274506}
   facilityParent: {fileID: 2106500211}
   tileSelector: {fileID: 1609417376}
   facilitySelector: {fileID: 466274505}
@@ -2354,6 +2356,7 @@ MonoBehaviour:
   facilityPoints:
   - Tile: {fileID: 1566377919}
     Junction: {fileID: 1658706100}
+    Facility: {fileID: 0}
 --- !u!114 &466274505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2364,6 +2367,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0207fe388ce20e46a629422b8abe275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &466274506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466274501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dd83565a193224c93db0de706d70e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &480421299
@@ -20468,7 +20483,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510149224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 466274506}
+        m_TargetAssemblyTypeName: FacilityBuilder, Assembly-CSharp
+        m_MethodName: Build
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1510149224
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class FacilitySelectionDropdown : SelectionDropdown<FacilityID>
     [SerializeField]
     private FacilitySelectorBehaviour facilitySelector;
     [SerializeField]
-    private FacilitySpawnerBehaviour facilitySpawner;
+    private FacilitySpawner facilitySpawner;
 
     override protected void Awake()
     {

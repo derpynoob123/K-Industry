@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FacilityBuilder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public event Action Built;
+
+    public void Build()
     {
-        
+        if (!CanBuild())
+        {
+            return;
+        }
+        Built.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool CanBuild()
     {
-        
+        return true;
     }
 }
