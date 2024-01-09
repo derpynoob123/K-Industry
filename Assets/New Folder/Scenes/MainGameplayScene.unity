@@ -2298,8 +2298,10 @@ MonoBehaviour:
   facilitySelector: {fileID: 1705279178}
   facilityController: {fileID: 466274504}
   facilityPrefabs:
-  - {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
-  - {fileID: 8991387543306812643, guid: 768870ea1f970f6418d1ebd62f967809, type: 3}
+  - ID: 0
+    FacilityPrefab: {fileID: 2111196431065920011, guid: a243d11837f2ecd4bb7e2f79329e6870, type: 3}
+  - ID: 1
+    FacilityPrefab: {fileID: 8991387543306812643, guid: 768870ea1f970f6418d1ebd62f967809, type: 3}
 --- !u!114 &466274504
 MonoBehaviour:
   m_ObjectHideFlags: 0

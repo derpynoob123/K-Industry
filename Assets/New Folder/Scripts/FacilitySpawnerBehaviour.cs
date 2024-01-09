@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FacilitySpawnerBehaviour : MonoBehaviour
 {
+    [Serializable]
+    public class FacilitySpawn
+    {
+        public FacilityID ID;
+        public GameObject FacilityPrefab;
+    }
+
     [SerializeField]
     private TileSelectorBehaviour tileSelector;
     [SerializeField]
@@ -11,7 +18,7 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     [SerializeField]
     private FacilityController facilityController;
     [SerializeField]
-    private List<GameObject> facilityPrefabs;
+    private FacilitySpawn[] facilityPrefabs;
 
     private Dictionary<FacilityID, GameObject> prefabIDs;
     //list of active facilities
@@ -19,11 +26,17 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        prefabIDs = new()
+        InitialiseSpawns();
+    }
+
+    private void InitialiseSpawns()
+    {
+        prefabIDs = new();
+        for (int facilitySpawnIndex = 0; facilitySpawnIndex < facilityPrefabs.Length; facilitySpawnIndex++)
         {
-            { FacilityID.PACKING, facilityPrefabs[0] },
-            { FacilityID.STORAGE, facilityPrefabs[1] }
-        };
+            FacilitySpawn spawn = facilityPrefabs[facilitySpawnIndex];
+            prefabIDs.Add(spawn.ID, spawn.FacilityPrefab);
+        }
     }
 
     public void Build()
