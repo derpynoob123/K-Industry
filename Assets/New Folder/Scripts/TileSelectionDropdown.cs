@@ -19,7 +19,7 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
 
     protected override void SetOptions()
     {
-        options = map.GetTiles().Values.ToList();
+        options = map.GetTiles().ToList();
         options = options.OrderBy(t => t.GridSpacePosition.x).ToList();
         options = options.OrderBy(t => t.GridSpacePosition.y).ToList();
     }

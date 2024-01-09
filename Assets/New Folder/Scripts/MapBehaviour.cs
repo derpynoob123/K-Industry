@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapBehaviour : MonoBehaviour
@@ -28,13 +29,18 @@ public class MapBehaviour : MonoBehaviour
         }
     }
 
-    public Dictionary<Vector3Int, Tile> GetTiles()
+    public Tile[] GetTiles()
     {
-        return map.Tiles;
+        return map.Tiles.Values.ToArray();
     }
 
     public int GetTileCount()
     {
         return tiles.Length;
+    }
+
+    public Tile GetTile(Transform tileTransform)
+    {
+        return map.GetTile(tileTransform);
     }
 }
