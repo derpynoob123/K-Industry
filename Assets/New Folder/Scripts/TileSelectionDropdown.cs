@@ -20,6 +20,8 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
     protected override void SetOptions()
     {
         options = map.GetTiles().Values.ToList();
+        options = options.OrderBy(t => t.GridSpacePosition.x).ToList();
+        options = options.OrderBy(t => t.GridSpacePosition.y).ToList();
     }
 
     protected override void AddDropdownOptions()
