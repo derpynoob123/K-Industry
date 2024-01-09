@@ -26,7 +26,7 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         };
     }
 
-    public void Spawn()
+    public void Build()
     {
         Tile tile = tileSelector.GetSelectedTile();
         if (spawnedFacilities.ContainsKey(tile))
@@ -34,7 +34,11 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
             Debug.Log("Cannot build on tile containing an existing facility!");
             return;
         }
+        Spawn(tile);
+    }
 
+    public void Spawn(Tile tile)
+    {
         FacilityID id = facilitySelector.GetSelectedFacility();
         GameObject prefab = prefabIDs[id];
         GameObject newFacility = Instantiate(prefab);
