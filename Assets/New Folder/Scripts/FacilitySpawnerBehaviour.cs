@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FacilitySpawnerBehaviour : MonoBehaviour
@@ -15,8 +16,6 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     private TileSelectorBehaviour tileSelector;
     [SerializeField]
     private FacilitySelectorBehaviour facilitySelector;
-    [SerializeField]
-    private FacilityController facilityController;
     [SerializeField]
     private FacilitySpawn[] facilityPrefabs;
 
@@ -57,5 +56,10 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         GameObject newFacility = Instantiate(prefab);
         spawnedFacilities.Add(tile, newFacility);
         newFacility.transform.position = tile.TileTransform.position;
+    }
+
+    public FacilityID[] GetBuildableFacilities()
+    {
+        return prefabIDs.Keys.ToArray();
     }
 }
