@@ -23,9 +23,10 @@ public class MapBehaviour : MonoBehaviour
     {
         for (int tileIndex = 0; tileIndex < tiles.Length; tileIndex++)
         {
-            Vector3 worldPosition = tiles[tileIndex].position;
+            Transform tile = tiles[tileIndex];
+            Vector3 worldPosition = tile.position;
             Vector3Int gridPosition = grid.WorldToCell(worldPosition);
-            map.InitialiseTile(gridPosition, tiles[tileIndex]);
+            map.InitialiseTile(gridPosition, tile);
         }
     }
 

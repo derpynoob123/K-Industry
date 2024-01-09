@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilityController : MonoBehaviour
+public class FacilityGroup : MonoBehaviour
 {
     [Serializable]
     public class FacilityPoint
@@ -21,8 +21,8 @@ public class FacilityController : MonoBehaviour
     [SerializeField]
     private FacilityPoint[] facilityPoints;
 
-    private Dictionary<Tile, Node> facilityNodes;
-    private Dictionary<Node, GameObject> facilities;
+    private Dictionary<Tile, Node> facilityNodes = new();
+    private Dictionary<Node, GameObject> facilities = new();
 
     private void Awake()
     {
@@ -33,7 +33,6 @@ public class FacilityController : MonoBehaviour
 
     private void InitialiseFacilityNodes()
     {
-        facilityNodes = new();
         for (int facilityPointIndex = 0; facilityPointIndex < facilityPoints.Length; facilityPointIndex++)
         {
             FacilityPoint point = facilityPoints[facilityPointIndex];
@@ -45,6 +44,7 @@ public class FacilityController : MonoBehaviour
 
     private void AddNewFacility(Tile tile, GameObject facility)
     {
-
+        Node node = facilityNodes[tile];
+        facilities.Add(node, facility);
     }
 }

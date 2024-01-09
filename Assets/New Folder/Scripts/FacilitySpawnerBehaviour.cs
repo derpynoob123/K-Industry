@@ -13,6 +13,8 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     }
 
     [SerializeField]
+    private Transform facilityParent;
+    [SerializeField]
     private TileSelectorBehaviour tileSelector;
     [SerializeField]
     private FacilitySelectorBehaviour facilitySelector;
@@ -58,6 +60,7 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         GameObject newFacility = Instantiate(prefab);
         spawnedFacilities.Add(tile, newFacility);
         newFacility.transform.position = tile.TileTransform.position;
+        newFacility.transform.SetParent(facilityParent);
         FacilitySpawned.Invoke(tile, newFacility);
     }
 
