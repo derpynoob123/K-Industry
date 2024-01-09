@@ -19,6 +19,8 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
     [SerializeField]
     private FacilitySpawn[] facilityPrefabs;
 
+    public event Action<Tile, GameObject> FacilitySpawned;
+
     private Dictionary<FacilityID, GameObject> prefabIDs;
     //list of active facilities
     private Dictionary<Tile, GameObject> spawnedFacilities = new();
@@ -56,6 +58,7 @@ public class FacilitySpawnerBehaviour : MonoBehaviour
         GameObject newFacility = Instantiate(prefab);
         spawnedFacilities.Add(tile, newFacility);
         newFacility.transform.position = tile.TileTransform.position;
+        FacilitySpawned.Invoke(tile, newFacility);
     }
 
     public FacilityID[] GetBuildableFacilities()
