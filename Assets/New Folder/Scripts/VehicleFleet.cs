@@ -9,8 +9,9 @@ public class VehicleFleet : MonoBehaviour
 
     public GameObject Seek;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
         vehicles[0].Seek(Seek);
     }
 }
