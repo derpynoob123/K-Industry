@@ -22,6 +22,11 @@ public class VehicleMovement : MonoBehaviour
 
     public void SeekPath(Path[] paths)
     {
+        if (movementRoutine is not null)
+        {
+            StopCoroutine(movementRoutine);
+        }
+
         movementRoutine = StartCoroutine(FollowPath(paths));
     }
 

@@ -3057,6 +3057,7 @@ MonoBehaviour:
   vehicles:
   - {fileID: 1292049348}
   Seek: {fileID: 1033556266}
+  Seek2: {fileID: 1658706100}
 --- !u!1001 &624834184
 PrefabInstance:
   m_ObjectHideFlags: 0
