@@ -23,33 +23,39 @@ public class StorageUnit
             }
         }
     }
-    private int currentCapacity;
-    public int CurrentCapacity
-    {
-        get
-        {
-            return currentCapacity;
-        }
 
-        set
-        {
-            if (value < 0)
-            {
-                currentCapacity = 0;
-            }
-            else if (value > MaximumCapacity)
-            {
-                currentCapacity = MaximumCapacity;
-            }
-            else
-            {
-                currentCapacity = value;
-            }
-        }
-    }
+    public List<GoodUnit> GoodUnits { get; private set; }
 
     public StorageUnit(int maximumCapacity)
     {
         MaximumCapacity = maximumCapacity;
+        GoodUnits = new();
     }
-}
+
+    public void LoadGoodUnit(GoodUnit unit)
+    {
+        if (!HasCapacity())
+        {
+            return;
+        }
+
+        GoodUnits.Add(unit);
+    }
+
+    public GoodUnit UnloadGoodUnit()
+    {
+        if (GoodUnits.Count <= 0)
+        {
+            return new();
+        }
+
+        int index = GoodUnits.Count - 1;
+        GoodUnit unit = GoodUnits[index];
+        GoodUnits.Remove(unit);
+        return unit;
+    }
+
+    private bool HasCapacity()
+    {
+        return GoodUnits.Count < MaximumCapacity;
+    }}
