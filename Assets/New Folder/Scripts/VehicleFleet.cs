@@ -8,10 +8,13 @@ public class VehicleFleet : MonoBehaviour
     private List<VehicleController> vehicles;
 
     public GameObject Seek;
+    public GameObject Seek2;
 
     private IEnumerator Start()
     {
         yield return null;
-        vehicles[0].Seek(Seek);
+        vehicles[0].SeekDestination(Seek);
+        yield return new WaitForSeconds(3);
+        vehicles[0].SeekDestination(Seek2);
     }
 }
