@@ -13,4 +13,15 @@ public class StorageUnitBehaviour : MonoBehaviour
     {
         storageUnit = new(maximumCapacity);
     }
+
+    public void SendUnit(GameObject receiver)
+    {
+        GoodUnit unit = storageUnit.UnloadGoodUnit();
+        LoadingBay.MakeTransfer(unit, receiver);
+    }
+
+    public void ReceiveUnit(GoodUnit unit)
+    {
+        storageUnit.LoadGoodUnit(unit);
+    }
 }
