@@ -16,11 +16,9 @@ public class VehicleMovement : MonoBehaviour
 
     public bool IsMoving { get; private set; }
 
-    private Coroutine movementRoutine;
-
     public void SeekPath(Path[] paths)
     {
-        movementRoutine = StartCoroutine(FollowPath(paths));
+        StartCoroutine(FollowPath(paths));
     }
 
     private IEnumerator FollowPath(Path[] paths)

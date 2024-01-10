@@ -28,6 +28,6 @@ public class PathFollower : MonoBehaviour
 
     public void SetRendererPosition(GameObject target)
     {
-        rendererTransform.localPosition = target.transform.position;
+        rendererTransform.position = target.transform.position;
     }
 }
