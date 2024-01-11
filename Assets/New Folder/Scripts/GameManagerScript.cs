@@ -21,6 +21,18 @@ public class GameManagerScript : MonoBehaviour
     public int dayCount;
     public int week;
 
+    public float locOrderTimer;
+    public float intOrderTimer;
+    public float orderGenTime;
+
+    //Customer variables
+    public int locRep;
+    public int intRep;
+    public float minBanana;
+    public float maxBanana;
+    public float locBanana;
+    public float intBanana;
+
     //TextUI
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI dayText;
@@ -40,6 +52,16 @@ public class GameManagerScript : MonoBehaviour
         day = 0;
         dayCount = 0;
         week = 0;
+<<<<<<< Updated upstream
+=======
+
+        skipCheck = false;
+
+        locRep = 50;
+        intRep = 50;
+
+        orderGenTime = 10f;
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -83,6 +105,8 @@ public class GameManagerScript : MonoBehaviour
         dayText.text = $"Day: {day}";
         weekText.text = $"Week: {week}";
         #endregion
+
+        orderGenTime -= Time.deltaTime;
     }
 
     //Start screen to main play screen
@@ -90,4 +114,21 @@ public class GameManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+<<<<<<< Updated upstream
+=======
+
+    public void SkipButton()
+    {
+        skipCheck = true;
+    }
+
+    public void LocalMarketOrderGenerator()
+    {
+        if (orderGenTime <= 0)
+        {
+            orderGenTime = 10f;
+            locBanana = Random.Range(minBanana, maxBanana);
+        }
+    }
+>>>>>>> Stashed changes
 }
