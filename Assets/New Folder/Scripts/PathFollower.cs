@@ -22,12 +22,11 @@ public class PathFollower : MonoBehaviour
     {
         splineAnimate.Container = path.SplineContainer;
         splineAnimate.Duration = duration;
-        splineAnimate.Restart(false);
-        splineAnimate.Play();
+        splineAnimate.Restart(true);
     }
 
     public void SetRendererPosition(GameObject target)
     {
-        rendererTransform.localPosition = target.transform.position;
+        rendererTransform.position = target.transform.position;
     }
 }
