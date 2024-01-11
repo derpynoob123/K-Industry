@@ -3018,6 +3018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590172148}
   - component: {fileID: 590172149}
+  - component: {fileID: 590172150}
   m_Layer: 0
   m_Name: Transport
   m_TagString: Untagged
@@ -3058,6 +3059,21 @@ MonoBehaviour:
   - {fileID: 1292049348}
   Seek: {fileID: 1033556266}
   Seek2: {fileID: 1658706100}
+--- !u!114 &590172150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590172147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a076e01f509cf4392c2c9a0ff87034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storageUnits:
+  - ID: {fileID: 1292049343}
+    Unit: {fileID: 1292049349}
 --- !u!1001 &624834184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13292,6 +13308,7 @@ GameObject:
   - component: {fileID: 1292049346}
   - component: {fileID: 1292049347}
   - component: {fileID: 1292049345}
+  - component: {fileID: 1292049349}
   m_Layer: 0
   m_Name: Behaviour
   m_TagString: Untagged
@@ -13373,6 +13390,19 @@ MonoBehaviour:
   navigator: {fileID: 1292049346}
   movement: {fileID: 1292049347}
   pathNetwork: {fileID: 757767746}
+--- !u!114 &1292049349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292049343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2f2117572e8444b82f1b27cfed4fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumCapacity: 8
 --- !u!1001 &1297448838
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,17 @@ public class VehicleController : MonoBehaviour
     private VehicleMovement movement;
     [SerializeField]
     private PathNetwork pathNetwork;
+    [SerializeField]
+    private StorageUnitBehaviour storage;
+
+    private void Start()
+    {
+        GoodUnit unit = new()
+        {
+            LifeTimeInHours = 10
+        };
+        storage.ReceiveUnit(unit);
+    }
 
     public void SeekDestination(GameObject destination)
     {
@@ -36,5 +47,10 @@ public class VehicleController : MonoBehaviour
     public void Stop()
     {
         movement.AbortPath();
+    }
+
+    public void Unload(GameObject receiver)
+    {
+        storage.SendUnit(receiver);
     }
 }
