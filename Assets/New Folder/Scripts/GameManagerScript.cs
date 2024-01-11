@@ -20,6 +20,7 @@ public class GameManagerScript : MonoBehaviour
     public int day;
     public int dayCount;
     public int week;
+    public bool skipCheck;
 
     public float locOrderTimer;
     public float intOrderTimer;
@@ -52,8 +53,6 @@ public class GameManagerScript : MonoBehaviour
         day = 0;
         dayCount = 0;
         week = 0;
-<<<<<<< Updated upstream
-=======
 
         skipCheck = false;
 
@@ -61,7 +60,6 @@ public class GameManagerScript : MonoBehaviour
         intRep = 50;
 
         orderGenTime = 10f;
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -84,6 +82,7 @@ public class GameManagerScript : MonoBehaviour
             hoursTime = 0;
             day++;
             dayCount++;
+            skipCheck = false;
         }
 
         if (dayCount >= 7)
@@ -94,9 +93,13 @@ public class GameManagerScript : MonoBehaviour
         #endregion
 
         #region Slow down In-game time for player change
-        if (hoursTime >= 17)
+        if ((hoursTime >= 17) && (skipCheck == false))
         {
             minMul = 1;
+        }
+        else
+        {
+            minMul = 60;
         }
         #endregion
 
@@ -114,8 +117,6 @@ public class GameManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-<<<<<<< Updated upstream
-=======
 
     public void SkipButton()
     {
@@ -130,5 +131,4 @@ public class GameManagerScript : MonoBehaviour
             locBanana = Random.Range(minBanana, maxBanana);
         }
     }
->>>>>>> Stashed changes
 }
