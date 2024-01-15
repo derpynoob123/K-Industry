@@ -29,6 +29,8 @@ public class GameAccess : MonoBehaviour {
     public GameObject IncorrectText;
     public GameObject InputObject;
 
+    const string scene = "StartScreen";
+
     // Use this for initialization
     void Start()
     {
@@ -186,7 +188,7 @@ public class GameAccess : MonoBehaviour {
 
         if (DecryptedInputtedPassword == CorrectPassword)
         {
-            GoToScene("Agency"); //If user entered correct password, put the scene name
+            GoToScene(scene); //If user entered correct password, put the scene name
         }
         else
         {
