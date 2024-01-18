@@ -13,8 +13,12 @@ public class GameManagerScript : MonoBehaviour
     public float money;
     public float moneyText;
 
-    public float time;
+    //Time variables
+    public int minMul = 60;
+    public float minutesTime;
+    public int hoursTime;
     public int day;
+    public int dayCount;
     public int week;
     public bool skipCheck;
 
@@ -50,6 +54,18 @@ public class GameManagerScript : MonoBehaviour
             hoursTime++;
         }
 
+        #region In-game time counting
+        //Timer counting
+        minutesTime += minMul * Time.deltaTime;
+        int minInt = (int)minutesTime;
+        Debug.Log(minutesTime);
+
+        if (minutesTime >= 60)
+        {
+            minutesTime = 0;
+            hoursTime++;
+        }
+
         if (hoursTime >= 24)
         {
             hoursTime = 0;
@@ -73,6 +89,10 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             minMul = 60;
+        }
+        if (hoursTime >= 17)
+        {
+            minMul = 1;
         }
         #endregion
 

@@ -3059,6 +3059,7 @@ MonoBehaviour:
   - {fileID: 1292049348}
   Seek: {fileID: 1033556266}
   Seek2: {fileID: 1658706100}
+  Receive: {fileID: 0}
 --- !u!114 &590172150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13390,6 +13391,7 @@ MonoBehaviour:
   navigator: {fileID: 1292049346}
   movement: {fileID: 1292049347}
   pathNetwork: {fileID: 757767746}
+  storage: {fileID: 0}
 --- !u!114 &1292049349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19748,12 +19750,16 @@ MonoBehaviour:
   userName: 0
   money: 0
   moneyText: 0
-  time: 0
+  minMul: 60
+  minutesTime: 0
+  hoursTime: 0
   day: 0
+  dayCount: 0
   week: 0
-  timeText: {fileID: 0}
-  dayText: {fileID: 0}
-  weekText: {fileID: 0}
+  skipCheck: 0
+  timeText: {fileID: 1169916762}
+  dayText: {fileID: 1239214427}
+  weekText: {fileID: 1380103288}
   startButton: {fileID: 0}
   sceneName: MainGameplayScene
 --- !u!4 &1382111946
