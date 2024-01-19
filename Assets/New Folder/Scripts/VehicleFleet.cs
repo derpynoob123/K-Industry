@@ -18,4 +18,9 @@ public class VehicleFleet : MonoBehaviour
         yield return new WaitForSeconds(3);
         vehicles[0].SeekDestination(Seek2);
     }
+
+    public int GetVehicleCount()
+    {
+        return vehicles.Count;
+    }
 }

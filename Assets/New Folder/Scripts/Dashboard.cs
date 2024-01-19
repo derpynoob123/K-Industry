@@ -13,11 +13,12 @@ public class Dashboard : MonoBehaviour
 
     private void LateUpdate()
     {
-        
+        UpdateDashboard();
     }
 
-    private void UpdatedDashboard()
+    private void UpdateDashboard()
     {
-
+        string vehicleCount = vehicleFleet.GetVehicleCount().ToString();
+        vehicleCountText.text = $"Vehicle: {vehicleCount}";
     }
 }
