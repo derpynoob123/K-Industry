@@ -58,7 +58,6 @@ public class GameManagerScript : MonoBehaviour
         //Timer counting
         minutesTime += minMul * Time.deltaTime;
         int minInt = (int)minutesTime;
-        Debug.Log(minutesTime);
 
         if (minutesTime >= 60)
         {

@@ -13,15 +13,6 @@ public class VehicleController : MonoBehaviour
     [SerializeField]
     private StorageUnitBehaviour storage;
 
-    private void Start()
-    {
-        GoodUnit unit = new()
-        {
-            LifeTimeInHours = 10
-        };
-        storage.ReceiveUnit(unit);
-    }
-
     public void SeekDestination(GameObject destination)
     {
         Node target = pathNetwork.GetNode(destination);
