@@ -14,9 +14,13 @@ public class VehicleFleet : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
-        vehicles[0].Unload(Receive);
         vehicles[0].SeekDestination(Seek);
         yield return new WaitForSeconds(3);
         vehicles[0].SeekDestination(Seek2);
+    }
+
+    public int GetVehicleCount()
+    {
+        return vehicles.Count;
     }
 }

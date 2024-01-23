@@ -3,7 +3,7 @@ public class PlayerResource
     private static int money = 0;
     public static int Money 
     {
-        get => Money;
+        get => money;
         set
         {
             if (value < 0)
