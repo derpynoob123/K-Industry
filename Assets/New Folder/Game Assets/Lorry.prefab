@@ -159,7 +159,7 @@ MonoBehaviour:
   navigator: {fileID: 1411418296637118204}
   movement: {fileID: 5901406331680334839}
   pathNetwork: {fileID: 0}
-  storage: {fileID: 0}
+  storage: {fileID: 5028851304468021579}
 --- !u!114 &1411418296637118204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,8 +241,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5932138545288303847}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2969999, y: 0.19499993, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
