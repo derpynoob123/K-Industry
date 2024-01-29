@@ -17,6 +17,11 @@ public class WindowSelector : MonoBehaviour, ISelectorEvents
         selector.Deselect();
     }
 
+    public GameObject GetWindow()
+    {
+        return selector.SelectedObject;
+    }
+
     public void AddObserverToSelectedEvent(Action observer)
     {
         selector.Selected += observer;

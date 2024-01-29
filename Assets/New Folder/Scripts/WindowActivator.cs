@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class WindowActivator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private WindowSelector windowSelector;
+    [SerializeField]
+    private GameObject activeWindow;
+
+    private void Awake()
     {
-        
+        windowSelector.AddObserverToSelectedEvent(ShowWindow);
+        windowSelector.AddObserverToDeselectedEvent(HideWindow);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ShowWindow()
     {
-        
+        activeWindow = windowSelector.GetWindow();
+        activeWindow.SetActive(true);
+    }
+    
+    private void HideWindow()
+    {
+        activeWindow.SetActive(false);
+        activeWindow = null;
     }
 }
