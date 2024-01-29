@@ -62,12 +62,12 @@ public abstract class SelectionDropdown<T> : MonoBehaviour
     {
         if (dropdown.value == noSelectionOption)
         {
-            Deselected.Invoke();
+            Deselected?.Invoke();
         }
         else
         {
             T selectedOption = optionMenu[dropdown.value];
-            OptionSelected.Invoke(selectedOption);
+            OptionSelected?.Invoke(selectedOption);
         }
     }
 

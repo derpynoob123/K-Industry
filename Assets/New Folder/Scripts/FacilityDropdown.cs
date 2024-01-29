@@ -3,12 +3,12 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 
-public class FacilitySelectionDropdown : SelectionDropdown<FacilityID>
+public class FacilityDropdown : SelectionDropdown<FacilityID>
 {
     [SerializeField]
-    private TileSelectorBehaviour tileSelector;
+    private TileSelector tileSelector;
     [SerializeField]
-    private FacilitySelectorBehaviour facilitySelector;
+    private FacilitySelector facilitySelector;
     [SerializeField]
     private FacilitySpawner facilitySpawner;
 

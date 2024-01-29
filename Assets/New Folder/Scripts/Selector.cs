@@ -12,12 +12,12 @@ public class Selector<T>
     public void Select(T selected)
     {
         SelectedObject = selected;
-        Selected.Invoke();
+        Selected?.Invoke();
     }
 
     public void Deselect()
     {
         SelectedObject = default(T);
-        Deselected.Invoke();
+        Deselected?.Invoke();
     }
 }

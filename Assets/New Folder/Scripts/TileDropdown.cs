@@ -5,12 +5,12 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class TileSelectionDropdown : SelectionDropdown<Tile>
+public class TileDropdown : SelectionDropdown<Tile>
 {
     [SerializeField]
     private MapBehaviour map;
     [SerializeField]
-    private TileSelectorBehaviour tileSelector;
+    private TileSelector tileSelector;
 
     protected override void AddOptionSelectedObservers()
     {

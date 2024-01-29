@@ -3,37 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileSelectorBehaviour : MonoBehaviour
+public class TileSelector : MonoBehaviour
 {
     [SerializeField]
     private GameObject selectedTile;
 
-    private readonly Selector<Tile> tileSelector = new();
+    private readonly Selector<Tile> selector = new();
 
     public void SelectTile(Tile tile)
     {
-        tileSelector.Select(tile);
-        selectedTile = tileSelector.SelectedObject.TileTransform.gameObject;
+        selector.Select(tile);
+        selectedTile = selector.SelectedObject.TileTransform.gameObject;
     }
 
     public void Deselect()
     {
-        tileSelector.Deselect();
+        selector.Deselect();
         selectedTile = null;
     }
 
     public Tile GetSelectedTile()
     {
-        return tileSelector.SelectedObject;
+        return selector.SelectedObject;
     }
 
     public void AddObserverToSelectedEvent(Action observer)
     {
-        tileSelector.Selected += observer;
+        selector.Selected += observer;
     }
 
     public void AddObserverToDeselectedEvent(Action observer)
     {
-        tileSelector.Deselected += observer;
+        selector.Deselected += observer;
     }
 }

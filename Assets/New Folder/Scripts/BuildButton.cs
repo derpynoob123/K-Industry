@@ -7,7 +7,7 @@ public class BuildButton : MonoBehaviour
     [SerializeField]
     private FacilitySpawner facilitySpawner;
     [SerializeField]
-    private FacilitySelectorBehaviour facilitySelector;
+    private FacilitySelector facilitySelector;
 
     private void Awake()
     {

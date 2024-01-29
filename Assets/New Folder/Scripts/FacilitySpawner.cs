@@ -17,9 +17,9 @@ public class FacilitySpawner : MonoBehaviour
     [SerializeField]
     private Transform facilityParent;
     [SerializeField]
-    private TileSelectorBehaviour tileSelector;
+    private TileSelector tileSelector;
     [SerializeField]
-    private FacilitySelectorBehaviour facilitySelector;
+    private FacilitySelector facilitySelector;
     [SerializeField]
     private FacilitySpawn[] facilityPrefabs;
 
