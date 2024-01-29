@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 
-public class FacilitySelectionDropdown : SelectionDropdown<FacilityID>
+public class FacilityDropdown : SelectionDropdown<FacilityID>
 {
     [SerializeField]
     private TileSelector tileSelector;

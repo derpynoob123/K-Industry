@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class TileSelectionDropdown : SelectionDropdown<Tile>
+public class TileDropdown : SelectionDropdown<Tile>
 {
     [SerializeField]
     private MapBehaviour map;
