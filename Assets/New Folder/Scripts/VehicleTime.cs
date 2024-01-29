@@ -9,12 +9,26 @@ public class VehicleTime : MonoBehaviour
     private GameManagerScript time;
 
     [SerializeField]
+    private int[] hoursOfDay = { 0, 0 };
+
+    [SerializeField]
     private int[] minutesOfDay = { 0, 0 };
 
     private const string o = "0";
 
     private void Update()
     {
+        string hours = time.hoursTime.ToString();
+        if (hours.Length != hoursOfDay.Length)
+        {
+            hours = $"{o}{hours}";
+        }
+        for (int hourIndex = 0; hourIndex < hoursOfDay.Length; hourIndex++)
+        {
+            string hour = hours.Substring(hourIndex, 1);
+            hoursOfDay[hourIndex] = int.Parse(hour);
+        }
+
         int minutesInInt = Mathf.FloorToInt(time.minutesTime);
         string minutes = minutesInInt.ToString();
         if (minutes.Length != minutesOfDay.Length)
