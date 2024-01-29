@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleFleet: {fileID: 590172149}
   vehicleCountText: {fileID: 367835464}
-  currentMoneyText: {fileID: 149063060}
+  currentMoneyText: {fileID: 0}
 --- !u!1001 &235396621
 PrefabInstance:
   m_ObjectHideFlags: 0
