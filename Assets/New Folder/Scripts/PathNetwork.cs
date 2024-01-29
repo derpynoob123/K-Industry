@@ -9,7 +9,7 @@ public class PathNetwork : MonoBehaviour
     [SerializeField]
     private Path[] paths;
 
-    private PathfindingGraph graph = new();
+    private readonly PathfindingGraph graph = new();
 
     private void Awake()
     {

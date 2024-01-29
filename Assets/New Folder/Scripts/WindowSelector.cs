@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WindowSelector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private readonly Selector<GameObject> selector = new();
+
+    public void SelectWindow(GameObject window)
     {
-        
+        selector.Select(window);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Deselect()
     {
-        
+        selector.Deselect();
+    }
+
+    public void AddObserverToSelectedEvent(Action observer)
+    {
+        selector.Selected += observer;
+    }
+
+    public void AddObserverToDeselectedEvent(Action observer)
+    {
+        selector.Deselected += observer;
     }
 }
