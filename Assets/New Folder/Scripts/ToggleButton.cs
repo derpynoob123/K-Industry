@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ToggleButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject untoggled;
+    [SerializeField]
+    private GameObject toggled;
+
+    public void Toggle()
     {
-        
+        untoggled.SetActive(false);
+        toggled.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Untoggle()
     {
-        
+        untoggled.SetActive(true);
+        toggled.SetActive(false);
     }
 }
