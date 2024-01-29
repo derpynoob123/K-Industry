@@ -1,15 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class FacilitySelector: MonoBehaviour, ISelectorEvents
+public class WindowSelector : MonoBehaviour, ISelectorEvents
 {
-    private readonly Selector<FacilityID> selector = new();
+    private readonly Selector<GameObject> selector = new();
 
-    public void SelectFacility(FacilityID facility)
+    public void SelectWindow(GameObject window)
     {
-        selector.Select(facility);
+        selector.Select(window);
     }
 
     public void Deselect()
@@ -17,7 +17,7 @@ public class FacilitySelector: MonoBehaviour, ISelectorEvents
         selector.Deselect();
     }
 
-    public FacilityID GetSelectedFacility()
+    public GameObject GetWindow()
     {
         return selector.SelectedObject;
     }

@@ -17,7 +17,7 @@ public class Selector<T>
 
     public void Deselect()
     {
-        SelectedObject = default(T);
+        SelectedObject = default;
         Deselected?.Invoke();
     }
 }
