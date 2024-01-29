@@ -17,6 +17,11 @@ public class WindowActivator : MonoBehaviour
 
     private void ShowWindow()
     {
+        if (activeWindow)
+        {
+            HideWindow();
+        }
+
         activeWindow = windowSelector.GetWindow();
         activeWindow.SetActive(true);
     }
