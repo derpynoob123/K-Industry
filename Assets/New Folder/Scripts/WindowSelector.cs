@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class WindowSelector : MonoBehaviour
+public class WindowSelector : MonoBehaviour, ISelectorEvents
 {
     private readonly Selector<GameObject> selector = new();
 

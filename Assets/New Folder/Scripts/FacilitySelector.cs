@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilitySelector: MonoBehaviour
+public class FacilitySelector: MonoBehaviour, ISelectorEvents
 {
     private readonly Selector<FacilityID> selector = new();
 
