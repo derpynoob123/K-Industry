@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleFleet: {fileID: 590172149}
   vehicleCountText: {fileID: 367835464}
-  currentMoneyText: {fileID: 0}
+  currentMoneyText: {fileID: 467588432}
 --- !u!1001 &235396621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3912,6 +3912,7 @@ GameObject:
   - component: {fileID: 590172149}
   - component: {fileID: 590172150}
   - component: {fileID: 590172151}
+  - component: {fileID: 590172152}
   m_Layer: 0
   m_Name: Transport
   m_TagString: Untagged
@@ -3981,6 +3982,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedVehicle: {fileID: 0}
+--- !u!114 &590172152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590172147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aad664a69953264c9a93a4b93b57298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 1382111945}
+  minutesOfDay: 0000000000000000
 --- !u!1001 &624834184
 PrefabInstance:
   m_ObjectHideFlags: 0
