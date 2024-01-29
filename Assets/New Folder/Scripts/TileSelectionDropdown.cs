@@ -10,7 +10,7 @@ public class TileSelectionDropdown : SelectionDropdown<Tile>
     [SerializeField]
     private MapBehaviour map;
     [SerializeField]
-    private TileSelectorBehaviour tileSelector;
+    private TileSelector tileSelector;
 
     protected override void AddOptionSelectedObservers()
     {

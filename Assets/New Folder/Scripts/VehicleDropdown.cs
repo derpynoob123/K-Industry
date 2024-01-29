@@ -1,26 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class VehicleDropdown : SelectionDropdown<VehicleController>
 {
+    [SerializeField]
+    private VehicleFleet vehicleFleet;
+
     protected override void AddDeselectedObservers()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void AddDropdownOptions()
     {
-        throw new System.NotImplementedException();
+        for (int optionIndex = 0; optionIndex < options.Count; optionIndex++)
+        {
+            string optionText = options[optionIndex].GetGUID();
+            var option = new TMP_Dropdown.OptionData(optionText);
+            dropdown.options.Add(option);
+        }
     }
 
     protected override void AddOptionSelectedObservers()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void SetOptions()
     {
-        throw new System.NotImplementedException();
+        options = vehicleFleet.GetFleet();
     }
 }

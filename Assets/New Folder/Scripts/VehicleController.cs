@@ -1,9 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
+    [SerializeField]
+    private string guid;
+
+    public void GenerateGUID()
+    {
+        guid = Guid.NewGuid().ToString();
+    }
+
+    public string GetGUID()
+    {
+        return guid;
+    }
+
     [SerializeField]
     private VehicleNavigator navigator;
     [SerializeField]
@@ -12,6 +26,11 @@ public class VehicleController : MonoBehaviour
     private PathNetwork pathNetwork;
     [SerializeField]
     private StorageUnitBehaviour storage;
+
+    private void Awake()
+    {
+        GenerateGUID();
+    }
 
     public void SeekDestination(GameObject destination)
     {

@@ -23,4 +23,9 @@ public class VehicleFleet : MonoBehaviour
     {
         return vehicles.Count;
     }
+
+    public List<VehicleController> GetFleet()
+    {
+        return vehicles;
+    }
 }

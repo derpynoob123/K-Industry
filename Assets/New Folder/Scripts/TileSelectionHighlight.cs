@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileSelectionHighlight : MonoBehaviour
 {
     [SerializeField]
-    private TileSelectorBehaviour tileSelector;
+    private TileSelector tileSelector;
     [SerializeField]
     private Transform selectedTileIcon;
 

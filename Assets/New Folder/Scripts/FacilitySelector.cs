@@ -3,32 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FacilitySelectorBehaviour: MonoBehaviour
+public class FacilitySelector: MonoBehaviour
 {
-    private readonly Selector<FacilityID> facilitySelector = new();
+    private readonly Selector<FacilityID> selector = new();
 
     public void SelectFacility(FacilityID facility)
     {
-        facilitySelector.Select(facility);
+        selector.Select(facility);
     }
 
     public void Deselect()
     {
-        facilitySelector.Deselect();
+        selector.Deselect();
     }
 
     public FacilityID GetSelectedFacility()
     {
-        return facilitySelector.SelectedObject;
+        return selector.SelectedObject;
     }
 
     public void AddObserverToSelectedEvent(Action observer)
     {
-        facilitySelector.Selected += observer;
+        selector.Selected += observer;
     }
 
     public void AddObserverToDeselectedEvent(Action observer)
     {
-        facilitySelector.Deselected += observer;
+        selector.Deselected += observer;
     }
 }
