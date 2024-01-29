@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
@@ -10,6 +9,7 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField]
     private Transform vehicle;
     [SerializeField]
+    [Range(0, float.MaxValue)]
     private float speedInKilometrePerHour;
 
     public event Action<Path, float> PathFollow;

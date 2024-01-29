@@ -12,6 +12,14 @@ public class Connection
     {
         StartNode = start;
         EndNode = end;
-        Cost = cost;
+
+        if (cost < 0)
+        {
+            Cost = 0;
+        }
+        else
+        {
+            Cost = cost;
+        }
     }
 }
