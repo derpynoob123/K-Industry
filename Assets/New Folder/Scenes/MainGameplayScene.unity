@@ -3955,8 +3955,12 @@ MonoBehaviour:
   Seek: {fileID: 1033556266}
   Seek2: {fileID: 1658706100}
   Receive: {fileID: 0}
-  Hr: 0000000001000000
-  Min: 0000000000000000
+  Hr:
+    tens: 0
+    ones: 1
+  Min:
+    tens: 0
+    ones: 0
 --- !u!114 &590172150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3998,8 +4002,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: {fileID: 1382111945}
-  hoursOfDay: 0000000000000000
-  minutesOfDay: 0000000000000000
+  currentHoursOfDay:
+    tens: 0
+    ones: 0
+  currentMinutesOfDay:
+    tens: 0
+    ones: 0
 --- !u!1001 &624834184
 PrefabInstance:
   m_ObjectHideFlags: 0
