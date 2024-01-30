@@ -29,7 +29,6 @@ public class VehicleNavigator : MonoBehaviour
 
     public List<Path> GetPath(Node destination)
     {
-        print(currentJunction);
         List<Connection> connections = pathfinder.FindPath(currentNode, destination);
         List<Path> paths = new();
         for (int connectionIndex = 0; connectionIndex < connections.Count; connectionIndex++)
