@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VehicleTime : MonoBehaviour
+public class DayClock : MonoBehaviour
 {
     [SerializeField]
     private GameManagerScript time;
@@ -75,5 +75,23 @@ public class VehicleTime : MonoBehaviour
             string minute = minutes.Substring(minuteIndex, 1);
             MinutesOfDay[minuteIndex] = int.Parse(minute);
         }
+    }
+
+    public bool IsSameHour(int[] hour)
+    {
+        if (HoursOfDay[0] == hour[0] && HoursOfDay[1] == hour[1])
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsSameMinute(int[] minute)
+    {
+        if (MinutesOfDay[0] == minute[0] && MinutesOfDay[1] == minute[1])
+        {
+            return true;
+        }
+        return false;
     }
 }

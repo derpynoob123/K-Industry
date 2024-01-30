@@ -3951,9 +3951,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicles:
   - {fileID: 1292049348}
+  clock: {fileID: 590172152}
   Seek: {fileID: 1033556266}
   Seek2: {fileID: 1658706100}
   Receive: {fileID: 0}
+  Hr: 0000000001000000
+  Min: 0000000000000000
 --- !u!114 &590172150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,6 +3998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: {fileID: 1382111945}
+  hoursOfDay: 0000000000000000
   minutesOfDay: 0000000000000000
 --- !u!1001 &624834184
 PrefabInstance:
@@ -28525,6 +28529,10 @@ PrefabInstance:
     - target: {fileID: 4912226315528895906, guid: 3449be7aacfb0234f961c48818399018, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901406331680334839, guid: 3449be7aacfb0234f961c48818399018, type: 3}
+      propertyPath: speedInKilometrePerHour
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5932138545288303847, guid: 3449be7aacfb0234f961c48818399018, type: 3}
       propertyPath: m_Name
