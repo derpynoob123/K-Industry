@@ -1,94 +1,128 @@
+using System;
 using UnityEngine;
 
 public class DayClock : MonoBehaviour
 {
+    [Serializable]
+    public class ClockTime
+    {
+        private readonly int tensLimit;
+        private readonly int onesLimit;
+
+        private int tens;
+        public int Tens
+        {
+            get => tens;
+            set
+            {
+                if (value > tensLimit)
+                {
+                    Debug.LogError("Tens exceeds the limit!");
+                    return;
+                }
+                if (value < 0)
+                {
+                    Debug.LogError("Tens less than zero!");
+                    return;
+                }
+                tens = value;
+            }
+        }
+
+        private int ones;
+        public int Ones
+        {
+            get => ones;
+            set
+            {
+                if (value > onesLimit)
+                {
+                    Debug.LogError("Ones exceeds the limit!");
+                    return;
+                }
+                if (value < 0)
+                {
+                    Debug.LogError("Ones less than zero!");
+                    return;
+                }
+                ones = value;
+            }
+        }
+
+        public ClockTime(int tensLimit, int onesLimit)
+        {
+            this.tensLimit = tensLimit;
+            this.onesLimit = onesLimit;
+        }
+    }
+
     [SerializeField]
     private GameManagerScript time;
 
     [SerializeField]
-    private int[] hoursOfDay = { 0, 0 };
-    public int[] HoursOfDay
-    {
-        get => hoursOfDay;
-        private set
-        {
-            if (value[0] > hourLimit)
-            {
-                Debug.LogError("Hour exceeds the limit!");
-                return;
-            }
-            if (value[0] < 0 || value[1] < 0)
-            {
-                Debug.LogError("Hour less than zero!");
-                return;
-            }
-            hoursOfDay = value;
-        }
-    }
+    private ClockTime hoursOfDay = new(hourTensLimit, hourOnesLimit);
 
     [SerializeField]
-    private int[] minutesOfDay = { 0, 0 };
-    public int[] MinutesOfDay
-    {
-        get => minutesOfDay;
-        private set
-        {
-            if (value[0] > minuteLimit)
-            {
-                Debug.LogError("Minute exceeds the limit!");
-                return;
-            }
-            if (value[0] < 0 || value[1] < 0)
-            {
-                Debug.LogError("Minute less than zero!");
-                return;
-            }
-            minutesOfDay = value;
-        }
-    }
+    private ClockTime minutesOfDay = new(minuteTensLimit, minuteOnesLimit);
+
+    public event Action MinuteChanged;
+    public event Action HourChanged;
 
     private const string o = "0";
-    private const int hourLimit = 2;
-    private const int minuteLimit = 6;
+
+    private const int hourTensLimit = 2;
+    private const int hourOnesLimit = 9;
+
+    private const int minuteTensLimit = 6;
+    private const int minuteOnesLimit = 9;
+
+    private const int lengthLimit = 2;
 
     private void Update()
     {
         string hours = time.hoursTime.ToString();
-        if (hours.Length != HoursOfDay.Length)
+        if (hours.Length != lengthLimit)
         {
             hours = $"{o}{hours}";
         }
-        for (int hourIndex = 0; hourIndex < HoursOfDay.Length; hourIndex++)
-        {
-            string hour = hours.Substring(hourIndex, 1);
-            HoursOfDay[hourIndex] = int.Parse(hour);
-        }
+        string hourTens = hours[..1];
+        hoursOfDay.Tens = int.Parse(hourTens);
+        string hourOnes = hours.Substring(1, 1);
+        hoursOfDay.Ones = int.Parse(hourOnes);
 
         int minutesInInt = Mathf.FloorToInt(time.minutesTime);
         string minutes = minutesInInt.ToString();
-        if (minutes.Length != MinutesOfDay.Length)
+        if (minutes.Length != lengthLimit)
         {
             minutes = $"{o}{minutes}";
         }
-        for (int minuteIndex = 0; minuteIndex < MinutesOfDay.Length; minuteIndex++)
-        {
-            string minute = minutes.Substring(minuteIndex, 1);
-            MinutesOfDay[minuteIndex] = int.Parse(minute);
-        }
+        string minuteTens = minutes[..1];
+        minutesOfDay.Ones = int.Parse(minuteTens);
+        string minuteOnes = minutes.Substring(1, 1);
+        minutesOfDay.Tens = int.Parse(minuteOnes);
     }
 
-    public bool IsSameHour(int[] hour)
+    public bool IsSameTimeOfDay(ClockTime hours, ClockTime minutes)
     {
-        if (HoursOfDay[0] == hour[0] && HoursOfDay[1] == hour[1])
+        if (IsSameHour(hours) && IsSameMinute(minutes))
         {
             return true;
         }
         return false;
     }
 
-    public bool IsSameMinute(int[] minute)
+    public bool IsSameHour(ClockTime hours)
     {
-        if (MinutesOfDay[0] == minute[0] && MinutesOfDay[1] == minute[1])
+        if (hours.Tens == hoursOfDay.Tens && hours.Ones == hoursOfDay.Ones)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsSameMinute(ClockTime minutes)
+    {
+        if (minutes.Tens == minutesOfDay.Tens && minutes.Ones == minutesOfDay.Ones)
         {
             return true;
         }

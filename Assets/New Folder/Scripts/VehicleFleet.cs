@@ -12,13 +12,18 @@ public class VehicleFleet : MonoBehaviour
     public GameObject Seek;
     public GameObject Seek2;
     public GameObject Receive;
-    
-    public int[] Hr = { 0, 0 };
-    public int[] Min = { 0, 0 };
 
-    private void LateUpdate()
+    public DayClock.ClockTime Min;
+    public DayClock.ClockTime Hr;
+
+    private void Awake()
     {
-        if (clock.IsSameHour(Hr) && clock.IsSameMinute(Min))
+        clock.MinuteChanged += Chekk;
+    }
+
+    private void Chekk()
+    {
+        if (clock.IsSameTimeOfDay(Hr, Min))
         {
             print('r');
             StartCoroutine(Rout());
