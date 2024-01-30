@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Connection
 {
     public Node StartNode { get; }
@@ -12,6 +8,14 @@ public class Connection
     {
         StartNode = start;
         EndNode = end;
-        Cost = cost;
+
+        if (cost < 0)
+        {
+            Cost = 0;
+        }
+        else
+        {
+            Cost = cost;
+        }
     }
 }

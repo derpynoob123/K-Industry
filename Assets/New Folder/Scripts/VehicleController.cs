@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
@@ -40,6 +39,8 @@ public class VehicleController : MonoBehaviour
     [SerializeField]
     private StorageUnitBehaviour storage;
 
+    private Coroutine seekRoutine;
+
     private void Awake()
     {
         GenerateGUID();
@@ -47,8 +48,14 @@ public class VehicleController : MonoBehaviour
 
     public void SeekDestination(GameObject destination)
     {
+        if (seekRoutine is not null)
+        {
+            StopCoroutine(seekRoutine);
+            Debug.LogWarning("Current seek aborted. Using new destination.");
+        }
+
         Node target = pathNetwork.GetNode(destination);
-        StartCoroutine(Seek(target));
+        seekRoutine = StartCoroutine(Seek(target));
     }
 
     private IEnumerator Seek(Node destination)
@@ -65,6 +72,7 @@ public class VehicleController : MonoBehaviour
 
         Path[] paths = navigator.GetPath(destination).ToArray();
         movement.SeekPath(paths);
+        seekRoutine = null;
     }
 
     public void Stop()
