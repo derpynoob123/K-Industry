@@ -17,6 +17,7 @@ public class VehiclePlanner : MonoBehaviour
 
     public List<VehiclePlan> Plans = new();
 
+    private Dictionary<TimeInstance, int> planTimings;
     private Queue<VehiclePlan> planQueue;
     private Queue<VehicleTask> taskQueue;
     private VehiclePlan currentPlan;
@@ -25,13 +26,31 @@ public class VehiclePlanner : MonoBehaviour
     private void Awake()
     {
         clock.MinutePassed += UpdatePlan;
+
+        InitialisePlanTimings();
+    }
+
+    private void InitialisePlanTimings()
+    {
+        planTimings = new();
+        for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
+        {
+            TimeInstance timing = Plans[planIndex].StartTime;
+            if (planTimings.ContainsKey(timing))
+            {
+                planTimings[timing]++;
+                continue;
+            }
+
+            planTimings.Add(timing, 1);
+        }
     }
 
     private void UpdatePlan()
     {
         if (IsThereAPlanStarting())
         {
-
+            int startingPlans = planTimings[]
         }
 
         if (currentPlan is null)
@@ -47,13 +66,11 @@ public class VehiclePlanner : MonoBehaviour
         for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
         {
             VehiclePlan plan = Plans[planIndex];
-            if (clock.IsSameTimeOfDay(plan.StartTime))
+            if (clock.IsCurrentTimeOfDay(plan.StartTime))
             {
                 return true;
             }
         }
         return false;
     }
-
-
 }

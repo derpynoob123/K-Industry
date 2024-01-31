@@ -49,4 +49,13 @@ public class ClockMinute : IClockTime
 
     private const int minuteTensLimit = 6;
     private const int minuteOnesLimit = 9;
+
+    public static bool IsSameMinute(ClockMinute minuteA, ClockMinute minuteB)
+    {
+        if (minuteA.Tens == minuteB.Tens && minuteA.Ones == minuteB.Ones)
+        {
+            return true;
+        }
+        return false;
+    }
 }

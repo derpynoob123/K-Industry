@@ -39,7 +39,7 @@ public class DayClock : MonoBehaviour
         currentHoursOfDay.Tens = int.Parse(tens);
         string ones = hours.Substring(1, 1);
         currentHoursOfDay.Ones = int.Parse(ones);
-        if (!IsSameHour(oldHoursOfDay))
+        if (!IsCurrentHour(oldHoursOfDay))
         {
             HourPassed?.Invoke();
         }
@@ -60,36 +60,9 @@ public class DayClock : MonoBehaviour
         currentMinutesOfDay.Tens = int.Parse(tens);
         string ones = minutes.Substring(1, 1);
         currentMinutesOfDay.Ones = int.Parse(ones);
-        if (!IsSameMinute(oldMinutesOfDay))
+        if (!IsCurrentMinute(oldMinutesOfDay))
         {
             MinutePassed?.Invoke();
         }
-    }
-
-    public bool IsSameTimeOfDay(TimeInstance time)
-    {
-        if (IsSameHour(time.Hour) && IsSameMinute(time.Minute))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public bool IsSameHour(ClockHour hours)
-    {
-        if (hours.Tens == currentHoursOfDay.Tens && hours.Ones == currentHoursOfDay.Ones)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public bool IsSameMinute(ClockMinute minutes)
-    {
-        if (minutes.Tens == currentMinutesOfDay.Tens && minutes.Ones == currentMinutesOfDay.Ones)
-        {
-            return true;
-        }
-        return false;
     }
 }
