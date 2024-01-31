@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +13,47 @@ public class VehicleNavigator : MonoBehaviour
 
     private readonly AStarPathFinder pathfinder = new();
     private Node currentNode;
+    private Coroutine seekRoutine;
 
     private void Awake()
     {
         vehicleMovement.ReachedJunction += UpdateCurrentPosition;
 
         UpdateCurrentPosition(currentJunction);
+    }
+
+    public void SeekDestination(GameObject destination)
+    {
+        if (seekRoutine is not null)
+        {
+            StopCoroutine(seekRoutine);
+            Debug.LogWarning("Current seek aborted. Using new destination.");
+        }
+
+        Node target = pathNetwork.GetNode(destination);
+        seekRoutine = StartCoroutine(Seek(target));
+    }
+
+    private IEnumerator Seek(Node destination)
+    {
+        if (vehicleMovement.IsFollowingPath)
+        {
+            Stop();
+        }
+
+        while (vehicleMovement.IsFollowingPath)
+        {
+            yield return null;
+        }
+
+        Path[] paths = GetPath(destination).ToArray();
+        vehicleMovement.SeekPath(paths);
+        seekRoutine = null;
+    }
+
+    public void Stop()
+    {
+        vehicleMovement.AbortPath();
     }
 
     public void UpdateCurrentPosition(GameObject current)
