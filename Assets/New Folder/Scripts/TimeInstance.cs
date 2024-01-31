@@ -3,8 +3,8 @@
 [Serializable]
 public class TimeInstance
 {
-    public ClockHour Hour;
-    public ClockMinute Minute;
+    public ClockHour Hour = new();
+    public ClockMinute Minute = new();
 
     public static bool IsSameTime(TimeInstance timeA, TimeInstance timeB)
     {
