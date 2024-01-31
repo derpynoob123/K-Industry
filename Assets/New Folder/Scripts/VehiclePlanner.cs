@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 [Serializable]
@@ -17,9 +17,9 @@ public class VehiclePlanner : MonoBehaviour
 
     public List<VehiclePlan> Plans = new();
 
-    private Dictionary<TimeInstance, int> planTimings;
-    private Queue<VehiclePlan> planQueue;
-    private Queue<VehicleTask> taskQueue;
+    private Dictionary<TimeInstance, List<VehiclePlan>> planTimings;
+    private Queue<VehiclePlan> planQueue = new();
+    private Queue<VehicleTask> taskQueue = new();
     private VehiclePlan currentPlan;
     private VehicleTask currentTask;
 
@@ -35,42 +35,54 @@ public class VehiclePlanner : MonoBehaviour
         planTimings = new();
         for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
         {
-            TimeInstance timing = Plans[planIndex].StartTime;
-            if (planTimings.ContainsKey(timing))
+            VehiclePlan plan = Plans[planIndex];
+            TimeInstance timing = plan.StartTime;
+            if (!planTimings.ContainsKey(timing))
             {
-                planTimings[timing]++;
-                continue;
+                planTimings.Add(timing, new());
             }
 
-            planTimings.Add(timing, 1);
+            planTimings[timing].Add(plan);
         }
     }
 
     private void UpdatePlan()
     {
-        if (IsThereAPlanStarting())
-        {
-            int startingPlans = planTimings[]
-        }
+        CheckForNewPlans();
 
         if (currentPlan is null)
         {
-            return;
+            if (planQueue.Count <= 0)
+            {
+                return;
+            }
+
+            currentPlan = planQueue.Dequeue();
         }
 
 
     }
 
-    private bool IsThereAPlanStarting()
+    private void CheckForNewPlans()
     {
-        for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
+        if (planTimings.ContainsKey(clock.CurrentTimeOfDay))
         {
-            VehiclePlan plan = Plans[planIndex];
-            if (clock.IsCurrentTimeOfDay(plan.StartTime))
+            List<VehiclePlan> plans = planTimings[clock.CurrentTimeOfDay];
+            if (plans.Count <= 0)
             {
-                return true;
+                return;
+            }
+
+            int randomIndex = UnityEngine.Random.Range(0, plans.Count);
+            VehiclePlan plan = plans[randomIndex];
+            if (currentPlan is null)
+            {
+                currentPlan = plan;
+            }
+            else
+            {
+                planQueue.Enqueue(plan);
             }
         }
-        return false;
     }
 }
