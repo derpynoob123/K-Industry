@@ -3,8 +3,5 @@ using UnityEngine;
 
 public class VehiclePlanner : MonoBehaviour
 {
-    public class VehiclePlan
-    {
-        public List<VehicleTask> Tasks;
-    }
+    public List<VehicleTask> Tasks = new();
 }
