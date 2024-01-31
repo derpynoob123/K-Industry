@@ -17,7 +17,10 @@ public class VehiclePlanner : MonoBehaviour
 
     public List<VehiclePlan> Plans = new();
 
+    private Queue<VehiclePlan> planQueue;
+    private Queue<VehicleTask> taskQueue;
     private VehiclePlan currentPlan;
+    private VehicleTask currentTask;
 
     private void Awake()
     {
@@ -26,9 +29,31 @@ public class VehiclePlanner : MonoBehaviour
 
     private void UpdatePlan()
     {
-        for (int plan = 0; plan < Plans.Count; plan++)
+        if (IsThereAPlanStarting())
         {
 
         }
+
+        if (currentPlan is null)
+        {
+            return;
+        }
+
+
     }
+
+    private bool IsThereAPlanStarting()
+    {
+        for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
+        {
+            VehiclePlan plan = Plans[planIndex];
+            if (clock.IsSameTimeOfDay(plan.StartTime))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
