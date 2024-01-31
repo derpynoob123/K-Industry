@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using System.Linq;
+using System.Collections;
 
 [Serializable]
 public class VehiclePlan
@@ -58,9 +59,24 @@ public class VehiclePlanner : MonoBehaviour
             }
 
             currentPlan = planQueue.Dequeue();
+            taskQueue = new Queue<VehicleTask>(currentPlan.Tasks);
         }
 
+        if (currentTask == null)
+        {
+            if (taskQueue.Count <= 0)
+            {
+                currentPlan = null;
+                return;
+            }
 
+            currentTask = taskQueue.Dequeue();
+        }
+
+        if (!currentTask.Running)
+        {
+            currentTask = null;
+        }
     }
 
     private void CheckForNewPlans()
@@ -75,14 +91,7 @@ public class VehiclePlanner : MonoBehaviour
 
             int randomIndex = UnityEngine.Random.Range(0, plans.Count);
             VehiclePlan plan = plans[randomIndex];
-            if (currentPlan is null)
-            {
-                currentPlan = plan;
-            }
-            else
-            {
-                planQueue.Enqueue(plan);
-            }
+            planQueue.Enqueue(plan);
         }
     }
 }
