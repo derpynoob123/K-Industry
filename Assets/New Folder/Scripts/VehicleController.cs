@@ -8,7 +8,7 @@ public class VehicleController : MonoBehaviour
 
     private const int guidSubLength = 4;
 
-    public void GenerateGUID()
+    private void GenerateGUID()
     {
         guid = Guid.NewGuid().ToString();
     }
