@@ -10,4 +10,9 @@ public class GoToJunction : VehicleTask
     {
         vehicleNavigator = gameObject.GetComponent<VehicleNavigator>();
     }
+
+    public override void ExecuteTask()
+    {
+        vehicleNavigator.Seek(Junction);
+    }
 }

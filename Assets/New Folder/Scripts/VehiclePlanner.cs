@@ -1,7 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehiclePlanner : MonoBehaviour
+[Serializable]
+public class VehiclePlan
 {
     public List<VehicleTask> Tasks = new();
+}
+
+public class VehiclePlanner : MonoBehaviour
+{
+    public List<VehiclePlan> Plans = new();
 }
