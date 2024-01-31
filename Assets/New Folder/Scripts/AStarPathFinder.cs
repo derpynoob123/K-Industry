@@ -87,7 +87,7 @@ public class AStarPathFinder
         }
         if (currentNode.Node != goalNode)
         {
-            return new();
+            return null;
         }
         while (currentNode.Node != startNode)
         {
@@ -95,7 +95,7 @@ public class AStarPathFinder
             currentNode = closedNodes[currentNode.Connection.StartNode];
         }
         path.Reverse();
-        return path; ;
+        return path;
     }
 
     private NodeRecord FindNodeWithLowestEstimatedCost()

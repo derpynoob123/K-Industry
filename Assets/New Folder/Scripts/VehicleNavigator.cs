@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class VehicleNavigator : MonoBehaviour
     private PathNetwork pathNetwork;
     [SerializeField]
     private VehicleMovement vehicleMovement;
+
+    public event Action CannotReachDestination;
 
     private readonly AStarPathFinder pathfinder = new();
     private Node currentNode;
@@ -47,7 +50,15 @@ public class VehicleNavigator : MonoBehaviour
         }
 
         Path[] paths = GetPath(destination).ToArray();
-        vehicleMovement.SeekPath(paths);
+        if (paths is not null)
+        {
+            vehicleMovement.SeekPath(paths);
+        }
+        else
+        {
+            CannotReachDestination?.Invoke();
+            Debug.LogError("There is no path to the destination. Aborting seek.");
+        }
         seekRoutine = null;
     }
 
