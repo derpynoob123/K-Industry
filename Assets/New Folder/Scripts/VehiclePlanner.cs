@@ -6,8 +6,7 @@ using UnityEngine;
 [Serializable]
 public class VehiclePlan
 {
-    public ClockHour StartHour;
-    public ClockMinute StartMinute;
+    public TimeInstance StartTime;
     public List<VehicleTask> Tasks = new();
 }
 
@@ -27,6 +26,9 @@ public class VehiclePlanner : MonoBehaviour
 
     private void UpdatePlan()
     {
+        for (int plan = 0; plan < Plans.Count; plan++)
+        {
 
+        }
     }
 }

@@ -66,9 +66,9 @@ public class DayClock : MonoBehaviour
         }
     }
 
-    public bool IsSameTimeOfDay(ClockHour hours, ClockMinute minutes)
+    public bool IsSameTimeOfDay(TimeInstance time)
     {
-        if (IsSameHour(hours) && IsSameMinute(minutes))
+        if (IsSameHour(time.Hour) && IsSameMinute(time.Minute))
         {
             return true;
         }
