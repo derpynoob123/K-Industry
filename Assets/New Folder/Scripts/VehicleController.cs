@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
@@ -30,16 +29,8 @@ public class VehicleController : MonoBehaviour
         return guid.Substring(startIndex, guidSubLength);
     }
 
-    [SerializeField]
-    private StorageUnitBehaviour storage;
-
     private void Awake()
     {
         GenerateGUID();
-    }
-
-    public void Unload(GameObject receiver)
-    {
-        storage.SendUnit(receiver);
     }
 }
