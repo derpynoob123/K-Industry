@@ -22,7 +22,7 @@ public class VehicleNavigator : MonoBehaviour
         UpdateCurrentPosition(currentJunction);
     }
 
-    public void SeekDestination(GameObject destination)
+    public void Seek(GameObject destination)
     {
         if (seekRoutine is not null)
         {
