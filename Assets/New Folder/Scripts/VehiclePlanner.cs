@@ -5,8 +5,18 @@ using UnityEngine;
 [Serializable]
 public class VehiclePlan
 {
-    public TimeInstance StartTime;
-    public List<VehicleTask> Tasks = new();
+    [SerializeField]
+    private TimeInstance startTime = new();
+    public TimeInstance StartTime
+    {
+        get => startTime;
+    }
+    [SerializeField]
+    private List<VehicleTask> tasks = new();
+    public List<VehicleTask> Tasks
+    {
+        get => tasks;
+    }
 }
 
 public class VehiclePlanner : MonoBehaviour
@@ -24,7 +34,7 @@ public class VehiclePlanner : MonoBehaviour
 
     private void Awake()
     {
-        clock.MinutePassed += UpdatePlan;
+        clock.MinutePassed += Process;
 
         InitialisePlanTimings();
     }
@@ -45,52 +55,67 @@ public class VehiclePlanner : MonoBehaviour
         }
     }
 
-    private void UpdatePlan()
+    private void Process()
     {
-        CheckForNewPlans();
-
-        if (currentPlan is null)
-        {
-            if (planQueue.Count <= 0)
-            {
-                return;
-            }
-
-            currentPlan = planQueue.Dequeue();
-            taskQueue = new Queue<VehicleTask>(currentPlan.Tasks);
-        }
-
+        UpdatePlan();
         if (currentTask == null)
         {
-            if (taskQueue.Count <= 0)
-            {
-                currentPlan = null;
-                return;
-            }
-
-            currentTask = taskQueue.Dequeue();
-            currentTask.ExecuteTask();
+            return;
         }
 
-        if (!currentTask.Running)
-        {
-            currentTask = null;
-        }
+        UpdateTask();
     }
 
-    private void CheckForNewPlans()
+    private void UpdatePlan()
     {
         if (planTimings.ContainsKey(clock.CurrentTimeOfDay))
         {
             List<VehiclePlan> plans = planTimings[clock.CurrentTimeOfDay];
-            if (plans.Count <= 0)
+            if (plans.Count > 0)
             {
-                return;
+                int randomIndex = UnityEngine.Random.Range(0, plans.Count);
+                VehiclePlan plan = plans[randomIndex];
+                planQueue.Enqueue(plan);
             }
-
-            int randomIndex = UnityEngine.Random.Range(0, plans.Count);
-            VehiclePlan plan = plans[randomIndex];
-            planQueue.Enqueue(plan);
         }
+
+        if (currentPlan is null && planQueue.Count > 0)
+        {
+            VehiclePlan plan = planQueue.Dequeue();
+            if (plan.Tasks.Count > 0)
+            {
+                currentPlan = plan;
+                taskQueue = new Queue<VehicleTask>(currentPlan.Tasks);
+
+                BeginNextTask();
+            }
+        }
+    }
+
+    private void UpdateTask()
+    {
+        if (!currentTask.Running)
+        {
+            currentTask = null;
+        }
+
+        if (currentTask == null)
+        {
+            if (taskQueue.Count > 0)
+            {
+                BeginNextTask();
+            }
+            else
+            {
+                currentPlan = null;
+            }
+        }
+    }
+
+    private void BeginNextTask()
+    {
+        currentTask = taskQueue.Dequeue();
+        currentTask.ExecuteTask();
+        currentTask.Running = true;
     }
 }
