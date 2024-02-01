@@ -24,9 +24,8 @@ public class VehiclePlanner : MonoBehaviour
     [SerializeField]
     private DayClock clock;
 
-    public List<VehiclePlan> Plans = new();
-
-    private Dictionary<TimeInstance, List<VehiclePlan>> planTimings;
+    private readonly List<VehiclePlan> plans = new();
+    private readonly Dictionary<TimeInstance, List<VehiclePlan>> plansDictionary = new();
     private readonly Queue<VehiclePlan> planQueue = new();
     private readonly Queue<VehicleTask> taskQueue = new();
     private VehiclePlan currentPlan;
@@ -36,22 +35,21 @@ public class VehiclePlanner : MonoBehaviour
     {
         clock.MinutePassed += Process;
 
-        InitialisePlanTimings();
+        UpdatePlanDictionary();
     }
 
-    private void InitialisePlanTimings()
+    private void UpdatePlanDictionary()
     {
-        planTimings = new();
-        for (int planIndex = 0; planIndex < Plans.Count; planIndex++)
+        plansDictionary.Clear();
+        for (int planIndex = 0; planIndex < plans.Count; planIndex++)
         {
-            VehiclePlan plan = Plans[planIndex];
+            VehiclePlan plan = plans[planIndex];
             TimeInstance timing = plan.StartTime;
-            if (!planTimings.ContainsKey(timing))
+            if (!plansDictionary.ContainsKey(timing))
             {
-                planTimings.Add(timing, new());
+                plansDictionary.Add(timing, new());
             }
-
-            planTimings[timing].Add(plan);
+            plansDictionary[timing].Add(plan);
         }
     }
 
@@ -68,9 +66,9 @@ public class VehiclePlanner : MonoBehaviour
 
     private void UpdatePlan()
     {
-        if (planTimings.ContainsKey(clock.CurrentTimeOfDay))
+        if (plansDictionary.ContainsKey(clock.CurrentTimeOfDay))
         {
-            List<VehiclePlan> plans = planTimings[clock.CurrentTimeOfDay];
+            List<VehiclePlan> plans = plansDictionary[clock.CurrentTimeOfDay];
             if (plans.Count > 0)
             {
                 VehiclePlan plan;
