@@ -7,22 +7,33 @@ public class DayClock : MonoBehaviour
     private GameManagerScript time;
 
     [SerializeField]
-    private ClockHour currentHoursOfDay = new();
-
-    [SerializeField]
-    private ClockMinute currentMinutesOfDay = new();
+    private string currentTimeInString;
 
     public event Action HourPassed;
     public event Action MinutePassed;
 
-    private const string o = "0";
+    public TimeInstance CurrentTimeOfDay { get; private set; }
 
+    private const string o = "0";
     private const int lengthLimit = 2;
+
+    private void Awake()
+    {
+        CurrentTimeOfDay = new();
+    }
 
     private void Update()
     {
         UpdateHours();
         UpdateMinutes();
+        UpdateCurrentTime();
+    }
+
+    private void UpdateCurrentTime()
+    {
+        string hour = $"{CurrentTimeOfDay.Hour.Tens}{CurrentTimeOfDay.Hour.Ones}";
+        string minute = $"{CurrentTimeOfDay.Minute.Tens}{CurrentTimeOfDay.Minute.Ones}";
+        currentTimeInString = hour + minute;
     }
 
     private void UpdateHours()
@@ -32,14 +43,17 @@ public class DayClock : MonoBehaviour
         {
             hours = $"{o}{hours}";
         }
-        ClockHour oldHoursOfDay = currentHoursOfDay;
-        oldHoursOfDay.Tens = currentHoursOfDay.Tens;
-        oldHoursOfDay.Ones = currentHoursOfDay.Ones;
+
+        ClockHour oldHoursOfDay = new()
+        {
+            Tens = CurrentTimeOfDay.Hour.Tens,
+            Ones = CurrentTimeOfDay.Hour.Ones
+        };
         string tens = hours[..1];
-        currentHoursOfDay.Tens = int.Parse(tens);
+        CurrentTimeOfDay.Hour.Tens = int.Parse(tens);
         string ones = hours.Substring(1, 1);
-        currentHoursOfDay.Ones = int.Parse(ones);
-        if (!IsSameHour(oldHoursOfDay))
+        CurrentTimeOfDay.Hour.Ones = int.Parse(ones);
+        if (!ClockHour.IsSameHour(oldHoursOfDay, CurrentTimeOfDay.Hour))
         {
             HourPassed?.Invoke();
         }
@@ -53,43 +67,18 @@ public class DayClock : MonoBehaviour
         {
             minutes = $"{o}{minutes}";
         }
-        ClockMinute oldMinutesOfDay = new();
-        oldMinutesOfDay.Tens = currentMinutesOfDay.Tens;
-        oldMinutesOfDay.Ones = currentMinutesOfDay.Ones;
+        ClockMinute oldMinutesOfDay = new()
+        {
+            Tens = CurrentTimeOfDay.Minute.Tens,
+            Ones = CurrentTimeOfDay.Minute.Ones
+        };
         string tens = minutes[..1];
-        currentMinutesOfDay.Tens = int.Parse(tens);
+        CurrentTimeOfDay.Minute.Tens = int.Parse(tens);
         string ones = minutes.Substring(1, 1);
-        currentMinutesOfDay.Ones = int.Parse(ones);
-        if (!IsSameMinute(oldMinutesOfDay))
+        CurrentTimeOfDay.Minute.Ones = int.Parse(ones);
+        if (!ClockMinute.IsSameMinute(oldMinutesOfDay, CurrentTimeOfDay.Minute))
         {
             MinutePassed?.Invoke();
         }
-    }
-
-    public bool IsSameTimeOfDay(ClockHour hours, ClockMinute minutes)
-    {
-        if (IsSameHour(hours) && IsSameMinute(minutes))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public bool IsSameHour(ClockHour hours)
-    {
-        if (hours.Tens == currentHoursOfDay.Tens && hours.Ones == currentHoursOfDay.Ones)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public bool IsSameMinute(ClockMinute minutes)
-    {
-        if (minutes.Tens == currentMinutesOfDay.Tens && minutes.Ones == currentMinutesOfDay.Ones)
-        {
-            return true;
-        }
-        return false;
     }
 }

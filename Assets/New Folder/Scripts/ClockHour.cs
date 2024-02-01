@@ -49,4 +49,13 @@ public class ClockHour : IClockTime
 
     private const int hourTensLimit = 2;
     private const int hourOnesLimit = 9;
+
+    public static bool IsSameHour(ClockHour hourA, ClockHour hourB)
+    {
+        if (hourA.Tens == hourB.Tens && hourA.Ones == hourB.Ones)
+        {
+            return true;
+        }
+        return false;
+    }
 }
