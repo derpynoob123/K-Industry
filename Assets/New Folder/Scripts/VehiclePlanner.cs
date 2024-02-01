@@ -23,8 +23,9 @@ public class VehiclePlanner : MonoBehaviour
 {
     [SerializeField]
     private DayClock clock;
+    [SerializeField]
+    private List<VehiclePlan> plans = new();
 
-    private readonly List<VehiclePlan> plans = new();
     private readonly Dictionary<TimeInstance, List<VehiclePlan>> plansDictionary = new();
     private readonly Queue<VehiclePlan> planQueue = new();
     private readonly Queue<VehicleTask> taskQueue = new();
@@ -44,6 +45,12 @@ public class VehiclePlanner : MonoBehaviour
         for (int planIndex = 0; planIndex < plans.Count; planIndex++)
         {
             VehiclePlan plan = plans[planIndex];
+            if (plan.Tasks.Count <= 0)
+            {
+                Debug.LogError("No tasks in plan.");
+                continue;
+            }
+
             TimeInstance timing = plan.StartTime;
             if (!plansDictionary.ContainsKey(timing))
             {
@@ -55,66 +62,27 @@ public class VehiclePlanner : MonoBehaviour
 
     private void Process()
     {
-        UpdatePlan();
-        if (currentTask == null)
+        if (IsTimeToStartPlan())
+        {
+            VehiclePlan plan = GetPlan(clock.CurrentTimeOfDay);
+            planQueue.Enqueue(plan);
+        }
+
+        if (!CurrentPlanExists() && HavePlansInQueue())
+        {
+            BeginNextPlan();
+            BeginNextTask();
+        }
+
+        if (!CurrentTaskExists())
         {
             return;
         }
 
-        UpdateTask();
-    }
-
-    private void UpdatePlan()
-    {
-        if (plansDictionary.ContainsKey(clock.CurrentTimeOfDay))
-        {
-            List<VehiclePlan> plans = plansDictionary[clock.CurrentTimeOfDay];
-            if (plans.Count > 0)
-            {
-                VehiclePlan plan;
-                if (plans.Count == 1)
-                {
-                    plan = plans[0];
-                }
-                else
-                {
-                    int randomIndex = UnityEngine.Random.Range(0, plans.Count);
-                    plan = plans[randomIndex];
-                }
-                planQueue.Enqueue(plan);
-            }
-        }
-
-        if (currentPlan is null && planQueue.Count > 0)
-        {
-            VehiclePlan plan = planQueue.Dequeue();
-            if (plan.Tasks.Count > 0)
-            {
-                currentPlan = plan;
-                for (int taskIndex = 0; taskIndex < currentPlan.Tasks.Count; taskIndex++)
-                {
-                    VehicleTask task = currentPlan.Tasks[taskIndex];
-                    taskQueue.Enqueue(task);
-                }
-                BeginNextTask();
-            }
-            else
-            {
-                Debug.LogWarning("No tasks in plan. Aborting plan.");
-            }
-        }
-    }
-
-    private void UpdateTask()
-    {
         if (!currentTask.Running)
         {
             currentTask = null;
-        }
-
-        if (currentTask == null)
-        {
-            if (taskQueue.Count > 0)
+            if (HaveTasksInQueue())
             {
                 BeginNextTask();
             }
@@ -125,10 +93,87 @@ public class VehiclePlanner : MonoBehaviour
         }
     }
 
+    private VehiclePlan GetPlan(TimeInstance time)
+    {
+        List<VehiclePlan> plans = plansDictionary[time];
+        VehiclePlan plan;
+        if (plans.Count == 1)
+        {
+            plan = plans[0];
+        }
+        else
+        {
+            int randomIndex = UnityEngine.Random.Range(0, plans.Count);
+            plan = plans[randomIndex];
+        }
+        return plan;
+    }
+
+    private void BeginNextPlan()
+    {
+        currentPlan = planQueue.Dequeue();
+        SetUpTasks(currentPlan);
+    }
+
+    private void SetUpTasks(VehiclePlan plan)
+    {
+        taskQueue.Clear();
+        for (int taskIndex = 0; taskIndex < plan.Tasks.Count; taskIndex++)
+        {
+            VehicleTask task = plan.Tasks[taskIndex];
+            taskQueue.Enqueue(task);
+        }
+    }
+
     private void BeginNextTask()
     {
         currentTask = taskQueue.Dequeue();
         currentTask.ExecuteTask();
         currentTask.Running = true;
+    }
+
+    private bool CurrentPlanExists()
+    {
+        if (currentPlan is null)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private bool CurrentTaskExists()
+    {
+        if (currentTask == null)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private bool HavePlansInQueue()
+    {
+        if (planQueue.Count > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool HaveTasksInQueue()
+    {
+        if (taskQueue.Count > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool IsTimeToStartPlan()
+    {
+        if (plansDictionary.ContainsKey(clock.CurrentTimeOfDay))
+        {
+            return true;
+        }
+        return false;
     }
 }
