@@ -28,6 +28,7 @@ public class VehiclePlanner : MonoBehaviour
 
     private readonly Queue<VehiclePlan> planQueue = new();
     private readonly Queue<VehicleTask> taskQueue = new();
+
     private VehiclePlan currentPlan;
     private VehicleTask currentTask;
 
