@@ -69,6 +69,7 @@ public class VehiclePlanner : MonoBehaviour
             }
 
             currentTask = taskQueue.Dequeue();
+            currentTask.ExecuteTask();
         }
 
         if (!currentTask.Running)

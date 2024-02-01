@@ -5,5 +5,15 @@ public abstract class VehicleTask : MonoBehaviour
     public string TaskName = "Task";
     public bool Running = false;
 
-    public abstract void ExecuteTask(); 
+    protected abstract void Process();
+    public void ExecuteTask()
+    {
+        Process();
+        Running = true;
+    }
+
+    public void FinishTask()
+    {
+        Running = false;
+    }
 }
