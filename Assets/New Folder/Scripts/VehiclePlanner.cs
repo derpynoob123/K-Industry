@@ -26,7 +26,6 @@ public class VehiclePlanner : MonoBehaviour
     [SerializeField]
     private List<VehiclePlan> plans = new();
 
-    private readonly Dictionary<TimeInstance, List<VehiclePlan>> plansDictionary = new();
     private readonly Queue<VehiclePlan> planQueue = new();
     private readonly Queue<VehicleTask> taskQueue = new();
     private VehiclePlan currentPlan;
@@ -35,35 +34,14 @@ public class VehiclePlanner : MonoBehaviour
     private void Awake()
     {
         clock.MinutePassed += Process;
-
-        UpdatePlanDictionary();
-    }
-
-    private void UpdatePlanDictionary()
-    {
-        plansDictionary.Clear();
-        for (int planIndex = 0; planIndex < plans.Count; planIndex++)
-        {
-            VehiclePlan plan = plans[planIndex];
-            if (plan.Tasks.Count <= 0)
-            {
-                Debug.LogError("No tasks in plan.");
-                continue;
-            }
-
-            TimeInstance timing = plan.StartTime;
-            if (!plansDictionary.ContainsKey(timing))
-            {
-                plansDictionary.Add(timing, new());
-            }
-            plansDictionary[timing].Add(plan);
-        }
     }
 
     private void Process()
     {
+        print('r');
         if (IsTimeToStartPlan())
         {
+            print('k');
             VehiclePlan plan = GetPlan(clock.CurrentTimeOfDay);
             planQueue.Enqueue(plan);
         }
@@ -95,18 +73,33 @@ public class VehiclePlanner : MonoBehaviour
 
     private VehiclePlan GetPlan(TimeInstance time)
     {
-        List<VehiclePlan> plans = plansDictionary[time];
+        VehiclePlan[] plans = GetPlans(time);
+
         VehiclePlan plan;
-        if (plans.Count == 1)
+        if (plans.Length == 1)
         {
             plan = plans[0];
         }
         else
         {
-            int randomIndex = UnityEngine.Random.Range(0, plans.Count);
+            int randomIndex = UnityEngine.Random.Range(0, plans.Length);
             plan = plans[randomIndex];
         }
         return plan;
+    }
+
+    private VehiclePlan[] GetPlans(TimeInstance time)
+    {
+        List<VehiclePlan> plans = new();
+        for (int planIndex = 0; planIndex < this.plans.Count; planIndex++)
+        {
+            VehiclePlan plan = this.plans[planIndex];
+            if (TimeInstance.IsSameTime(plan.StartTime, time))
+            {
+                plans.Add(plan);
+            }
+        }
+        return plans.ToArray();
     }
 
     private void BeginNextPlan()
@@ -171,9 +164,13 @@ public class VehiclePlanner : MonoBehaviour
 
     private bool IsTimeToStartPlan()
     {
-        if (plansDictionary.ContainsKey(clock.CurrentTimeOfDay))
+        for (int planIndex = 0; planIndex < plans.Count; planIndex++)
         {
-            return true;
+            TimeInstance time = plans[planIndex].StartTime;
+            if (TimeInstance.IsSameTime(time, clock.CurrentTimeOfDay))
+            {
+                return true;
+            }
         }
         return false;
     }

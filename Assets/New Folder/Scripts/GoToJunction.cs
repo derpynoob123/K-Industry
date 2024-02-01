@@ -11,6 +11,7 @@ public class GoToJunction : VehicleTask
         vehicleNavigator = gameObject.GetComponent<VehicleNavigator>();
 
         vehicleNavigator.CannotReachDestination += FinishTask;
+        vehicleNavigator.ReachedDestination += FinishTask;
     }
 
     public override void ExecuteTask()

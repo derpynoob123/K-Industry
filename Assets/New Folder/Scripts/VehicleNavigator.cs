@@ -12,15 +12,18 @@ public class VehicleNavigator : MonoBehaviour
     [SerializeField]
     private VehicleMovement vehicleMovement;
 
+    public event Action ReachedDestination;
     public event Action CannotReachDestination;
 
     private readonly AStarPathFinder pathfinder = new();
     private Node currentNode;
     private Coroutine seekRoutine;
+    private Node destinationNode;
 
     private void Awake()
     {
         vehicleMovement.ReachedJunction += UpdateCurrentPosition;
+        vehicleMovement.ReachedJunction += CheckIfDestinationReached;
 
         UpdateCurrentPosition(currentJunction);
     }
@@ -53,6 +56,7 @@ public class VehicleNavigator : MonoBehaviour
         if (paths is not null)
         {
             vehicleMovement.SeekPath(paths);
+            destinationNode = destination;
         }
         else
         {
@@ -67,11 +71,21 @@ public class VehicleNavigator : MonoBehaviour
         vehicleMovement.AbortPath();
     }
 
-    public void UpdateCurrentPosition(GameObject current)
+    private void UpdateCurrentPosition(GameObject junction)
     {
-        Node node = pathNetwork.GetNode(current);
+        Node node = pathNetwork.GetNode(junction);
         currentNode = node;
-        currentJunction = current;
+        currentJunction = junction;
+    }
+
+    private void CheckIfDestinationReached(GameObject junction)
+    {
+        Node node = pathNetwork.GetNode(junction);
+        if (destinationNode == node)
+        {
+            destinationNode = null;
+            ReachedDestination?.Invoke();
+        }
     }
 
     public List<Path> GetPath(Node destination)
