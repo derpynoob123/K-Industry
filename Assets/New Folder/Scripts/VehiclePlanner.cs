@@ -27,8 +27,8 @@ public class VehiclePlanner : MonoBehaviour
     public List<VehiclePlan> Plans = new();
 
     private Dictionary<TimeInstance, List<VehiclePlan>> planTimings;
-    private Queue<VehiclePlan> planQueue = new();
-    private Queue<VehicleTask> taskQueue = new();
+    private readonly Queue<VehiclePlan> planQueue = new();
+    private readonly Queue<VehicleTask> taskQueue = new();
     private VehiclePlan currentPlan;
     private VehicleTask currentTask;
 
@@ -73,8 +73,16 @@ public class VehiclePlanner : MonoBehaviour
             List<VehiclePlan> plans = planTimings[clock.CurrentTimeOfDay];
             if (plans.Count > 0)
             {
-                int randomIndex = UnityEngine.Random.Range(0, plans.Count);
-                VehiclePlan plan = plans[randomIndex];
+                VehiclePlan plan;
+                if (plans.Count == 1)
+                {
+                    plan = plans[0];
+                }
+                else
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, plans.Count);
+                    plan = plans[randomIndex];
+                }
                 planQueue.Enqueue(plan);
             }
         }
@@ -85,9 +93,16 @@ public class VehiclePlanner : MonoBehaviour
             if (plan.Tasks.Count > 0)
             {
                 currentPlan = plan;
-                taskQueue = new Queue<VehicleTask>(currentPlan.Tasks);
-
+                for (int taskIndex = 0; taskIndex < currentPlan.Tasks.Count; taskIndex++)
+                {
+                    VehicleTask task = currentPlan.Tasks[taskIndex];
+                    taskQueue.Enqueue(task);
+                }
                 BeginNextTask();
+            }
+            else
+            {
+                Debug.LogWarning("No tasks in plan. Aborting plan.");
             }
         }
     }
