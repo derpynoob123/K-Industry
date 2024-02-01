@@ -112,15 +112,16 @@ public class VehiclePlanner : MonoBehaviour
     private void BeginNextPlan()
     {
         currentPlan = planQueue.Dequeue();
-        SetUpTasks(currentPlan);
+        VehicleTask[] planTasks = currentPlan.Tasks.ToArray();
+        InitialiseTaskQueue(planTasks);
     }
 
-    private void SetUpTasks(VehiclePlan plan)
+    private void InitialiseTaskQueue(VehicleTask[] tasks)
     {
         taskQueue.Clear();
-        for (int taskIndex = 0; taskIndex < plan.Tasks.Count; taskIndex++)
+        for (int taskIndex = 0; taskIndex < tasks.Length; taskIndex++)
         {
-            VehicleTask task = plan.Tasks[taskIndex];
+            VehicleTask task = tasks[taskIndex];
             taskQueue.Enqueue(task);
         }
     }
