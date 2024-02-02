@@ -6,16 +6,6 @@ public class VehicleFleet : MonoBehaviour
 {
     [SerializeField]
     private List<VehicleController> vehicles;
-    [SerializeField]
-    private DayClock clock;
-
-    public GameObject Seek;
-    public GameObject Seek2;
-    public GameObject Receive;
-
-    public ClockHour Hr;
-    public ClockMinute Min;
-
     public int GetVehicleCount()
     {
         return vehicles.Count;
