@@ -39,10 +39,8 @@ public class VehiclePlanner : MonoBehaviour
 
     private void Process()
     {
-        print('r');
         if (IsTimeToStartPlan())
         {
-            print('k');
             VehiclePlan plan = GetPlan(clock.CurrentTimeOfDay);
             planQueue.Enqueue(plan);
         }
