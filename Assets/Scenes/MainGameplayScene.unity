@@ -1622,9 +1622,17 @@ MonoBehaviour:
   userName: 0
   money: 0
   moneyText: 0
-  time: 0
+  minMul: 60
+  minutesTime: 0
+  hoursTime: 0
   day: 0
+  dayCount: 0
   week: 0
+  timeText: {fileID: 0}
+  dayText: {fileID: 0}
+  weekText: {fileID: 0}
+  startButton: {fileID: 0}
+  sceneName: MainGameplayScene
 --- !u!4 &1382111946
 Transform:
   m_ObjectHideFlags: 0
