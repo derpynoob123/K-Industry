@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameManagerScript : MonoBehaviour
+public class GameManagerScrip : MonoBehaviour
 {
     #region Variables
     public float userName;
@@ -21,6 +21,31 @@ public class GameManagerScript : MonoBehaviour
     public int dayCount;
     public int week;
     public bool skipCheck;
+
+    public float locOrderTimer;
+    public float intOrderTimer;
+    public float orderGenTime;
+
+    //Customer variables
+    public int locRep;
+    public int intRep;
+
+    public float minBanana;
+    public float maxBanana;
+    public float minMoney;
+    public float maxMoney;
+    public float minTimeD;
+    public float maxTimeD;
+
+    public float locBanana;
+    public float intBanana;
+    public float locMoney;
+    public float intMoney;
+    public float locTimeD;
+    public float intTimeD;
+
+    public float[] locOrders;
+    public float[] intOrders;
 
     //TextUI
     public TextMeshProUGUI timeText;
@@ -43,6 +68,21 @@ public class GameManagerScript : MonoBehaviour
         week = 0;
 
         skipCheck = false;
+
+        locRep = 50;
+        intRep = 50;
+
+        orderGenTime = 10f;
+
+        minBanana = 0;
+        minMoney = 0;
+        minTimeD = 0f;
+
+        maxBanana = 50;
+        maxMoney = 100;
+        maxTimeD = 120f;
+
+        locOrders = new float[3] { Random.Range(minBanana, maxBanana), Random.Range(minMoney, maxMoney), Random.Range(minTimeD, maxTimeD) };
     }
 
     // Update is called once per frame
@@ -91,6 +131,15 @@ public class GameManagerScript : MonoBehaviour
         dayText.text = $"Day: {day}";
         weekText.text = $"Week: {week}";
         #endregion
+
+        orderGenTime -= Time.deltaTime;
+
+        if (locTimeD >= 0)
+        {
+            locTimeD -= minMul * Time.deltaTime;
+        }
+
+        //LocalMarketOrderGenerator();
     }
 
     //Start screen to main play screen
@@ -103,4 +152,26 @@ public class GameManagerScript : MonoBehaviour
     {
         skipCheck = true;
     }
+
+    //public void LocalMarketOrderGenerator()
+    //{
+    //    if (orderGenTime <= 0)
+    //    {
+    //        orderGenTime = 10f;
+    //        locBanana = Random.Range(minBanana, maxBanana);
+    //        locMoney = Random.Range(minMoney, maxMoney);
+    //        locTimeD = Random.Range(minTimeD, maxTimeD);
+    //    }
+
+    //    if (orderGenTime <= 0)
+    //    {
+    //        for (int i = 0; i < locOrders.Length; i++)
+    //        {
+    //            locOrders[i] = Random.Range(minTimeD, maxTimeD);
+
+    //            float locTimeD = locOrders[2];
+    //            Debug.Log(locTimeD);
+    //        }
+    //    }
+    //}
 }

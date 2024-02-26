@@ -5329,6 +5329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382111946}
   - component: {fileID: 1382111945}
+  - component: {fileID: 1382111947}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5357,6 +5358,46 @@ MonoBehaviour:
   day: 0
   dayCount: 0
   week: 0
+  skipCheck: 0
+  locOrderTimer: 0
+  intOrderTimer: 0
+  orderGenTime: 0
+  locRep: 0
+  intRep: 0
+  minBanana: 0
+  maxBanana: 0
+  minMoney: 0
+  maxMoney: 0
+  minTimeD: 0
+  maxTimeD: 0
+  locBanana: 0
+  intBanana: 0
+  locMoney: 0
+  intMoney: 0
+  locTimeD: 0
+  intTimeD: 0
+  locOrders:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  intOrders:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   timeText: {fileID: 1169916762}
   dayText: {fileID: 1239214427}
   weekText: {fileID: 1380103288}
@@ -5377,6 +5418,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382111947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382111944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cf32b40a4cd6c45b35a5ee47748570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeRemaining: 0
+  startTime: 10
+  timerIsRunning: 0
+  timeToDeliver: 0
+  banana: 0
+  money: 0
+  timeValue: 0
 --- !u!1001 &1382848362
 PrefabInstance:
   m_ObjectHideFlags: 0
