@@ -22,20 +22,23 @@ public class FacilityGroup : MonoBehaviour
     private FacilityPoint[] facilityPoints;
 
     private readonly Dictionary<Transform, FacilityPoint> facilityLookUp = new();
+    private readonly List<Tile> facilityTiles = new();
 
     private void Awake()
     {
         facilitySpawner.FacilitySpawned += AddNewFacility;
 
-        InitialiseFacilityLookUp();
+        InitialiseFacilityPoints();
     }
 
-    private void InitialiseFacilityLookUp()
+    private void InitialiseFacilityPoints()
     {
         for (int pointIndex = 0; pointIndex < facilityPoints.Length; pointIndex++)
         {
             FacilityPoint point = facilityPoints[pointIndex];
             facilityLookUp.Add(point.Tile, point);
+            Tile tile = map.GetTile(point.Tile);
+            facilityTiles.Add(tile);
         }
     }
 
@@ -43,5 +46,10 @@ public class FacilityGroup : MonoBehaviour
     {
         FacilityPoint point = facilityLookUp[tile.TileTransform];
         point.Facility = facility;
+    }
+
+    public Tile[] GetTiles()
+    {
+        return facilityTiles.ToArray();
     }
 }

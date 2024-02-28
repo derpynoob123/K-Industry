@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropdown: {fileID: 19018498}
   noSelectionMessage: None Selected
-  map: {fileID: 1609417373}
+  facilityGroup: {fileID: 466274504}
   tileSelector: {fileID: 1609417376}
 --- !u!1001 &44551994
 PrefabInstance:
