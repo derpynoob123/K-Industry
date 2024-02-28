@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class TileDropdown : SelectionDropdown<Tile>
 {
     [SerializeField]
-    private MapBehaviour map;
+    private FacilityGroup facilityGroup;
     [SerializeField]
     private TileSelector tileSelector;
 
@@ -16,7 +17,7 @@ public class TileDropdown : SelectionDropdown<Tile>
 
     protected override void SetOptions()
     {
-        options = map.GetTiles().ToList();
+        options = facilityGroup.GetTiles().ToList();
         options = options.OrderBy(tile => tile.GridSpacePosition.x).ToList();
         options = options.OrderBy(tile => tile.GridSpacePosition.y).ToList();
     }
